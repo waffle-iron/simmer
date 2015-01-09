@@ -13,6 +13,7 @@ If you find a bug, feel free to open a new issue [here](https://github.com/bwdin
 
 # Contributions
 Simmer is being actively developed and anyone is welcome to contribute. Feel free to:
+
 1. Open a new issue
 2. Submit a Pull Request with bug fixes or new features
 3. Translate Simmer to a different language
