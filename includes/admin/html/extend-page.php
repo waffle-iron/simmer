@@ -18,7 +18,7 @@
 	 */
 	do_action( 'simmer_before_extend_page' ); ?>
 	
-	<?php $license = new Simmer_License_Manager(); ?>
+	<?php $license = new Simmer_License(); ?>
 
 	<?php if ( $license->is_active() ) : ?>
 		
