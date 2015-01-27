@@ -44,7 +44,7 @@
 						
 						<a class="extension-get button button-primary" href="http://simmerwp.dev/product/recipe-connector/" target="_blank"><?php _e( 'Get', Simmer::SLUG ); ?></a>
 						
-						<p class="extension-description"><?php _e( 'Attach multiple, unique, individual recipes to a single blog post to keep your recipe database clear and concise.', Simmer::SLUG ); ?></p>
+						<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', Simmer::SLUG ); ?></p>
 						
 					</div><!-- .simmer-extension-card-top -->
 					<?php /*
