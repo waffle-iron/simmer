@@ -28,8 +28,6 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 	 * 
 	 * @since 1.1.0
 	 * @see WP_Widget
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		
@@ -51,7 +49,6 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 	 * 
 	 * @param array $args     The sidebar args for the instance.
 	 * @param array $instance The instance and its settings.
-	 * @echo The widget markup.
 	 */
 	public function widget( $args, $instance ) {
 		
@@ -173,7 +170,6 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 	 * @since 1.1.0
 	 * 
 	 * @param  array $instance The current instance's settings.
-	 * @echo                   The settings field markup.
 	 */
 	public function form( $instance ) {
 		
