@@ -28,8 +28,6 @@ class Simmer_Categories_Widget extends WP_Widget {
 	 * 
 	 * @since 1.1.0
 	 * @see WP_Widget
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		
@@ -49,9 +47,8 @@ class Simmer_Categories_Widget extends WP_Widget {
 	 * 
 	 * @since 1.1.0
 	 * 
-	 * @param array $args     The sidebar args for this instance.
-	 * @param array $instance The instance of this widget & its settings.
-	 * @echo The widget markup.
+	 * @param array $args     The sidebar args for the instance.
+	 * @param array $instance The instance and its settings.
 	 */
 	public function widget( $args, $instance ) {
 		
@@ -79,13 +76,13 @@ class Simmer_Categories_Widget extends WP_Widget {
 		);
 		
 		/**
-		 * Filter the wp_list_categories args for this widget.
+		 * Filter the wp_list_categories args for the widget.
 		 * 
 		 * @since 1.1.0
 		 * 
 		 * @param array  $list_args  The arguments.
-		 * @param string $widget_id  This widget instance's ID.
-		 * @param string $sidebar_id The sidebar ID in which this instance is located.
+		 * @param string $widget_id  The instance's ID.
+		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
 		 */
 		$list_args = apply_filters( 'simmer_category_widget_list_args', $list_args, $widget_id, $sidebar_id );
 		
@@ -100,7 +97,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 	}
 	
 	/**
-	 * Set the new settings for this instance.
+	 * Set the new settings for the instance.
 	 * 
 	 * @since 1.1.0
 	 * 
@@ -126,8 +123,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 	 * 
 	 * @since 1.1.0
 	 * 
-	 * @param  array $instance The current instance's settings.
-	 * @echo                   The settings field markup.
+	 * @param  array $instance The instance's settings.
 	 */
 	public function form( $instance ) {
 		
