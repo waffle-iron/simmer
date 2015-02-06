@@ -75,5 +75,12 @@ class Simmer_Widgets {
 		
 		// Register the Recent Recipes widget.
 		register_widget( 'Simmer_Recent_Recipes_Widget' );
+		
+		/**
+		 * Execute after Simmer's default widgets are registered.
+		 * 
+		 * @since 1.1.0
+		 */
+		do_action( 'simmer_widgets_init' );
 	}
 }
