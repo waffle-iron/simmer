@@ -21,7 +21,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 	 *
 	 * @var string
 	 */
-	protected $widget_slug = 'recipe-categories';
+	protected $widget_slug = 'simmer-recipe-categories';
 	
 	/**
 	 * Construct the widget.
@@ -37,7 +37,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 			$this->widget_slug,
 			__( 'Recipe Categories', Simmer::SLUG ),
 			array(
-				'classname'   => $this->widget_slug . '-class',
+				'classname'   => $this->widget_slug . '-widget',
 				'description' => __( 'A list of recipe categories', Simmer::SLUG ),
 			)
 		);
