@@ -54,6 +54,11 @@ class Simmer_Widgets {
 		 * Include the Recipe Categories widget class.
 		 */
 		include plugin_dir_path( __FILE__ ) . 'class-simmer-categories-widget.php';
+		
+		/**
+		 * Include the Recipe Recipes widget class.
+		 */
+		include plugin_dir_path( __FILE__ ) . 'class-simmer-recent-recipes-widget.php';
 	}
 	
 	/**
@@ -67,5 +72,8 @@ class Simmer_Widgets {
 		
 		// Register the Recipe Categories widget.
 		register_widget( 'Simmer_Categories_Widget' );
+		
+		// Register the Recent Recipes widget.
+		register_widget( 'Simmer_Recent_Recipes_Widget' );
 	}
 }
