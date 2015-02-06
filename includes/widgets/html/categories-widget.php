@@ -8,8 +8,8 @@
  */
 ?>
 
-<ul>
+<ul class="simmer-recipe-categories">
 	
 	<?php wp_list_categories( $list_args ); ?>
 	
-</ul>
+</ul><!-- .simmer-recipe-categories -->
