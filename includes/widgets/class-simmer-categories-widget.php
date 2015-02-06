@@ -105,7 +105,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 		 * @param string $widget_id  The instance's ID.
 		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
 		 */
-		$list_args = apply_filters( 'simmer_category_widget_list_args', $list_args, $widget_id, $sidebar_id );
+		$list_args = apply_filters( 'simmer_categories_widget_list_args', $list_args, $widget_id, $sidebar_id );
 		
 		// Override the above filter to always set the taxonomy to display recipe categories.
 		$list_args['taxonomy'] = simmer_get_category_taxonomy();
@@ -118,7 +118,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 		 * @param string $widget_id  The instance's ID.
 		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
 		 */
-		do_action( 'simmer_before_category_widget', $widget_id, $sidebar_id );
+		do_action( 'simmer_before_categories_widget', $widget_id, $sidebar_id );
 		
 		// Output the main markup.
 		include( plugin_dir_path( __FILE__ ) . 'html/categories-widget.php' );
@@ -131,7 +131,7 @@ class Simmer_Categories_Widget extends WP_Widget {
 		 * @param string $widget_id  The instance's ID.
 		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
 		 */
-		do_action( 'simmer_after_category_widget', $widget_id, $sidebar_id );
+		do_action( 'simmer_after_categories_widget', $widget_id, $sidebar_id );
 		
 		// Close the wrapper.
 		echo $args['after_widget'];
