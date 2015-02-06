@@ -1,46 +1,53 @@
 <?php
+/**
+ * Define the widgets class
+ * 
+ * @since 1.1.0
+ * 
+ * @package Simmer\Widgets
+ */
 
-final class Simmer_Widgets {
+// Die if this file is called directly.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+class Simmer_Widgets {
 	
 	/**
 	 * The only instance of this class.
 	 *
-	 * @since  1.0.5
+	 * @since  1.1.0
 	 * @access protected
 	 * @var    object The only instance of this class.
 	 */
-	protected static $_instance = null;
+	protected static $instance = null;
 	
 	/**
 	 * Get the main instance.
 	 *
-	 * Insure that only one instance of this class exists in memory at any one time.
-	 *
-	 * @since 1.0.5
+	 * @since 1.1.0
 	 *
 	 * @return The only instance of this class.
 	 */
 	public static function get_instance() {
 		
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+			self::$instance->include_files();
+			self::$instance->register_widgets();
 		}
 		
-		return self::$_instance;
+		return self::$instance;
 	}
 	
-	public function __construct() {
-		
-		$this->include_files();
-		
-		$this->init();
-	}
-	
-	public function init() {
-		
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-	}
-	
+	/**
+	 * Include the necessary widget class definitions.
+	 * 
+	 * @since 1.1.0
+	 * 
+	 * @return void
+	 */
 	public function include_files() {
 		
 		/**
@@ -49,11 +56,16 @@ final class Simmer_Widgets {
 		include plugin_dir_path( __FILE__ ) . 'class-simmer-categories-widget.php';
 	}
 	
+	/**
+	 * Register the widgets.
+	 * 
+	 * @since 1.1.0
+	 * 
+	 * @return void
+	 */
 	public function register_widgets() {
 		
 		// Register the Recipe Categories widget.
 		register_widget( 'Simmer_Categories_Widget' );
 	}
 }
-
-Simmer_Widgets::get_instance();
