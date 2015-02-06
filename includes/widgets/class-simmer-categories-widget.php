@@ -63,8 +63,29 @@ class Simmer_Categories_Widget extends WP_Widget {
 		// Output the wrapper.
 		echo $args['before_widget'];
 		
-		// If a title was set, output it.
-		if ( $title = $instance['title'] ) {
+		/**
+		 * Filter the settings for the instance.
+		 * 
+		 * @since 1.1.0
+		 * 
+		 * @param array  $instance   The instance's settings.
+		 * @param string $widget_id  The instance's ID.
+		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
+		 */
+		$instance = apply_filters( 'simmer_categories_widget_settings', $instance, $widget_id, $sidebar_id );
+		
+		/**
+		 * Filter the title for the instance.
+		 * 
+		 * @since 1.1.0
+		 * 
+		 * @param string $title      The instance's title.
+		 * @param string $widget_id  The instance's ID.
+		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
+		 */
+		$title = apply_filters( 'simmer_categories_widget_title', $instance['title'], $widget_id, $sidebar_id );
+		
+		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 		
@@ -89,8 +110,28 @@ class Simmer_Categories_Widget extends WP_Widget {
 		// Override the above filter to always set the taxonomy to display recipe categories.
 		$list_args['taxonomy'] = simmer_get_category_taxonomy();
 		
+		/**
+		 * Execute before displaying the widget.
+		 * 
+		 * @since 1.1.0
+		 * 
+		 * @param string $widget_id  The instance's ID.
+		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
+		 */
+		do_action( 'simmer_before_category_widget', $widget_id, $sidebar_id );
+		
 		// Output the main markup.
 		include( plugin_dir_path( __FILE__ ) . 'html/categories-widget.php' );
+		
+		/**
+		 * Execute after displaying the widget.
+		 * 
+		 * @since 1.1.0
+		 * 
+		 * @param string $widget_id  The instance's ID.
+		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
+		 */
+		do_action( 'simmer_after_category_widget', $widget_id, $sidebar_id );
 		
 		// Close the wrapper.
 		echo $args['after_widget'];
