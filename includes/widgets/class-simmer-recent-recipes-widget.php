@@ -123,7 +123,7 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 		 * @param string $widget_id  The instance's ID.
 		 * @param string $sidebar_id The ID of the sidebar in which the instance is located.
 		 */
-		do_action( 'simmer_after_recent_recipes_widget', $widget_id, $sidebar_id );
+		do_action( 'simmer_before_recent_recipes_widget', $widget_id, $sidebar_id );
 		
 		// Output the main markup.
 		include( plugin_dir_path( __FILE__ ) . 'html/recent-recipes-widget.php' );
