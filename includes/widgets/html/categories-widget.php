@@ -2,7 +2,7 @@
 /**
  * Display the Recipe Categories widget markup
  * 
- * @since 1.0.3
+ * @since 1.1.0
  * 
  * @package Simmer\Widgets
  */
