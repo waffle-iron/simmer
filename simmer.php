@@ -56,6 +56,14 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );
 // After all other plugins are loaded, instantiate Simmer.
 add_action( 'plugins_loaded', array( 'Simmer', 'get_instance' ) );
 
+/**
+ * Require the widgets class definition.
+ */
+require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/class-simmer-widgets.php' );
+
+// Init the widgets class.
+add_action( 'widgets_init', array( 'Simmer_Widgets', 'get_instance' ) );
+
 // Only do the following when in the admin & not AJAXing something.
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 	
