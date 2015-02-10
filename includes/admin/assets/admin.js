@@ -108,6 +108,20 @@ jQuery( document ).ready( function( $ ) {
 			
 		} else {
 			
+			
+			// Target the next row.
+			var nextRow = $( row ).next()
+			
+			// If not, target the previous row.
+			if ( ! nextRow.length ) {
+				var nextRow = $( row ).prev();
+			}
+			
+			// Focus on the next/previous row on removal.
+			if ( nextRow.length ) {
+				$( nextRow ).find( 'input:first, textarea:first' ).focus();
+			}
+			
 			if ( '' == $( 'input, select, textarea', row ).val() ) {
 				$( row ).remove();
 			} else if ( window.confirm( simmer_vars.remove_ays ) ) {
