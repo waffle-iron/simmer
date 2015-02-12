@@ -85,7 +85,7 @@ jQuery( document ).ready( function( $ ) {
 		clone.insertAfter( row );
 		
 		// Auto-focus on first input after the row is added.
-		clone.find( 'td input:first, td textarea:first' ).focus();
+		clone.find( 'td input:not(.hide-if-js):first, td textarea:first' ).focus();
 		
 	} );
 	
