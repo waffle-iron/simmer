@@ -125,7 +125,7 @@ jQuery( document ).ready( function( $ ) {
 			
 			// Focus on the next/previous row on removal.
 			if ( nextRow.length ) {
-				$( nextRow ).find( 'input:first, textarea:first' ).focus();
+				$( nextRow ).find( 'input:not(.hide-if-js):first, textarea:first' ).focus();
 			}
 			
 			if ( '' == $( 'input, select, textarea', row ).val() ) {
