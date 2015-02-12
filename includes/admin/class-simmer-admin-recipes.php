@@ -222,28 +222,30 @@ final class Simmer_Admin_Recipes {
 			
 			if ( is_array( $ingredients ) ) {
 				
-				$i = 0;
-				
 				foreach ( $ingredients as $ingredient ) {
 					
 				 	if ( isset( $ingredient['desc'] ) && ! empty( $ingredient['desc'] ) ) {
 						
-						$_ingredients[$i]['desc'] = $ingredient['desc'];
+						$order = $ingredient['order'];
+						
+						if ( array_key_exists( $order, $_ingredients ) ) {
+							$order = $order + 1;
+						}
+						
+						$_ingredients[ $order ]['desc'] = $ingredient['desc'];
 						
 						// Check for an amount value.
 						if ( ! empty( $ingredient['amt'] ) ) {
 							
 							$amount = Simmer_Ingredient::convert_amount_to_float( $ingredient['amt'] );
 							
-							$_ingredients[$i]['amt'] = $amount;
+							$_ingredients[$order]['amt'] = $amount;
 						}
 						
 						if ( ! empty( $ingredient['unit'] ) ) {
-							$_ingredients[$i]['unit'] = $ingredient['unit'];
+							$_ingredients[$order]['unit'] = $ingredient['unit'];
 						}
 				 	}
-				 	
-				 	$i++;
 				 	
 				}
 			}
@@ -251,9 +253,16 @@ final class Simmer_Admin_Recipes {
 		
 		// Maybe save the ingredients.
 		if ( ! empty( $_ingredients ) ) {
+			
+			ksort( $_ingredients, SORT_NUMERIC );
+			$_ingredients = array_values( $_ingredients );
+			
 			update_post_meta( $id, '_recipe_ingredients', $_ingredients );
+			
 		} else {
+			
 			delete_post_meta( $id, '_recipe_ingredients' );
+			
 		}
 		
 		/** Instructions **/
