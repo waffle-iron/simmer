@@ -275,19 +275,25 @@ final class Simmer_Admin_Recipes {
 			
 			if ( is_array( $instructions ) ) {
 				
-				$i = 0;
-				
 				foreach ( $instructions as $instruction ) {
 					
 					if ( isset( $instruction['desc'] ) && ! empty( $instruction['desc'] ) ) {
 						
-						if ( isset( $instruction['heading'] ) && 'true' == $instruction['heading'] ) {
-							$_instructions[$i]['heading'] = 1;
-						} else {
-							$_instructions[$i]['heading'] = 0;
+						// Get the passed order.
+						$order = (int) $instruction['order'];
+						
+						// Be sure we don't overwrite any items with the same order number.
+						if ( array_key_exists( $order, $_instructions ) ) {
+							$order = $order + 1;
 						}
 						
-						$_instructions[$i]['desc'] = $instruction['desc'];
+						if ( isset( $instruction['heading'] ) && 'true' == $instruction['heading'] ) {
+							$_instructions[ $order ]['heading'] = 1;
+						} else {
+							$_instructions[ $order ]['heading'] = 0;
+						}
+						
+						$_instructions[ $order ]['desc'] = $instruction['desc'];
 					 	
 					 	$i++;
 					}
@@ -299,9 +305,19 @@ final class Simmer_Admin_Recipes {
 		
 		// Maybe save the instructions.
 		if ( ! empty( $_instructions ) ) {
+			
+			// Sort the instructions by index.
+			ksort( $_instructions, SORT_NUMERIC );
+			
+			// Reset the indexes to start at zero.
+			$_instructions = array_values( $_instructions );
+			
 			update_post_meta( $id, '_recipe_instructions', $_instructions );
+			
 		} else {
+			
 			delete_post_meta( $id, '_recipe_instructions' );
+			
 		}
 			
 		/** Information **/
