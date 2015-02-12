@@ -8,8 +8,10 @@ jQuery( document ).ready( function( $ ) {
 		axis:'y',
 		handle: '.simmer-sort-handle',
 		placeholder: 'simmer-sort-placeholder',
-		scrollSensitivity: 40,
-		
+		containment: 'parent',
+		tolerance: 'pointer',
+		revert: 70,
+		scroll: false,
 		helper: function( e,ui ) {
 
 			ui.children().each( function() {
