@@ -79,7 +79,7 @@
 #simmer_instructions .inside {
 	margin: 0;
 	padding: 0;
-	overflow-x: auto;
+	overflow-x: hidden;
 }
 
 .simmer-list-table {
@@ -109,6 +109,9 @@
 	padding-top: 14px;
 	padding-bottom: 14px;
 }
+.simmer-list-table .simmer-sort-placeholder {
+	background: rgb( 250, 250, 250 );
+}
 .simmer-list-table .simmer-row:hover {
 	background: rgb( 252, 252, 252 );
 }
@@ -116,7 +119,7 @@
 	display: none;
 }
 .simmer-list-table .simmer-row.ui-sortable-helper {
-	background: rgb( 250, 250, 250 );
+	background: rgb( 252, 252, 252 );
 	border-top: 1px solid rgb( 238, 238, 238 );
 }
 

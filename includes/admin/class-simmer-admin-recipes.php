@@ -222,28 +222,32 @@ final class Simmer_Admin_Recipes {
 			
 			if ( is_array( $ingredients ) ) {
 				
-				$i = 0;
-				
 				foreach ( $ingredients as $ingredient ) {
 					
 				 	if ( isset( $ingredient['desc'] ) && ! empty( $ingredient['desc'] ) ) {
 						
-						$_ingredients[$i]['desc'] = $ingredient['desc'];
+						// Get the passed order.
+						$order = (int) $ingredient['order'];
+						
+						// Be sure we don't overwrite any items with the same order number.
+						if ( array_key_exists( $order, $_ingredients ) ) {
+							$order = $order + 1;
+						}
+						
+						$_ingredients[ $order ]['desc'] = $ingredient['desc'];
 						
 						// Check for an amount value.
 						if ( ! empty( $ingredient['amt'] ) ) {
 							
 							$amount = Simmer_Ingredient::convert_amount_to_float( $ingredient['amt'] );
 							
-							$_ingredients[$i]['amt'] = $amount;
+							$_ingredients[ $order ]['amt'] = $amount;
 						}
 						
 						if ( ! empty( $ingredient['unit'] ) ) {
-							$_ingredients[$i]['unit'] = $ingredient['unit'];
+							$_ingredients[ $order ]['unit'] = $ingredient['unit'];
 						}
 				 	}
-				 	
-				 	$i++;
 				 	
 				}
 			}
@@ -251,9 +255,19 @@ final class Simmer_Admin_Recipes {
 		
 		// Maybe save the ingredients.
 		if ( ! empty( $_ingredients ) ) {
+			
+			// Sort the ingredients by index.
+			ksort( $_ingredients, SORT_NUMERIC );
+			
+			// Reset the indexes to start at zero.
+			$_ingredients = array_values( $_ingredients );
+			
 			update_post_meta( $id, '_recipe_ingredients', $_ingredients );
+			
 		} else {
+			
 			delete_post_meta( $id, '_recipe_ingredients' );
+			
 		}
 		
 		/** Instructions **/
@@ -266,19 +280,25 @@ final class Simmer_Admin_Recipes {
 			
 			if ( is_array( $instructions ) ) {
 				
-				$i = 0;
-				
 				foreach ( $instructions as $instruction ) {
 					
 					if ( isset( $instruction['desc'] ) && ! empty( $instruction['desc'] ) ) {
 						
-						if ( isset( $instruction['heading'] ) && 'true' == $instruction['heading'] ) {
-							$_instructions[$i]['heading'] = 1;
-						} else {
-							$_instructions[$i]['heading'] = 0;
+						// Get the passed order.
+						$order = (int) $instruction['order'];
+						
+						// Be sure we don't overwrite any items with the same order number.
+						if ( array_key_exists( $order, $_instructions ) ) {
+							$order = $order + 1;
 						}
 						
-						$_instructions[$i]['desc'] = $instruction['desc'];
+						if ( isset( $instruction['heading'] ) && 'true' == $instruction['heading'] ) {
+							$_instructions[ $order ]['heading'] = 1;
+						} else {
+							$_instructions[ $order ]['heading'] = 0;
+						}
+						
+						$_instructions[ $order ]['desc'] = $instruction['desc'];
 					 	
 					 	$i++;
 					}
@@ -290,9 +310,19 @@ final class Simmer_Admin_Recipes {
 		
 		// Maybe save the instructions.
 		if ( ! empty( $_instructions ) ) {
+			
+			// Sort the instructions by index.
+			ksort( $_instructions, SORT_NUMERIC );
+			
+			// Reset the indexes to start at zero.
+			$_instructions = array_values( $_instructions );
+			
 			update_post_meta( $id, '_recipe_instructions', $_instructions );
+			
 		} else {
+			
 			delete_post_meta( $id, '_recipe_instructions' );
+			
 		}
 			
 		/** Information **/

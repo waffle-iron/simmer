@@ -8,8 +8,10 @@ jQuery( document ).ready( function( $ ) {
 		axis:'y',
 		handle: '.simmer-sort-handle',
 		placeholder: 'simmer-sort-placeholder',
-		scrollSensitivity: 40,
-
+		containment: 'parent',
+		tolerance: 'pointer',
+		revert: 70,
+		scroll: false,
 		helper: function( e,ui ) {
 
 			ui.children().each( function() {
@@ -37,11 +39,13 @@ jQuery( document ).ready( function( $ ) {
 		        	
 		        	var name = $( this ).attr( 'name' );
 		        	
-		        	name = name.replace( /\[(\d+)\]/, '[' + rowIndex+ ']');
+		        	name = name.replace( /\[(\d+)\]/, '[' + rowIndex + ']');
 		        	
 		        	$( this ).attr( 'name', name ).attr( 'id', name );
 		        	
 		    	} );
+		    	
+		    	$( this ).find( '.simmer-sort input' ).attr( 'value', rowIndex );
 		    	
 		    } );
 
@@ -75,6 +79,8 @@ jQuery( document ).ready( function( $ ) {
 			$( this ).attr( 'name', name ).attr( 'id', name );
 			
 		} );
+		
+		clone.find( '.simmer-sort input' ).attr( 'value', parseInt( count ) );
 		
 		clone.insertAfter( row );
 		
