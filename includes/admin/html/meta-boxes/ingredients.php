@@ -65,7 +65,8 @@
 			<tr class="simmer-ingredient simmer-row">
 						
 				<td class="simmer-sort">
-					<span class="simmer-sort-handle dashicons dashicons-menu"></span>
+					<input class="hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[0][order]" value="0" />
+					<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 				</td>
 				<td class="simmer-amt">
 					<input type="text" style="width:100%;" name="simmer_ingredients[0][amt]" value="" placeholder="2" />
