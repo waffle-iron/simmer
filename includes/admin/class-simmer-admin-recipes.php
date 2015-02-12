@@ -241,11 +241,11 @@ final class Simmer_Admin_Recipes {
 							
 							$amount = Simmer_Ingredient::convert_amount_to_float( $ingredient['amt'] );
 							
-							$_ingredients[$order]['amt'] = $amount;
+							$_ingredients[ $order ]['amt'] = $amount;
 						}
 						
 						if ( ! empty( $ingredient['unit'] ) ) {
-							$_ingredients[$order]['unit'] = $ingredient['unit'];
+							$_ingredients[ $order ]['unit'] = $ingredient['unit'];
 						}
 				 	}
 				 	
