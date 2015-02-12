@@ -227,7 +227,7 @@ final class Simmer_Admin_Recipes {
 				 	if ( isset( $ingredient['desc'] ) && ! empty( $ingredient['desc'] ) ) {
 						
 						// Get the passed order.
-						$order = $ingredient['order'];
+						$order = (int) $ingredient['order'];
 						
 						// Be sure we don't overwrite any items with the same order number.
 						if ( array_key_exists( $order, $_ingredients ) ) {
