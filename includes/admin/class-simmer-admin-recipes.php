@@ -226,8 +226,10 @@ final class Simmer_Admin_Recipes {
 					
 				 	if ( isset( $ingredient['desc'] ) && ! empty( $ingredient['desc'] ) ) {
 						
+						// Get the passed order.
 						$order = $ingredient['order'];
 						
+						// Be sure we don't overwrite any items with the same order number.
 						if ( array_key_exists( $order, $_ingredients ) ) {
 							$order = $order + 1;
 						}
@@ -254,7 +256,10 @@ final class Simmer_Admin_Recipes {
 		// Maybe save the ingredients.
 		if ( ! empty( $_ingredients ) ) {
 			
+			// Sort the ingredients by index.
 			ksort( $_ingredients, SORT_NUMERIC );
+			
+			// Reset the indexes to start at zero.
 			$_ingredients = array_values( $_ingredients );
 			
 			update_post_meta( $id, '_recipe_ingredients', $_ingredients );
