@@ -85,7 +85,7 @@ function simmer_get_ingredients_list_heading() {
  */
 function simmer_get_ingredients_list_type() {
 	
-	$type = get_option( 'simmer_ingredients_list_type', 'ul' );
+	$type = get_option( 'simmer_ingredients_list_type', 'ol' );
 	
 	/**
 	 * Allow others to filter the ingredients list type.
