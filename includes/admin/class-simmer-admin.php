@@ -119,6 +119,13 @@ final class Simmer_Admin {
 		 * Supporting functions.
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . 'functions/units.php'       );
+		
+		/**
+		 * The Recipes admin.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-bulk-add.php' );
+		
+		$bulk_add = new Simmer_Admin_Bulk_Add();
 	}
 	
 	/**
@@ -171,6 +178,16 @@ final class Simmer_Admin {
 				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     Simmer::SLUG ),
 				'remove_instruction_min' => __( 'You must have at least one instruction!',    Simmer::SLUG ),
 				'remove_ays'             => __( 'Are you sure you want to remove this item?', Simmer::SLUG ),
+			) );
+			
+			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer::VERSION, true );
+			
+			wp_localize_script( 'simmer-admin-bulk-script', 'simmer_bulk_add_vars', array(
+				'ingredients_title'  => __( 'Add Bulk Ingredients', Simmer::SLUG ),
+				'ingredients_button' => __( 'Add Ingredients',      Simmer::SLUG ),
+				'insructions_title'  => __( 'Add Bulk Instructions', Simmer::SLUG ),
+				'insructions_button' => __( 'Add Instructions',      Simmer::SLUG ),
+				'ajax_url'           => admin_url( 'admin-ajax.php' ),
 			) );
 		}
 	}
