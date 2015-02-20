@@ -91,7 +91,10 @@
 	
 	<tfoot>
 		<tr class="simmer-actions">
-			<td colspan="5">
+			<td class="simmer-bulk-add-link" colspan="3">
+				<a class="hide-if-no-js" href="#" data-type="ingredients">+ Add in Bulk</a>
+			</td>
+			<td colspan="2">
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add an Ingredient', Simmer::SLUG ); ?>
@@ -101,3 +104,38 @@
 	</tfoot>
 	
 </table>
+
+<div class="simmer-bulk-modal-background"></div>
+<div class="simmer-bulk-modal-wrap">
+	
+	<form id="simmer-bulk-add-form" tabindex="-1">
+		
+		<div class="simmer-bulk-modal-header">
+			<span class="simmer-bulk-modal-title"><?php echo _e( 'Add In Bulk', Simmer::SLUG ); ?></span>
+			<button class="simmer-bulk-modal-close">
+				<span class="screen-reader-text"><?php _e( 'Close', Simmer::SLUG ); ?></span>
+			</button>
+		</div>
+		
+		<div class="simmer-bulk-modal-content">
+			
+			<?php wp_nonce_field( 'simmer_process_bulk', 'simmer_process_bulk_nonce' ); ?>
+			
+			<p><?php _e( 'Type or copy/paste the list of ingredients below, one ingredient per line.', Simmer::SLUG ); ?></p>
+			
+			<textarea class="simmer-bulk-text" name="simmer-bulk-text"></textarea>
+			
+		</div>
+		
+		<div class="simmer-bulk-modal-footer submitbox">
+			<div class="cancel">
+				<a class="submitdelete" href="#"><?php _e( 'Cancel', Simmer::SLUG ); ?></a>
+			</div>
+			<div class="simmer-submit-bulk">
+				<button class="button button-primary"><?php _e( 'Add', Simmer::SLUG ); ?></button>
+			</div>
+		</div>
+		
+	</form>
+	
+</div>

@@ -156,6 +156,10 @@
 	text-align: right;
 	border: none;
 }
+.simmer-list-table .simmer-actions .simmer-bulk-add-link {
+	font-weight: bold;
+	text-align: left;
+}
 .simmer-add-row {
 	margin-left: 8px;
 	vertical-align: text-top;
@@ -164,6 +168,133 @@
 	vertical-align: text-top;
 }
 
+/* Builk Modal */
+
+.simmer-bulk-modal-background {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 360px;
+	background: #000;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	z-index: 100100;
+}
+.simmer-bulk-modal-wrap {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 500px;
+	height: 250px;
+	margin-left: -250px;
+	margin-top: -125px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
+	        box-shadow: 0 3px 6px rgba(0,0,0,.3);
+	overflow: hidden;
+	z-index: 100105;
+	-webkit-transition: height .2s, margin-top .2s;
+	        transition: height .2s, margin-top .2s;
+}
+@media screen and ( max-width: 782px ) {
+	
+	.simmer-bulk-modal-wrap {
+		height: 280px;
+		margin-top: -140px;
+	}
+}
+@media screen and ( max-width: 520px ) {
+	
+	.simmer-bulk-modal-wrap {
+		width: auto;
+		margin-left: 0;
+		left: 10px;
+		right: 10px;
+		max-width: 500px;
+	}
+}
+
+.simmer-bulk-modal-header {
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 36px;
+	padding: 0 36px 0 16px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 36px;
+	background: #fcfcfc;
+	border-bottom: 1px solid #dfdfdf;
+}
+.simmer-bulk-modal-header button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 36px;
+	height: 36px;
+	padding: 0;d
+	color: #666;
+	text-align: center;
+	background: 0 0;
+	border: none;
+	cursor: pointer;
+}
+.simmer-bulk-modal-header button::before {
+	font: 400 20px/36px dashicons;
+	vertical-align: top;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	width: 36px;
+	height: 36px;
+	content: '\f158';
+}
+
+.simmer-bulk-modal-content {
+	padding: 0 16px 50px;
+}
+@media screen and (max-width: 782px) {
+	
+	.simmer-bulk-modal-content {
+		padding: 0 16px 60px;
+	}
+}
+
+.simmer-bulk-modal-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 8px 16px;
+	background: #fcfcfc;
+	border-top: 1px solid #dfdfdf;
+}
+.simmer-bulk-modal-footer .cancel {
+	line-height: 25px;
+	float: left;
+}
+.simmer-bulk-modal-footer .cancel .submitdelete {
+	text-decoration: none;
+	padding: 1px 2px;
+}
+.simmer-bulk-modal-footer .simmer-submit-bulk {
+	line-height: 23px;
+	float: right;
+}
+.simmer-bulk-modal-footer .simmer-submit-bulk button {
+	float: right;
+	margin-bottom: 0;
+}
+@media screen and (max-width: 782px) {
+	
+	.simmer-bulk-modal-footer .cancel {
+		line-height: 32px;
+	}
+}
 
 /* Information */
 input.simmer-time {
