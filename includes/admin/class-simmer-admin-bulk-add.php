@@ -14,9 +14,21 @@ final class Simmer_Admin_Bulk_Add {
 		$this->add_actions();
 	}
 	
+	/**
+	 * Add the necessary action hooks.
+	 * 
+	 * @since 1.2.0
+	 */
 	private function add_actions() {
 		
+		add_action( 'admin_footer', array( $this, 'add_modal' ) );
+		
 		add_action( 'wp_ajax_simmer_process_bulk', array( $this, 'process_ajax' ) );
+	}
+	
+	public function add_modal() {
+		
+		include_once( plugin_dir_path( __FILE__ ) . 'html/meta-boxes/bulk-add.php' );
 	}
 	
 	public function process_ajax() {
@@ -41,10 +53,10 @@ final class Simmer_Admin_Bulk_Add {
 			die();
 		}
 		
-		$type = ( isset( $_POST['type'] ) ) ? $_POST['type'] : 'ingredients';
+		$type = ( isset( $_POST['type'] ) ) ? $_POST['type'] : 'ingredient';
 		$text = $_POST['text'];
 		
-		if ( $items = $this->parse_input( $text ) ) {
+		if ( $items = $this->parse_input( $text, $type ) ) {
 			
 			echo json_encode( $items );
 			
@@ -64,11 +76,9 @@ final class Simmer_Admin_Bulk_Add {
 		die();
 	}
 	
-	public function parse_input( $input ) {
+	public function parse_input( $input, $type ) {
 		
-		$input = str_replace( array("\r", "\n"), ',', $input );
-		
-		$lines = explode( ',', $input );
+		$lines = preg_split( '/\r\n|[\r\n]/', $input );
 		$lines = array_map( 'trim', $lines );
 		
 		$items = false;
@@ -79,25 +89,122 @@ final class Simmer_Admin_Bulk_Add {
 			
 			foreach ( $lines as $line ) {
 				
-				$amount = substr( $line, 0, strspn( $line, '0123456789/. ' ) );
-				
-				$desc_start  = strlen( $amount );
-				$description = $line;
-				$description = substr( $description, $desc_start );
-				
-				$amount = trim( $amount );
-				$amount = Simmer_Ingredient::convert_amount_to_float( $amount );
-				
-				// Get the available measurement units.
-				$units = Simmer_Ingredients::get_units();
-				
-				$items[] = array(
-					'amount'      => $amount,
-					'description' => $description,
-				);
+				if ( 'ingredient' == $type ) {
+					
+					$amount = '';
+					$unit   = '';
+					$description = $line;
+					
+					$parsed_amount = $this->parse_amount( $line );
+					
+					if ( $parsed_amount ) {
+						
+						$amount = $parsed_amount['result'];
+						
+						// Remove the amount and format the description.
+						$description = substr( $description, $parsed_amount['end'] );
+						$description = trim( $description );
+						
+						$parsed_unit = $this->parse_unit( $description );
+						
+						if ( $parsed_unit ) {
+							
+							$description = substr( $description, $parsed_unit['end'] );
+							
+							$unit = $parsed_unit['result'];
+						}
+					}
+					
+					$description = trim( $description );
+					
+					$items[] = array(
+						'amount'      => $amount,
+						'unit'        => $unit,
+						'description' => $description,
+					);
+					
+				} else {
+					
+					$description = trim( $line );
+					
+					$items[] = array(
+						'description' => $description,
+					);
+				}
 			}
 		}
 		
 		return $items;
+	}
+	
+	private function parse_amount( $string ) {
+		
+		// Isolate the first word.
+		$first_word = strtok( $string, ' ' );
+		
+		// Get amount string if it meets our criteria.
+		$amount_length = strspn( $first_word, '0123456789/. ' );
+		$amount_string = substr( $string, 0, $amount_length );
+		
+		if ( $amount_string ) {
+			
+			// Format the amount.
+			$amount = trim( $amount_string );
+			$amount = Simmer_Ingredient::convert_amount_to_float( $amount );
+			
+			$result = array(
+				'start'  => 0,
+				'end'    => $amount_length,
+				'result' => $amount,
+			);
+			
+		} else {
+			
+			$result = false;
+			
+		}
+		
+		return $result;
+	}
+	
+	private function parse_unit( $string ) {
+		
+		$_unit  = '';
+		$end = 0;
+		
+		// Isolate the first word.
+		$first_word = strtok( $string, ' ' );
+		
+		// Get the available measurement units.
+		$units = Simmer_Ingredients::get_units();
+		$_units = array();
+		
+		foreach ( $units as $unit ) {
+			$_units = array_merge( $unit, $_units );
+		}
+		
+		foreach ( $_units as $unit => $labels ) {
+			
+			if ( ! in_array( $first_word, $labels ) ) {
+				continue;
+			}
+			
+			$_unit = $unit;
+			$end  = strlen( $first_word );
+		}
+		
+		if ( $_unit && $end ) {
+			
+			$result = array(
+				'result' => $_unit,
+				'start'  => 0,
+				'end'    => $end,
+			);
+			
+		} else {
+			$result = false;
+		}
+		
+		return $result;
 	}
 }

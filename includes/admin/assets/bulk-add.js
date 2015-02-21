@@ -32,6 +32,7 @@ var simmerBulkModal;
 				event.preventDefault();
 				
 				simmerBulkModal.submit();
+				simmerBulkModal.close();
 				
 			} );
 			
@@ -48,10 +49,10 @@ var simmerBulkModal;
 			inputs.wrap.show();
 			inputs.backdrop.show();
 			
-			if ( 'ingredients' == inputs.type ) {
+			if ( 'ingredient' == inputs.type ) {
 				var titleText  = simmer_bulk_add_vars.ingredients_title;
 				var buttonText = simmer_bulk_add_vars.ingredients_button;
-			} else if ( 'instructions' == inputs.type ) {
+			} else if ( 'instruction' == inputs.type ) {
 				var titleText  = simmer_bulk_add_vars.instructions_title;
 				var buttonText = simmer_bulk_add_vars.instructions_button;
 			}
@@ -84,9 +85,44 @@ var simmerBulkModal;
 				},
 				success: function( response ) {
 					
-					console.log( response );
+					if ( ! response.error ) {
+						
+						$.each( response,  function( index, item ) {
+							simmerBulkModal.addRow( inputs.type, item );
+							console.log( item );
+						} );
+					}
 				}
 			} );
+		},
+		
+		addRow: function( type, item ) {
+			
+			row = $( 'tr.simmer-' + type ).last();
+			
+			clone = row.clone();
+			
+			var count = row.parent().find( 'tr' ).length;
+			
+			clone.find( '.simmer-amt input' ).val( item.amount );
+			clone.find( '.simmer-unit select' ).val( item.unit );
+			clone.find( '.simmer-desc input', '.simmer-desc textarea' ).val( item.description );
+			
+			clone.removeClass( 'simmer-row-hidden' );
+			
+			clone.find( 'input, select, textarea' ).each( function() {
+				
+				name = $( this ).attr( 'name' );
+	
+				name = name.replace( /\[(\d+)\]/, '[' + parseInt( count ) + ']');
+	
+				$( this ).attr( 'name', name ).attr( 'id', name );
+				
+			} );
+			
+			clone.find( '.simmer-sort input' ).attr( 'value', parseInt( count ) );
+			
+			clone.insertAfter( row );
 		}
 	};
 
