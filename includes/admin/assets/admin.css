@@ -189,9 +189,9 @@
 	top: 50%;
 	left: 50%;
 	width: 500px;
-	height: 250px;
+	height: 300px;
 	margin-left: -250px;
-	margin-top: -125px;
+	margin-top: -150px;
 	background-color: #fff;
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
 	        box-shadow: 0 3px 6px rgba(0,0,0,.3);
@@ -256,6 +256,9 @@
 
 .simmer-bulk-modal-content {
 	padding: 0 16px 50px;
+}
+.simmer-bulk-modal-content textarea {
+	width: 100%;
 }
 @media screen and (max-width: 782px) {
 	
