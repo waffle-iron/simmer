@@ -39,23 +39,23 @@ if ( $total_time ) {
 
 <p>
 	<label for="simmer_prep"><?php _e( 'Prep Time', Simmer::SLUG ); ?>:</label><br />
-	<input class="simmer-time" name="simmer_times[prep][h]" type="number" min="0" value="<?php echo esc_html( $prep_h ); ?>" />
+	<input class="simmer-time" name="simmer_times[prep][h]" type="number" min="0" value="<?php echo esc_html( $prep_h ); ?>" placeholder="hh" />
 	:
-	<input class="simmer-time" name="simmer_times[prep][m]" type="number" min="0" value="<?php echo esc_html( $prep_m ); ?>" />
+	<input class="simmer-time" name="simmer_times[prep][m]" type="number" min="0" value="<?php echo esc_html( $prep_m ); ?>" placeholder="mm" />
 </p>
 
 <p>
 	<label for="simmer_cook"><?php _e( 'Cook Time', Simmer::SLUG ); ?>:</label><br />
-	<input class="simmer-time" name="simmer_times[cook][h]" type="number" min="0" value="<?php echo esc_html( $cook_h ); ?>" />
+	<input class="simmer-time" name="simmer_times[cook][h]" type="number" min="0" value="<?php echo esc_html( $cook_h ); ?>" placeholder="hh" />
 	:
-	<input class="simmer-time" name="simmer_times[cook][m]" type="number" min="0" value="<?php echo esc_html( $cook_m ); ?>" />
+	<input class="simmer-time" name="simmer_times[cook][m]" type="number" min="0" value="<?php echo esc_html( $cook_m ); ?>" placeholder="mm" />
 </p>
 
 <p>
 	<label for="simmer_total"><?php _e( 'Total Time', Simmer::SLUG ); ?>:</label><br />
-	<input class="simmer-time" name="simmer_times[total][h]" type="number" min="0" value="<?php echo esc_html( $total_h ); ?>" />
+	<input class="simmer-time" name="simmer_times[total][h]" type="number" min="0" value="<?php echo esc_html( $total_h ); ?>" placeholder="hh" />
 	:
-	<input class="simmer-time" name="simmer_times[total][m]" type="number" min="0" value="<?php echo esc_html( $total_m ); ?>" />
+	<input class="simmer-time" name="simmer_times[total][m]" type="number" min="0" value="<?php echo esc_html( $total_m ); ?>" placeholder="mm" />
 </p>
 
 <p>
