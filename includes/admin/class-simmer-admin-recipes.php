@@ -364,18 +364,18 @@ final class Simmer_Admin_Recipes {
 			delete_post_meta( $id, '_recipe_yield' );
 		}
 		
-		// Maybe save the attribution text.
-		if ( ! empty( $_POST['simmer_attribution_text'] ) ) {
-			update_post_meta( $id, '_recipe_attribution_text', $_POST['simmer_attribution_text'] );
+		// Maybe save the source text.
+		if ( ! empty( $_POST['simmer_source_text'] ) ) {
+			update_post_meta( $id, '_recipe_source_text', $_POST['simmer_source_text'] );
 		} else {
-			delete_post_meta( $id, '_recipe_attribution_text' );
+			delete_post_meta( $id, '_recipe_source_text' );
 		}
 		
-		// Maybe save the attribution URL.
-		if ( ! empty( $_POST['simmer_attribution_url'] ) ) {
-			update_post_meta( $id, '_recipe_attribution_url', $_POST['simmer_attribution_url'] );
+		// Maybe save the source URL.
+		if ( ! empty( $_POST['simmer_source_url'] ) ) {
+			update_post_meta( $id, '_recipe_source_url', $_POST['simmer_source_url'] );
 		} else {
-			delete_post_meta( $id, '_recipe_attribution_url' );
+			delete_post_meta( $id, '_recipe_source_url' );
 		}
 		
 		/**
