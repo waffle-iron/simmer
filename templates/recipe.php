@@ -5,13 +5,15 @@
 	<div class="simmer-recipe-meta">
 		
 		<meta itemprop="datePublished" content="<?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?>">
-		<meta itemprop="author" content="<?php echo esc_html( get_the_author() ); ?>">
+		<meta itemprop="url" content="<?php the_permalink(); ?>">
 		
-		<?php printf(
-			__( 'Created by %1s on %2s', Simmer::SLUG ),
-			get_the_author(),
-			get_the_date()
-		); ?>
+		<p class="simmer-recipe-byline">
+			<?php printf(
+				__( 'Created by %1s on %2s', Simmer::SLUG ),
+				'<span itemprop="author">' . esc_html( get_the_author() ) . '</span>',
+				get_the_date()
+			); ?>
+		</p>
 		
 	</div><!-- .simmer-recipe-date -->
 	
