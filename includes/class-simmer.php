@@ -350,7 +350,7 @@ final class Simmer {
 	
 	public function append_recipe( $content ) {
 		
-		if ( get_post_type() != simmer_get_object_type() ) {
+		if ( ! is_singular( simmer_get_object_type() ) ) {
 			return $content;
 		}
 		
