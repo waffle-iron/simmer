@@ -158,6 +158,11 @@ final class Simmer {
 		 * The shortcode functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'class-simmer-recipe-shortcode.php' );
+		
+		/**
+		 * The deprecated functions.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'deprecated.php' );
 	}
 	
 	/**

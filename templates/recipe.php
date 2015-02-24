@@ -59,8 +59,8 @@
 	
 	<?php simmer_list_instructions(); ?>
 	
-	<div class="simmer-recipe-attribution">
-		<?php simmer_the_attribution(); ?>
+	<div class="simmer-recipe-source">
+		<?php simmer_the_source(); ?>
 	</div>
 	
 </div>
