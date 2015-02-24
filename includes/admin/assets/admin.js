@@ -85,7 +85,7 @@ jQuery( document ).ready( function( $ ) {
 		clone.insertAfter( row );
 		
 		// Auto-focus on first input after the row is added.
-		clone.find( 'td input:first, td textarea:first' ).focus();
+		clone.find( 'td input:not(.hide-if-js):first, td textarea:first' ).focus();
 		
 	} );
 	
@@ -125,7 +125,7 @@ jQuery( document ).ready( function( $ ) {
 			
 			// Focus on the next/previous row on removal.
 			if ( nextRow.length ) {
-				$( nextRow ).find( 'input:first, textarea:first' ).focus();
+				$( nextRow ).find( 'input:not(.hide-if-js):first, textarea:first' ).focus();
 			}
 			
 			if ( '' == $( 'input, select, textarea', row ).val() ) {
