@@ -187,6 +187,7 @@ final class Simmer_Admin {
 				'ingredients_button' => __( 'Add Ingredients',      Simmer::SLUG ),
 				'insructions_title'  => __( 'Add Bulk Instructions', Simmer::SLUG ),
 				'insructions_button' => __( 'Add Instructions',      Simmer::SLUG ),
+				'error_message'      => __( 'Something went wrong. Please try again.', Simmer::SLUG ),
 				'ajax_url'           => admin_url( 'admin-ajax.php' ),
 			) );
 		}

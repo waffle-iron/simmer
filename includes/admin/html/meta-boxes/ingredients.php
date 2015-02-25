@@ -91,14 +91,15 @@
 	
 	<tfoot>
 		<tr class="simmer-actions">
-			<td class="simmer-bulk-add-link" colspan="3">
-				<a class="hide-if-no-js" href="#" data-type="ingredient">+ Add in Bulk</a>
-			</td>
-			<td colspan="2">
+			<td colspan="5">
+				
+				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient">+ Add in Bulk</a>
+				
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add an Ingredient', Simmer::SLUG ); ?>
 				</a>
+				
 			</td>
 		</tr>
 	</tfoot>

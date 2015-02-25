@@ -24,7 +24,7 @@
 			
 			<?php wp_nonce_field( 'simmer_process_bulk', 'simmer_process_bulk_nonce' ); ?>
 			
-			<p><?php _e( 'Type or copy/paste the list of ingredients below, one ingredient per line.', Simmer::SLUG ); ?></p>
+			<p><?php _e( 'Type or copy/paste the list of items below, one item per line.', Simmer::SLUG ); ?></p>
 			
 			<textarea class="simmer-bulk-text" name="simmer-bulk-text" rows="8"></textarea>
 			
@@ -35,6 +35,7 @@
 				<a class="submitdelete" href="#"><?php _e( 'Cancel', Simmer::SLUG ); ?></a>
 			</div>
 			<div class="simmer-submit-bulk">
+				<span class="spinner"></span>
 				<button class="button button-primary"><?php _e( 'Add', Simmer::SLUG ); ?></button>
 			</div>
 		</div>
