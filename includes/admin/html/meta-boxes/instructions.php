@@ -105,7 +105,7 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 		
 	</tbody>
 	
-	<tfoot>
+	<tfoot class="hide-if-no-js">
 		<tr class="simmer-actions">
 			<td colspan="5">
 				<a class="simmer-add-row button" data-type="instruction" href="#">
