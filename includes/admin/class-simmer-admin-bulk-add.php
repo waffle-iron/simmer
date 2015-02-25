@@ -9,6 +9,11 @@
 
 final class Simmer_Admin_Bulk_Add {
 	
+	/**
+	 * Construct the class.
+	 * 
+	 * @since 1.2.0
+	 */
 	public function __construct() {
 		
 		$this->add_actions();
@@ -17,7 +22,8 @@ final class Simmer_Admin_Bulk_Add {
 	/**
 	 * Add the necessary action hooks.
 	 * 
-	 * @since 1.2.0
+	 * @since  1.2.0
+	 * @access private
 	 */
 	private function add_actions() {
 		
@@ -26,11 +32,21 @@ final class Simmer_Admin_Bulk_Add {
 		add_action( 'wp_ajax_simmer_process_bulk', array( $this, 'process_ajax' ) );
 	}
 	
+	/**
+	 * Add the modal markup to the admin footer.
+	 * 
+	 * @since 1.2.0
+	 */
 	public function add_modal() {
 		
 		include_once( plugin_dir_path( __FILE__ ) . 'html/meta-boxes/bulk-add.php' );
 	}
 	
+	/**
+	 * Process the request from the modal via AJAX.
+	 * 
+	 * @since 1.2.0
+	 */
 	public function process_ajax() {
 		
 		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'simmer_process_bulk' ) ) {
@@ -76,8 +92,18 @@ final class Simmer_Admin_Bulk_Add {
 		die();
 	}
 	
+	/**
+	 * Parse a textarea value for individual items, line by line.
+	 * 
+	 * @since 1.2.0
+	 * 
+	 * @param  string $input The input to parse.
+	 * @param  string $type  The type of items to parse. 'ingredient' or 'instruction'.
+	 * @return array  $itesm The parsed items.
+	 */
 	public function parse_input( $input, $type ) {
 		
+		// Split the input into individual lines and trim any whitespace.
 		$lines = preg_split( '/\r\n|[\r\n]/', $input );
 		$lines = array_map( 'trim', $lines );
 		
@@ -137,6 +163,21 @@ final class Simmer_Admin_Bulk_Add {
 		return $items;
 	}
 	
+	/**
+	 * Parse out amount values from the start of a given string.
+	 * 
+	 * This method checks the first two words in a string for possible
+	 * numerical values. It will automatically recognize integers, floats,
+	 * and fractions or combination of any two. If any exist in the first
+	 * two words of a string, a total value will be determined by adding
+	 * them together.
+	 * 
+	 * @since 1.2.0
+	 * @access private
+	 * 
+	 * @param  string      $string The string from user input.
+	 * @return array|false $result The resulting amount information or false if none exists.
+	 */
 	private function parse_amount( $string ) {
 		
 		// Isolate the first word.
@@ -191,6 +232,19 @@ final class Simmer_Admin_Bulk_Add {
 		return $result;
 	}
 	
+	/**
+	 * Parse out a unit value from the start of a given string.
+	 * 
+	 * This method checks the first word in a string for possible
+	 * unit label matches as defined by the core measurement units.
+	 * It will account for capitalization, abbreviation, & other oddities.
+	 * 
+	 * @since 1.2.0
+	 * @access private
+	 * 
+	 * @param  string      $string The string from user input.
+	 * @return array|false $result The resulting unit information or no match was found.
+	 */
 	private function parse_unit( $string ) {
 		
 		$_unit  = '';
