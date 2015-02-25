@@ -148,23 +148,33 @@ final class Simmer_Admin_Bulk_Add {
 		
 		if ( $amount_string ) {
 			
-			// Isolate the second word to check for fractions.
+			// Format the amount.
+			$amount = trim( $amount_string );
+			$amount = Simmer_Ingredient::convert_amount_to_float( $amount );
+			
+			// Isolate the second word to check for fractions or floats.
 			$string = substr( $string, $amount_length );
 			$string = trim( $string );
 			$second_word = strtok( $string, ' ' );
 			
-			$fraction_length = strspn( $second_word, '0123456789/' );
+			// Filter the second word against allowed characters.
+			$fraction_length = strspn( $second_word, '0123456789/.' );
 			$fraction_string = substr( $string, 0, $fraction_length );
 			
-			// If a fraction does indeed exist, add it to the overall amount value.
+			// If a fraction or float does indeed exist, parse it.
 			if ( $fraction_string ) {
+				
+				// Update the final amount string to include the fraction or float.
 				$amount_string = $amount_string . ' ' . $fraction_string;
 				$amount_length = strlen( $amount_string );
+				
+				// Format the fraction to a float.
+				$fraction_amount = trim( $fraction_string );
+				$fraction_amount = Simmer_Ingredient::convert_amount_to_float( $fraction_amount );
+				
+				// Add the two together for one final value.
+				$amount = $amount + $fraction_amount;
 			}
-			
-			// Format the amount.
-			$amount = trim( $amount_string );
-			$amount = Simmer_Ingredient::convert_amount_to_float( $amount );
 			
 			$result = array(
 				'start'  => 0,
