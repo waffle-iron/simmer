@@ -116,6 +116,14 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add a Heading', Simmer::SLUG ); ?>
 				</a>
+				
+				<?php /**
+				* Execute after the core action buttons have been rendered.
+				* 
+				* @since 1.2.0
+				*/
+				do_action( 'simmer_instructions_admin_actions' ); ?>
+				
 			</td>
 		</tr>
 	</tfoot>
