@@ -199,6 +199,9 @@ final class Simmer_Admin_Bulk_Add {
 		
 		foreach ( $_units as $unit => $labels ) {
 			
+			// Force lowercase on input unit.
+			$first_word = strtolower( $first_word );
+			
 			if ( ! in_array( $first_word, $labels ) ) {
 				continue;
 			}
