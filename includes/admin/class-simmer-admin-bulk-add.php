@@ -193,21 +193,36 @@ final class Simmer_Admin_Bulk_Add {
 		$units = Simmer_Ingredients::get_units();
 		$_units = array();
 		
+		// Remove unit types (volume, weight, etc...) from array.
 		foreach ( $units as $unit ) {
 			$_units = array_merge( $unit, $_units );
 		}
 		
+		// Loop through each unit & its labels for a match.
 		foreach ( $_units as $unit => $labels ) {
 			
-			// Force lowercase on input unit.
-			$first_word = strtolower( $first_word );
-			
-			if ( ! in_array( $first_word, $labels ) ) {
-				continue;
+			foreach ( $labels as $label ) {
+				
+				// Check that no match has been found yet.
+				if ( '' != $_unit && 0 == $end ) {
+					continue;
+				}
+				
+				// Force lowercase and remove . from input unit.
+				$_first_word = strtolower( $first_word );
+				$_first_word = str_replace( '.', '', $_first_word );
+				
+				// Force lowercase and remove . from looped label.
+				$_label = strtolower( $label );
+				$_label = str_replace( '.', '', $_label );
+				
+				// If we have a match, set the values.
+				if ( $_first_word === $_label ) {
+					
+					$_unit = $unit;
+					$end  = strlen( $first_word );
+				}
 			}
-			
-			$_unit = $unit;
-			$end  = strlen( $first_word );
 		}
 		
 		if ( $_unit && $end ) {
