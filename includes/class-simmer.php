@@ -269,6 +269,7 @@ final class Simmer {
 				'excerpt',
 				'thumbnail',
 				'comments',
+				'author',
 			),
 			'taxonomies' => array(
 				simmer_get_category_taxonomy(),
