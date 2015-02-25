@@ -143,10 +143,24 @@ final class Simmer_Admin_Bulk_Add {
 		$first_word = strtok( $string, ' ' );
 		
 		// Get amount string if it meets our criteria.
-		$amount_length = strspn( $first_word, '0123456789/. ' );
+		$amount_length = strspn( $first_word, '0123456789/.' );
 		$amount_string = substr( $string, 0, $amount_length );
 		
 		if ( $amount_string ) {
+			
+			// Isolate the second word to check for fractions.
+			$string = substr( $string, $amount_length );
+			$string = trim( $string );
+			$second_word = strtok( $string, ' ' );
+			
+			$fraction_length = strspn( $second_word, '0123456789/' );
+			$fraction_string = substr( $string, 0, $fraction_length );
+			
+			// If a fraction does indeed exist, add it to the overall amount value.
+			if ( $fraction_string ) {
+				$amount_string = $amount_string . ' ' . $fraction_string;
+				$amount_length = strlen( $amount_string );
+			}
 			
 			// Format the amount.
 			$amount = trim( $amount_string );
