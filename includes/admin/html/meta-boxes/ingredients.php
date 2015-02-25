@@ -89,7 +89,7 @@
 		
 	</tbody>
 	
-	<tfoot>
+	<tfoot class="hide-if-no-js">
 		<tr class="simmer-actions">
 			<td colspan="5">
 				
