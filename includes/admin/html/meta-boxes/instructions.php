@@ -81,9 +81,7 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 					
 				<?php endif; ?>
 				
-				<?php $count++;
-				
-			endforeach; ?>
+			<?php endforeach; ?>
 			
 		<?php else : ?>
 			
