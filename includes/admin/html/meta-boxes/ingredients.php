@@ -100,6 +100,13 @@
 					<?php _e( 'Add an Ingredient', Simmer::SLUG ); ?>
 				</a>
 				
+				<?php /**
+				* Execute after the core action buttons have been rendered.
+				* 
+				* @since 1.2.0
+				*/
+				do_action( 'simmer_ingredients_admin_actions' ); ?>
+				
 			</td>
 		</tr>
 	</tfoot>
