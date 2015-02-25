@@ -107,14 +107,14 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 	
 	<tfoot>
 		<tr class="simmer-actions">
-			<td colspan="3">
-				<a class="simmer-add-row button" data-type="heading" href="#">
-					<span class="dashicons dashicons-plus"></span>
-					<?php _e( 'Add a Heading', Simmer::SLUG ); ?>
-				</a>
+			<td colspan="5">
 				<a class="simmer-add-row button" data-type="instruction" href="#">
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add an Instruction', Simmer::SLUG ); ?>
+				</a>
+				<a class="simmer-add-row button" data-type="heading" href="#">
+					<span class="dashicons dashicons-plus"></span>
+					<?php _e( 'Add a Heading', Simmer::SLUG ); ?>
 				</a>
 			</td>
 		</tr>

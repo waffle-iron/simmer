@@ -16,7 +16,7 @@ var simmerBulkModal;
 			inputs.close    = $( '.simmer-bulk-modal-wrap .simmer-bulk-modal-close' );
 			inputs.cancel   = $( '.simmer-bulk-modal-wrap .cancel' );
 			
-			inputs.trigger = $( '.simmer-list-table .simmer-actions .simmer-bulk-add-link a' );
+			inputs.trigger = $( '.simmer-list-table .simmer-actions .simmer-bulk-add-link' );
 			inputs.type    = inputs.trigger.data( 'type' );
 			
 			$( inputs.trigger ).click( function( event ) {
@@ -32,7 +32,6 @@ var simmerBulkModal;
 				event.preventDefault();
 				
 				simmerBulkModal.submit();
-				simmerBulkModal.close();
 				
 			} );
 			
@@ -68,10 +67,16 @@ var simmerBulkModal;
 			inputs.backdrop.hide();
 			inputs.wrap.hide();
 			
+			inputs.text.val( '' );
+			
+			$( document.body ).removeClass( 'modal-open' );
+			
 			$( document ).trigger( 'simmer-bulk-modal-close', inputs.wrap );
 		},
 		
 		submit: function() {
+			
+			inputs.wrap.find( '.spinner' ).show();
 			
 			$.ajax( {
 				url: simmer_bulk_add_vars.ajax_url,
@@ -85,12 +90,27 @@ var simmerBulkModal;
 				},
 				success: function( response ) {
 					
+					inputs.wrap.find( '.spinner' ).hide();
+					
 					if ( ! response.error ) {
 						
 						$.each( response,  function( index, item ) {
 							simmerBulkModal.addRow( inputs.type, item );
-							console.log( item );
 						} );
+						
+						simmerBulkModal.close();
+						
+					} else {
+						
+						$( '.simmer-bulk-modal-content' ).find( '.error' ).remove();
+						
+						if ( response.message ) {
+							var message = response.message;
+						} else {
+							var message = simmer_bulk_add_vars.error_message;
+						}
+						
+						$( '.simmer-bulk-modal-content' ).prepend( '<div class="error"><p>' + message + '</p></div>' );
 					}
 				}
 			} );
@@ -109,6 +129,7 @@ var simmerBulkModal;
 			clone.find( '.simmer-desc input', '.simmer-desc textarea' ).val( item.description );
 			
 			clone.removeClass( 'simmer-row-hidden' );
+			clone.addClass( 'new-row' );
 			
 			clone.find( 'input, select, textarea' ).each( function() {
 				
@@ -123,6 +144,10 @@ var simmerBulkModal;
 			clone.find( '.simmer-sort input' ).attr( 'value', parseInt( count ) );
 			
 			clone.insertAfter( row );
+			
+			setTimeout( function() {
+				$( '.simmer-list-table .new-row' ).removeClass( 'new-row' );
+			}, 100 );
 		}
 	};
 

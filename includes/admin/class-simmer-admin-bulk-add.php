@@ -37,7 +37,7 @@ final class Simmer_Admin_Bulk_Add {
 			
 			echo json_encode( array(
 				'error' => 'no-nonce',
-				'text'  => __( 'No don\'t have permission to do this.', Simmer::SLUG ),
+				'message'  => __( 'No don\'t have permission to do this.', Simmer::SLUG ),
 			) );
 			
 			die();
@@ -47,7 +47,7 @@ final class Simmer_Admin_Bulk_Add {
 			
 			echo json_encode( array(
 				'error' => 'no-input',
-				'text'  => __( 'Please add some text.', Simmer::SLUG ),
+				'message'  => __( 'Please add some text.', Simmer::SLUG ),
 			) );
 			
 			die();
@@ -66,7 +66,7 @@ final class Simmer_Admin_Bulk_Add {
 			
 			echo json_encode( array(
 				'error' => 'parse-error',
-				'text'  => __( 'Could not parse input.', Simmer::SLUG ),
+				'message'  => __( 'Could not parse input.', Simmer::SLUG ),
 			) );
 			
 			die();
