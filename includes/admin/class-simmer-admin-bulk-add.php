@@ -115,6 +115,11 @@ final class Simmer_Admin_Bulk_Add {
 			
 			foreach ( $lines as $line ) {
 				
+				// Discard blank lines.
+				if ( '' == $line ) {
+					continue;
+				}
+				
 				if ( 'ingredient' == $type ) {
 					
 					$amount = '';
