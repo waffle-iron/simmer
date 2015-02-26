@@ -17,11 +17,12 @@ var simmerBulkModal;
 			inputs.cancel   = $( '.simmer-bulk-modal-wrap .cancel' );
 			
 			inputs.trigger = $( '.simmer-list-table .simmer-actions .simmer-bulk-add-link' );
-			inputs.type    = inputs.trigger.data( 'type' );
 			
 			$( inputs.trigger ).click( function( event ) {
 				
 				event.preventDefault();
+				
+				inputs.type = $( this ).data( 'type' );
 				
 				simmerBulkModal.open();
 				
@@ -124,9 +125,13 @@ var simmerBulkModal;
 			
 			var count = row.parent().find( 'tr' ).length;
 			
-			clone.find( '.simmer-amt input' ).val( item.amount );
-			clone.find( '.simmer-unit select' ).val( item.unit );
-			clone.find( '.simmer-desc input', '.simmer-desc textarea' ).val( item.description );
+			if ( 'ingredient' === type ) {
+				clone.find( '.simmer-amt input' ).val( item.amount );
+				clone.find( '.simmer-unit select' ).val( item.unit );
+				clone.find( '.simmer-desc input' ).val( item.description );
+			} else if ( 'instruction' === type ) {
+				clone.find( '.simmer-desc textarea' ).val( item.description );
+			}
 			
 			clone.removeClass( 'simmer-row-hidden' );
 			clone.addClass( 'new-row' );

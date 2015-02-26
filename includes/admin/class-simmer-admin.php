@@ -183,12 +183,12 @@ final class Simmer_Admin {
 			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer::VERSION, true );
 			
 			wp_localize_script( 'simmer-admin-bulk-script', 'simmer_bulk_add_vars', array(
-				'ingredients_title'  => __( 'Add Bulk Ingredients', Simmer::SLUG ),
-				'ingredients_button' => __( 'Add Ingredients',      Simmer::SLUG ),
-				'insructions_title'  => __( 'Add Bulk Instructions', Simmer::SLUG ),
-				'insructions_button' => __( 'Add Instructions',      Simmer::SLUG ),
-				'error_message'      => __( 'Something went wrong. Please try again.', Simmer::SLUG ),
-				'ajax_url'           => admin_url( 'admin-ajax.php' ),
+				'ingredients_title'   => __( 'Add Bulk Ingredients', Simmer::SLUG ),
+				'ingredients_button'  => __( 'Add Ingredients',      Simmer::SLUG ),
+				'instructions_title'  => __( 'Add Bulk Instructions', Simmer::SLUG ),
+				'instructions_button' => __( 'Add Instructions',      Simmer::SLUG ),
+				'error_message'       => __( 'Something went wrong. Please try again.', Simmer::SLUG ),
+				'ajax_url'            => admin_url( 'admin-ajax.php' ),
 			) );
 		}
 	}

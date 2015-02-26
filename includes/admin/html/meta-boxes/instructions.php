@@ -108,6 +108,9 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 	<tfoot class="hide-if-no-js">
 		<tr class="simmer-actions">
 			<td colspan="5">
+				
+				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="instruction">+ Add in Bulk</a>
+				
 				<a class="simmer-add-row button" data-type="instruction" href="#">
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add an Instruction', Simmer::SLUG ); ?>
