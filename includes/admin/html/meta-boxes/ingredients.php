@@ -93,7 +93,7 @@
 		<tr class="simmer-actions">
 			<td colspan="5">
 				
-				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient">+ Add in Bulk</a>
+				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient"><?php _e( '+ Add in Bulk', Simmer::SLUG ); ?></a>
 				
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>

@@ -24,9 +24,9 @@
 			
 			<?php wp_nonce_field( 'simmer_process_bulk', 'simmer_process_bulk_nonce' ); ?>
 			
-			<p><?php _e( 'Type or copy/paste the list of items below, one item per line.', Simmer::SLUG ); ?></p>
+			<p class="simmer-bulk-help"><?php _e( 'Type or copy/paste the list of items below, one item per line.', Simmer::SLUG ); ?></p>
 			
-			<textarea class="simmer-bulk-text" name="simmer-bulk-text" rows="8" placeholder="e.g. 1 cup flour, sifted"></textarea>
+			<textarea class="simmer-bulk-text" name="simmer-bulk-text" rows="8"></textarea>
 			
 		</div>
 		

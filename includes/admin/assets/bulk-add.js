@@ -50,14 +50,20 @@ var simmerBulkModal;
 			inputs.backdrop.show();
 			
 			if ( 'ingredient' == inputs.type ) {
-				var titleText  = simmer_bulk_add_vars.ingredients_title;
-				var buttonText = simmer_bulk_add_vars.ingredients_button;
+				var titleText        = simmer_bulk_add_vars.ingredients_title;
+				var helpText         = simmer_bulk_add_vars.ingredients_help;
+				var placeholderText  = simmer_bulk_add_vars.ingredients_placeholder;
+				var buttonText       = simmer_bulk_add_vars.ingredients_button;
 			} else if ( 'instruction' == inputs.type ) {
-				var titleText  = simmer_bulk_add_vars.instructions_title;
-				var buttonText = simmer_bulk_add_vars.instructions_button;
+				var titleText        = simmer_bulk_add_vars.instructions_title;
+				var helpText         = simmer_bulk_add_vars.instructions_help;
+				var placeholderText  = simmer_bulk_add_vars.instructions_placeholder;
+				var buttonText       = simmer_bulk_add_vars.instructions_button;
 			}
 			
 			inputs.wrap.find( '.simmer-bulk-modal-title' ).text( titleText );
+			inputs.wrap.find( '.simmer-bulk-help' ).text( helpText );
+			inputs.text.attr( 'placeholder', placeholderText );
 			inputs.submit.text( buttonText );
 			
 			$( document ).trigger( 'simmer-bulk-modal-open', inputs.wrap );
