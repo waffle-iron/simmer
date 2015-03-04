@@ -38,6 +38,11 @@ class Simmer_Front_End_Loader {
 		 * The HTML classes class.
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-classes.php' );
+		
+		/**
+		 * The supporting functions.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'functions.php' );
 	}
 	
 	/**
