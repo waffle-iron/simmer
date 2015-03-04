@@ -27,7 +27,15 @@
 			); ?>
 		</p>
 		
-		<p class="simmer-recipe-description" itemprop="description"><?php echo get_the_excerpt(); ?></p>
+		<p class="simmer-recipe-description" itemprop="description">
+			
+			<?php if ( has_post_thumbnail() ) : ?>
+				<?php the_post_thumbnail( 'thumbnail' ); ?>
+			<?php endif; ?>
+			
+			<?php echo get_the_excerpt(); ?>
+			
+		</p>
 		
 	</div><!-- .simmer-recipe-date -->
 	

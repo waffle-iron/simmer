@@ -20,6 +20,13 @@
 	font-size: 0.8em;
 }
 
+/* Description */
+
+.simmer-recipe-description img {
+	float: right;
+	margin: 0 0 10px 10px;
+}
+
 /* Details */
 
 .simmer-recipe-details {
