@@ -30,7 +30,10 @@
 /* Details */
 
 .simmer-recipe-details {
+	padding: 10px 0;
 	font-size: 0.8em;
+	border-top: 1px solid rgb( 0, 0, 0 );
+	border-bottom: 1px solid rgb( 0, 0, 0 );
 }
 .simmer-recipe-details ul {
 	margin: 0 0 10px 0;
@@ -105,4 +108,12 @@
 }
 .simmer-embedded-recipe.hentry {
 	margin: 20px 0;
+	padding: 20px;
+}
+.simmer-embedded-recipe.hentry.has-post-thumbnail {
+	padding-top: 20px;
+}
+
+.simmer-embedded-recipe .simmer-recipe-title {
+	margin-top: 0;
 }

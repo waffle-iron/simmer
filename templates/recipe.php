@@ -76,6 +76,15 @@
 				
 			<?php endif; ?>
 			
+			<?php if ( $categories = get_the_term_list( get_the_ID(), simmer_get_category_taxonomy(), '', ', ' ) ) : ?>
+				
+				<li>
+					<strong><?php _e( 'Category', Simmer::SLUG ); ?>:</strong> 
+					<span itemprop="recipeCategory"><?php echo $categories; ?></span>
+				</li>
+				
+			<?php endif; ?>
+			
 		</ul><!-- .simmer-recipe-extras -->
 		
 	</div><!-- .simmer-recipe-details -->
