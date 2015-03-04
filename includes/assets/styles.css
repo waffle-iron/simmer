@@ -47,11 +47,19 @@
 }
 
 /* Ingredients */
+
+.simmer-ingredients {
+	margin: 0 0 0 20px;
+}
 .simmer-ingredients li {
 	margin-bottom: 0.5em;
 }
 
 /* Instructions */
+
+.simmer-instructions {
+	margin: 0 0 0 20px;
+}
 .simmer-instructions li {
 	margin-bottom: 1em;
 }
