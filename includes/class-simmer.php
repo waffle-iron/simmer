@@ -163,6 +163,11 @@ final class Simmer {
 		 * The deprecated functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'deprecated.php' );
+		
+		/**
+		 * The front-end loader.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'front-end/class-simmer-front-end-loader.php' );
 	}
 	
 	/**
@@ -189,6 +194,10 @@ final class Simmer {
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 			add_action( 'wp_head', array( $this, 'custom_styles' ) );
 		}
+		
+		// Load the front-end functionality.
+		$front_end = new Simmer_Front_End_Loader();
+		add_action( 'wp', array( $front_end, 'load' ) );
 	}
 	
 	/**
@@ -401,7 +410,7 @@ final class Simmer {
 		?>
 		
 		<style>
-			.simmer-recipe {
+			.simmer-embedded-recipe {
 				color: rgb( <?php echo esc_html( $text_color ); ?> );
 				background: rgba( <?php echo esc_html( $accent_color ); ?>, .01 );
 				border-color: rgba( <?php echo esc_html( $accent_color ); ?>, 0.1 );
