@@ -193,7 +193,7 @@ class Simmer_Template_Loader {
 	 */
 	private function get_templates_dir() {
 		
-		return trailingslashit( dirname( plugin_dir_path( __FILE__ ) ) ) . 'templates';
+		return trailingslashit( dirname( dirname( plugin_dir_path( __FILE__ ) ) ) ) . 'templates';
 	}
 }
 

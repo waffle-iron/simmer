@@ -150,11 +150,6 @@ final class Simmer {
 		require( plugin_dir_path( __FILE__ ) . 'class-simmer-ingredient.php'  );
 		
 		/**
-		 * The all-important template loader.
-		 */
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-template-loader.php' );
-		
-		/**
 		 * The shortcode functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'class-simmer-recipe-shortcode.php' );

@@ -30,6 +30,11 @@ class Simmer_Front_End_Loader {
 	private function load_files() {
 		
 		/**
+		 * The all-important template loader.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'class-simmer-template-loader.php' );
+		
+		/**
 		 * The HTML classes class.
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-classes.php' );
