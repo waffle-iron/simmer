@@ -192,7 +192,7 @@ final class Simmer_Admin {
 				
 				// Instructions text.
 				'instructions_title'       => __( 'Add Bulk Instructions', Simmer::SLUG ),
-				'ingredients_help'         => __( 'Type or paste the list of instructions below, one instruction per line.', Simmer::SLUG ),
+				'instructions_help'        => __( 'Type or paste the list of instructions below, one instruction per line.', Simmer::SLUG ),
 				'instructions_placeholder' => __( 'e.g. Preheat your oven to 450 degrees.', Simmer::SLUG ),
 				'instructions_button'      => __( 'Add Instructions',      Simmer::SLUG ),
 				
