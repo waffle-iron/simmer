@@ -21,28 +21,28 @@
 }
 
 /* Details */
+
 .simmer-recipe-details {
-	margin: 1em -20px;
+	font-size: 0.8em;
+}
+.simmer-recipe-details ul {
+	margin: 0 0 10px 0;
 	padding: 0;
 	list-style: none;
-	border: 1px solid rgba( 0, 0, 0, 0.2 );
-	border-right: none;
-	border-left: none;
+}
+.simmer-recipe-details ul:last-child {
+	margin-bottom: 0;
 }
 .simmer-recipe-details li {
-	float: left;
-	width: 33.33%;
-	padding: 8px 20px;
-	text-align: center;
-	border-right: 1px dotted rgba( 0, 0, 0, 0.1 );
+	display: inline-block;
+	padding: 0 10px;
+	border-right: 1px solid rgb( 0, 0, 0 );
+}
+.simmer-recipe-details li:first-child {
+	padding-left: 0;
 }
 .simmer-recipe-details li:last-child {
-	border-bottom: none;
-}
-.simmer-recipe-details li:first-child,
-.simmer-recipe-details li:nth-child(4n+4) {
-}
-.simmer-recipe-details li:nth-child(3n+3) {
+	padding-right: 0;
 	border-right: none;
 }
 
