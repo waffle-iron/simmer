@@ -119,7 +119,7 @@ function simmer_list_instructions( $args = array() ) {
 		'item_type'    => apply_filters( 'simmer_instructions_list_item_type', 'li' ),
 		'item_class'   => 'simmer-instruction',
 		'none_message' => __( 'This recipe has no instructions', Simmer::SLUG ),
-		'none_class'   => 'simmer-info',
+		'none_class'   => 'simmer-message',
 		'echo'         => true,
 	);
 	
@@ -138,6 +138,12 @@ function simmer_list_instructions( $args = array() ) {
 	// Start the output!
 	$output = '';
 	
+	if ( true == $args['show_heading'] ) {
+		$output .= '<' . sanitize_html_class( $args['heading_type'] ) . '>';
+			$output .= esc_html( $args['heading'] );
+		$output .= '</' . sanitize_html_class( $args['heading_type'] ) . '>';
+	}
+	
 	if ( ! empty( $instructions ) ) {
 		
 		/**
@@ -146,12 +152,6 @@ function simmer_list_instructions( $args = array() ) {
 		 * @since 1.0.0
 		 */
 		do_action( 'simmer_before_instructions_list' );
-		
-		if ( true == $args['show_heading'] ) {
-			$output .= '<' . sanitize_html_class( $args['heading_type'] ) . '>';
-				$output .= esc_html( $args['heading'] );
-			$output .= '</' . sanitize_html_class( $args['heading_type'] ) . '>';
-		}
 		
 		/**
 		 * Create an array of attributes for the list element.

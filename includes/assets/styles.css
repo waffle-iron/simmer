@@ -69,6 +69,15 @@
 	font-size: 0.8em;
 }
 
+/* Messages */
+
+.simmer-message {
+	margin: 20px 0;
+	padding: 10px;
+	text-align: center;
+	border-radius: 4px;
+}
+
 
 /** Embedded Recipes **/
 

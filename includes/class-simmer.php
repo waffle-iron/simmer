@@ -421,6 +421,10 @@ final class Simmer {
 			.simmer-recipe-details li {
 				border-color: rgba( <?php echo esc_html( $accent_color ); ?>, 0.1 );
 			}
+			.simmer-message {
+				color: rgb( <?php echo esc_html( $text_color ); ?> );
+				background: rgba( <?php echo esc_html( $accent_color ); ?>, .1 );
+			}
 		</style>
 		
 		<?php
