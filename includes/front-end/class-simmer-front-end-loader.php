@@ -21,8 +21,13 @@ class Simmer_Front_End_Loader {
 	 */
 	public function load() {
 		
+		// Load the necessary files.
 		$this->load_files();
 		
+		// Add the necessary actions.
+		$this->add_actions();
+		
+		// Add the necessary filters.
 		$this->add_filters();
 	}
 	
@@ -45,6 +50,11 @@ class Simmer_Front_End_Loader {
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-classes.php' );
 		
 		/**
+		 * The CSS styles class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-styles.php' );
+		
+		/**
 		 * The supporting functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'functions.php' );
@@ -53,6 +63,26 @@ class Simmer_Front_End_Loader {
 		 * The supporting template functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'template-functions.php' );
+	}
+	
+	/**
+	 * Add the necessary actions.
+	 * 
+	 * @since  1.2.0
+	 * @access private
+	 */
+	private function add_actions() {
+		
+		/**
+		 * Set up the styles.
+		 */
+		$styles = new Simmer_Front_End_Styles();
+		
+		// Check if front-end styles should be enqueued.
+		if ( $styles->enable_styles() ) {
+			add_action( 'wp_enqueue_scripts', array( $styles, 'enqueue_styles' ) );
+			add_action( 'wp_head', array( $styles, 'add_custom_styles' ) );
+		}
 	}
 	
 	/**

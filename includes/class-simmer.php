@@ -184,12 +184,6 @@ final class Simmer {
 		// Register the category taxonomy.
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
 		
-		// Check if front-end styles should be enqueued.
-		if ( simmer_enqueue_styles() ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-			add_action( 'wp_head', array( $this, 'custom_styles' ) );
-		}
-		
 		// Load the front-end functionality.
 		$front_end = new Simmer_Front_End_Loader();
 		add_action( 'wp', array( $front_end, 'load' ) );
@@ -370,65 +364,5 @@ final class Simmer {
 		do_action( 'simmer_after_recipe', get_the_ID() );
 		
 		return ob_get_clean();
-	}
-	
-	/**
-	 * Enqueue the front-end styles.
-	 * 
-	 * @since 1.0.0
-	 * 
-	 * @return void.
-	 */
-	public function enqueue_styles() {
-		
-		// The main front-end stylsheet.
-		wp_enqueue_style( 'simmer-plugin-styles', plugin_dir_url( __FILE__ ) . 'assets/styles.css', array(), self::VERSION );
-	}
-	
-	/**
-	 * Add the custom front-end styles.
-	 * 
-	 * @since 1.0.0
-	 * 
-	 * @return void.
-	 */
-	public function custom_styles() {
-		
-		$accent_color = get_option( 'simmer_recipe_accent_color', '000' );
-		$accent_color = simmer_hex_to_rgb( $accent_color );
-		$accent_color = implode( ', ', $accent_color );
-		
-		$text_color = get_option( 'simmer_recipe_text_color', '000' );
-		$text_color = simmer_hex_to_rgb( $text_color );
-		$text_color = implode( ', ', $text_color );
-		
-		?>
-		
-		<style>
-			.simmer-embedded-recipe {
-				color: rgb( <?php echo esc_html( $text_color ); ?> );
-				background: rgba( <?php echo esc_html( $accent_color ); ?>, .01 );
-				border-color: rgba( <?php echo esc_html( $accent_color ); ?>, 0.1 );
-			}
-			.simmer-recipe-details {
-				border-color: rgba( <?php echo esc_html( $accent_color ); ?>, 0.2 );
-			}
-			.simmer-recipe-details li {
-				border-color: rgba( <?php echo esc_html( $accent_color ); ?>, 0.1 );
-			}
-			.simmer-message {
-				color: rgb( <?php echo esc_html( $text_color ); ?> );
-				background: rgba( <?php echo esc_html( $accent_color ); ?>, .1 );
-			}
-		</style>
-		
-		<?php
-		
-		/**
-		 * Do additional custom styles.
-		 *
-		 * @since 1.0.0
-		 */
-		do_action( 'simmer_custom_styles' );
 	}
 }
