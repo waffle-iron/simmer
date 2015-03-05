@@ -29,7 +29,7 @@
 		
 		<p class="simmer-recipe-description" itemprop="description">
 			
-			<?php if ( has_post_thumbnail() ) : ?>
+			<?php if ( simmer_recipe_has_featured_image() ) : ?>
 				<?php the_post_thumbnail( 'thumbnail' ); ?>
 			<?php endif; ?>
 			

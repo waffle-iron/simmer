@@ -48,6 +48,11 @@ class Simmer_Front_End_Loader {
 		 * The supporting functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'functions.php' );
+		
+		/**
+		 * The supporting template functions.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'template-functions.php' );
 	}
 	
 	/**
