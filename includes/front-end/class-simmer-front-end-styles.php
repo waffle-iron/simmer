@@ -7,6 +7,11 @@
  * @package Simmer\Front_End
  */
 
+// If this file is called directly, get outa' town.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 class Simmer_Front_End_Styles {
 	
 	/**
