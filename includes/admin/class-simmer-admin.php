@@ -126,6 +126,13 @@ final class Simmer_Admin {
 		require( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-bulk-add.php' );
 		
 		$bulk_add = new Simmer_Admin_Bulk_Add();
+		
+		/**
+		 * The shortcode UI.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-shortcode-ui.php' );
+		
+		$shortcode_ui = new Simmer_Admin_Shortcode_UI();
 	}
 	
 	/**

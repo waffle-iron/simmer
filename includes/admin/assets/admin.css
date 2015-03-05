@@ -330,6 +330,14 @@ input.simmer-time {
 	width: 60px;
 }
 
+/* The Shortcode Button */
+
+#simmer-add-recipe::before {
+	margin: 0 4px 0 0;
+	color: #888;
+	font-size: 18px;
+}
+
 /* The Coming Soon Page */
 .simmer-coming-soon {
 	
