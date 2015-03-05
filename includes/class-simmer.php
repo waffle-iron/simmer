@@ -80,9 +80,6 @@ final class Simmer {
 		// Add the essential action hooks.
 		$this->add_actions();
 		
-		// Add the essential filter hooks.
-		$this->add_filters();
-		
 		/**
 		 * Allow others to trigger actions after Simmer has been loaded.
 		 *
@@ -187,20 +184,6 @@ final class Simmer {
 		// Load the front-end functionality.
 		$front_end = new Simmer_Front_End_Loader();
 		add_action( 'wp', array( $front_end, 'load' ) );
-	}
-	
-	/**
-	 * Add the essential filter hooks.
-	 *
-	 * @since 1.0.0
-	 * @access private
-	 * 
-	 * @return void
-	 */
-	private function add_filters() {
-		
-		// Append the actual recipe to the content of a recipe object type.
-		add_filter( 'the_content', array( $this, 'append_recipe' ), 99, 1 );
 	}
 	
 	/** Public Methods **/
@@ -345,24 +328,5 @@ final class Simmer {
 			simmer_get_category_taxonomy(),
 			simmer_get_object_type()
 		);
-	}
-	
-	public function append_recipe( $content ) {
-		
-		if ( ! is_singular( simmer_get_object_type() ) ) {
-			return $content;
-		}
-		
-		ob_start();
-		
-		echo $content;
-		
-		do_action( 'simmer_before_recipe', get_the_ID() );
-		
-		simmer_get_template_part( 'recipe' );
-		
-		do_action( 'simmer_after_recipe', get_the_ID() );
-		
-		return ob_get_clean();
 	}
 }

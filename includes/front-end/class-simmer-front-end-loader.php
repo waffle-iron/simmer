@@ -100,5 +100,33 @@ class Simmer_Front_End_Loader {
 		add_filter( 'body_class', array( $html_classes, 'add_body_classes' ), 20, 1 );
 		add_filter( 'post_class', array( $html_classes, 'add_recipe_classes' ), 20, 3 );
 		
+		// Add the recipe display to the bottom of a singular recipe's content.
+		add_filter( 'the_content', array( $this, 'append_recipe' ), 99, 1 );
+	}
+	
+	/**
+	 * Add the recipe display to the bottom of a singular recipe's content.
+	 * 
+	 * @since 1.2.0
+	 * 
+	 * @param string $content The TinyMCE content.
+	 */
+	public function append_recipe( $content ) {
+		
+		if ( ! is_singular( simmer_get_object_type() ) ) {
+			return $content;
+		}
+		
+		ob_start();
+		
+		echo $content;
+		
+		do_action( 'simmer_before_recipe', get_the_ID() );
+		
+		simmer_get_template_part( 'recipe' );
+		
+		do_action( 'simmer_after_recipe', get_the_ID() );
+		
+		return ob_get_clean();
 	}
 }
