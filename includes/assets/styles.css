@@ -34,6 +34,7 @@
 	font-size: 0.8em;
 	border-top: 1px solid rgb( 0, 0, 0 );
 	border-bottom: 1px solid rgb( 0, 0, 0 );
+	clear: both;
 }
 .simmer-recipe-details ul {
 	margin: 0 0 10px 0;
