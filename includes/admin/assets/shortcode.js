@@ -19,6 +19,7 @@ var simmerShortcodeModal;
 			inputs.select.select2();
 			
 			inputs.trigger = $( '#simmer-add-recipe' );
+			inputs.editor  = $( inputs.trigger ).data( 'editor' );
 			
 			$( inputs.trigger ).click( function( event ) {
 				
@@ -57,7 +58,7 @@ var simmerShortcodeModal;
 			inputs.backdrop.hide();
 			inputs.wrap.hide();
 			
-			inputs.text.val( '' );
+			inputs.select.val( '' );
 			
 			$( document.body ).removeClass( 'modal-open' );
 			
@@ -66,7 +67,21 @@ var simmerShortcodeModal;
 		
 		submit: function() {
 			
+			var recipeID = inputs.select.val();
 			
+			if ( '0' !== recipeID ) {
+				
+				var shortcode = '[recipe id="' + recipeID + '"]';
+				
+				if ( ! tinyMCE.activeEditor || tinyMCE.activeEditor.isHidden() ) {
+					// TODO: Insert into text editor.
+				} else {
+					tinyMCE.execCommand( 'mceInsertContent', false, shortcode );
+				}
+				
+			}
+			
+			simmerShortcodeModal.close();
 		}
 	};
 	
