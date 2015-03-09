@@ -56,7 +56,7 @@
 			</div>
 			<div class="simmer-submit-shortcode">
 				<span class="spinner"></span>
-				<button class="button button-primary"><?php _e( 'Insert into post', Simmer::SLUG ); ?></button>
+				<button class="button button-primary" disabled="disabled"><?php _e( 'Insert into post', Simmer::SLUG ); ?></button>
 			</div>
 		</div>
 		

@@ -351,7 +351,7 @@ input.simmer-time {
 	background: #000;
 	opacity: .7;
 	filter: alpha(opacity=70);
-	z-index: 11000;
+	z-index: 100000;
 }
 .simmer-shortcode-modal-wrap {
 	display: none;
@@ -364,7 +364,7 @@ input.simmer-time {
 	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.3);
 	        box-shadow: 0 3px 6px rgba(0,0,0,.3);
 	overflow: hidden;
-	z-index: 11001;
+	z-index: 100001;
 	-webkit-transition: height .2s, margin-top .2s;
 	        transition: height .2s, margin-top .2s;
 	-webkit-transform: translateY( -50% );
@@ -434,6 +434,9 @@ input.simmer-time {
 }
 .simmer-shortcode-modal-content select {
 	width: 100%;
+}
+.select2-dropdown {
+	z-index: 100002;
 }
 @media screen and (max-width: 782px) {
 	
