@@ -14,7 +14,7 @@
 	<form id="simmer-shortcode-add-form" tabindex="-1">
 		
 		<div class="simmer-shortcode-modal-header">
-			<span class="simmer-shortcode-modal-title"><?php echo _e( 'Insert a Recipe', Simmer::SLUG ); ?></span>
+			<span class="simmer-shortcode-modal-title"><?php echo _e( 'Insert Recipe', Simmer::SLUG ); ?></span>
 			<button class="simmer-shortcode-modal-close">
 				<span class="screen-reader-text"><?php _e( 'Close', Simmer::SLUG ); ?></span>
 			</button>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="simmer-submit-shortcode">
 				<span class="spinner"></span>
-				<button class="button button-primary"><?php _e( 'Insert', Simmer::SLUG ); ?></button>
+				<button class="button button-primary"><?php _e( 'Insert into post', Simmer::SLUG ); ?></button>
 			</div>
 		</div>
 		
