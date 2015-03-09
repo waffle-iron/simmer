@@ -29,6 +29,16 @@ var simmerShortcodeModal;
 				
 			} );
 			
+			inputs.select.on( 'change', function() {
+				
+				if ( 0 == $( this ).val() ) {
+					inputs.submit.prop( 'disabled', true );
+				} else {
+					inputs.submit.prop( 'disabled', false );
+				}
+				
+			} );
+			
 			inputs.submit.click( function( event ) {
 				
 				event.preventDefault();
@@ -46,7 +56,9 @@ var simmerShortcodeModal;
 		open: function() {
 			
 			$( document.body ).addClass( 'modal-open' );
-
+			
+			inputs.submit.prop( 'disabled', true );
+			
 			inputs.wrap.show();
 			inputs.backdrop.show();
 			
