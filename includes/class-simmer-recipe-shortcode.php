@@ -50,8 +50,6 @@ final class Simmer_Recipe_Shortcode {
 	public function init() {
 		
 		add_action( 'init', array( $this, 'add_shortcode' ), 10 );
-		
-		add_action( 'init', array( $this, 'register_ui' ), 15 );
 	}
 	
 	/**
@@ -123,33 +121,6 @@ final class Simmer_Recipe_Shortcode {
 		wp_reset_postdata();
 		
 		return ob_get_clean();
-	}
-	
-	/**
-	 * If the shortcode UI plugin is present, make the UI available for [recipe].
-	 * 
-	 * @since 1.0.0
-	 * 
-	 * @return void
-	 */
-	public function register_ui() {
-		
-		if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
-				
-			shortcode_ui_register_for_shortcode( $this->shortcode_slug, array(
-					'label' => __( 'Recipe', Simmer::SLUG ),
-					'listItemImage' => '<div class="simmer-icon-fork"></div>',
-					'attrs' => array(
-		                array(
-		                    'label' => 'Recipe ID',
-		                    'attr'  => 'id',
-		                    'type'  => 'number',
-		                ),
-		            ),
-		        )
-		    );
-		    
-		}
 	}
 }
 
