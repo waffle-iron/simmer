@@ -146,7 +146,7 @@ final class Simmer {
 		/**
 		 * The deprecated functions.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'deprecated.php' );
+		require( plugin_dir_path( __FILE__ ) . 'deprecated-functions.php' );
 		
 		/**
 		 * The front-end loader.
