@@ -23,7 +23,8 @@ final class Simmer {
 	 * The plugin version.
 	 *
 	 * @since 1.0.0
-	 * @var string The plugin version.
+	 * 
+	 * @var string VERSION The plugin version.
 	 */
 	const VERSION = '1.1.0';
 	
@@ -31,7 +32,8 @@ final class Simmer {
 	 * The plugin slug.
 	 *
 	 * @since 1.0.0
-	 * @var string The plugin slug.
+	 * 
+	 * @var string SLUG The plugin slug.
 	 */
 	const SLUG = 'simmer';
 	
@@ -40,20 +42,19 @@ final class Simmer {
 	/**
 	 * The only instance of this class.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
 	 * @access protected
-	 * @var object The only instance of this class.
+	 * 
+	 * @var object $_instance The only instance of this class.
 	 */
 	protected static $_instance = null;
 	
 	/**
-	 * Get the main instance.
-	 *
-	 * Insure that only one instance of this class exists in memory at any one time.
+	 * Get the only instance of this class.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return The only instance of this class.
+	 * @return object $_instance The only instance of this class.
 	 */
 	public static function get_instance() {
 		
@@ -65,12 +66,9 @@ final class Simmer {
 	}
 	
 	/**
-	 * Prevent this class from being loaded more than once.
+	 * Construct the class.
 	 *
-	 * @since 1.0.0
-	 * @access private
-	 * 
-	 * @return void
+	 * @since  1.0.0
 	 */
 	public function __construct() {
 		
@@ -81,7 +79,7 @@ final class Simmer {
 		$this->add_actions();
 		
 		/**
-		 * Allow others to trigger actions after Simmer has been loaded.
+		 * Fire after Simmer has been loaded.
 		 *
 		 * @since 1.0.0
 		 */
@@ -92,8 +90,6 @@ final class Simmer {
 	 * Prevent this class from being cloned.
 	 *
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function __clone() {
 		
@@ -104,8 +100,6 @@ final class Simmer {
 	 * Prevent this class from being unserialized.
 	 *
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function __wakeup() {
 		
@@ -117,10 +111,8 @@ final class Simmer {
 	/**
 	 * Load the necessary supporting files.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
 	 * @access private
-	 * 
-	 * @return void
 	 */
 	private function require_files() {
 		
@@ -165,10 +157,8 @@ final class Simmer {
 	/**
 	 * Add the essential action hooks.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
 	 * @access private
-	 * 
-	 * @return void
 	 */
 	private function add_actions() {
 		
@@ -223,9 +213,6 @@ final class Simmer {
 	 * Register the 'recipe' object type.
 	 *
 	 * @since 1.0.0
-	 * @see register_post_type()
-	 *
-	 * @return void
 	 */
 	public function register_object_type() {
 		
@@ -263,7 +250,7 @@ final class Simmer {
 		);
 		
 		/**
-		 * Allow others to filter the recipe object type args.
+		 * Filter the recipe object type arguments.
 		 *
 		 * @since 1.0.0
 		 * @see register_post_type() for the available args.
@@ -283,9 +270,6 @@ final class Simmer {
 	 * Register the category taxonomy.
 	 *
 	 * @since 1.0.0
-	 * @see register_taxonomy()
-	 *
-	 * @return void
 	 */
 	public function register_category_taxonomy() {
 		
@@ -300,7 +284,7 @@ final class Simmer {
 		);
 		
 		/**
-		 * Allow others to filter the taxonomy args.
+		 * Filter the taxonomy args.
 		 *
 		 * @since 1.0.0
 		 * @see register_taxonomy() for the available args.
