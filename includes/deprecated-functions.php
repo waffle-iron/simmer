@@ -8,7 +8,7 @@
  */
 
 /**
- * Marks a function as deprecated.
+ * Mark a function as deprecated and trigger an error.
  *
  * The current behavior is to trigger a user error if WP_DEBUG is true.
  *

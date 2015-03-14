@@ -22,9 +22,10 @@ final class Simmer_Recipe_Shortcode {
 	/**
 	 * The shortcode's name/slug.
 	 *
-	 * @since 1.0.0
+	 * @since  1.0.0
 	 * @access private
-	 * @var string $shortcode_slug
+	 * 
+	 * @var string $shortcode_slug The shortcode's name/slug.
 	 */
 	private $shortcode_slug;
 	
@@ -32,8 +33,6 @@ final class Simmer_Recipe_Shortcode {
 	 * Build the class.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		
@@ -44,8 +43,6 @@ final class Simmer_Recipe_Shortcode {
 	 * Add the hooks that do all of the work.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function init() {
 		
@@ -56,8 +53,6 @@ final class Simmer_Recipe_Shortcode {
 	 * Add the shortcode and display when called.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function add_shortcode() {
 		
