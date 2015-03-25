@@ -117,27 +117,34 @@
 	
 	<div class="simmer-recipe-footer">
 		
-		<?php $tools = simmer_get_recipe_tools(); ?>
-		
-		<?php if ( ! empty( $tools ) ) : ?>
+		<div class="simmer-recipe-tools">
 			
-			<div class="simmer-recipe-tools">
+			<ul>
+				<li class="simmer-recipe-print">
+					<a href="#"><?php _e( 'Print', Simmer::SLUG ); ?></a>
+				</li>
 				
-				<ul>
-					
-					<?php foreach ( $tools as $slug => $html ) : ?>
-						
-						<li class="simmer-recipe-<?php echo esc_attr( $slug ); ?>">
-							<?php echo wp_kses_post( $html ); ?>
-						</li>
-						
-					<?php endforeach; ?>
-					
-				</ul>
+				<?php /**
+				 * Trigger to add more tools to the recipe footer.
+				 * 
+				 * @since 1.2.1
+				 * 
+				 * @param int $recipe_id The current recipe ID.
+				 */
+				do_action( 'simmer_recipe_tools', get_the_ID() );
 				
-			</div><!-- .simmer-recipe-tools -->
+				/**
+				 * Trigger to add more tools to the embedded recipe footer.
+				 * 
+				 * @since 1.2.1
+				 * 
+				 * @param int $recipe_id The current recipe ID.
+				 */
+				do_action( 'simmer_recipe_tools_embedded', get_the_ID() ); ?>
+				
+			</ul>
 			
-		<?php endif; ?>
+		</div><!-- .simmer-recipe-tools -->
 		
 		<div class="simmer-recipe-source">
 			<?php simmer_the_source(); ?>

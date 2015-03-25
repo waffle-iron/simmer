@@ -29,34 +29,3 @@ function simmer_get_template_part( $slug, $name = null, $load = true ) {
 	
 	return $template_loader->get_template_part( $slug, $name, $load );
 }
-
-/**
- * Get the available recipe tools.
- * 
- * @since 1.2.1
- * 
- * @return array $tools The available recipe tools like print, share, etc...
- */
-function simmer_get_recipe_tools() {
-	
-	$tool_factory = new Simmer_Frontend_Recipe_Tools();
-	
-	// Get the available tools.
-	$tools = (array) $tool_factory->get_tools();
-	
-	$_tools = array();
-	
-	// Attach each tools slug to its cooresponding HTML.
-	foreach ( $tools as $tool ) {
-		
-		$html = $tool_factory->get_tool_html( $tool );
-		
-		if ( $html ) {
-			$_tools[ $tool ] = $tool_factory->get_tool_html( $tool );
-		}
-	}
-	
-	$tools = $_tools;
-	
-	return $tools;
-}
