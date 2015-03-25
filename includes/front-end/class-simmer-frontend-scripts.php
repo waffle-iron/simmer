@@ -31,6 +31,10 @@ class Simmer_Frontend_Scripts {
 			'jquery',
 			'simmer-print-this',
 		), Simmer::VERSION, true );
+		
+		wp_localize_script( 'simmer-plugin-scripts', 'simmerStrings', array(
+			'printStylesURL' => plugin_dir_url( __FILE__ ) . 'assets/simmer-print.css',
+		) );
 	}
 	
 	/**

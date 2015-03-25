@@ -4,8 +4,9 @@ jQuery( document ).ready( function( $ ) {
 		
 		e.preventDefault();
 		
-		$( this ).parents( '.simmer-recipe' ).printThis( {
-			printContainer: false
+		$( this ).closest( '.simmer-recipe' ).printThis( {
+			printContainer: false,
+			loadCSS: simmerStrings.printStylesURL
 		} );
 		
 	} );

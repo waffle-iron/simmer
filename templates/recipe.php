@@ -95,10 +95,14 @@
 	
 	<div class="simmer-recipe-footer">
 		
+		<div class="simmer-recipe-source">
+			<?php simmer_the_source(); ?>
+		</div>
+		
 		<div class="simmer-recipe-tools">
 			
 			<ul>
-				<li class="simmer-recipe-print">
+				<li class="simmer-recipe-print icon-print">
 					<a href="#"><?php _e( 'Print', Simmer::SLUG ); ?></a>
 				</li>
 				
@@ -123,10 +127,6 @@
 			</ul>
 			
 		</div><!-- .simmer-recipe-tools -->
-		
-		<div class="simmer-recipe-source">
-			<?php simmer_the_source(); ?>
-		</div>
 		
 	</div><!-- .simmer-recipe-footer -->
 	
