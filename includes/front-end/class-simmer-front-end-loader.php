@@ -55,6 +55,11 @@ class Simmer_Front_End_Loader {
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-styles.php' );
 		
 		/**
+		 * The recipe tools class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-frontend-recipe-tools.php' );
+		
+		/**
 		 * The supporting functions.
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );

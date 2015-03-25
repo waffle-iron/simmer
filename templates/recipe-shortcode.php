@@ -115,8 +115,34 @@
 	
 	<?php simmer_list_instructions(); ?>
 	
-	<div class="simmer-recipe-source">
-		<?php simmer_the_source(); ?>
-	</div>
+	<div class="simmer-recipe-footer">
+		
+		<?php $tools = simmer_get_recipe_tools(); ?>
+		
+		<?php if ( ! empty( $tools ) ) : ?>
+			
+			<div class="simmer-recipe-tools">
+				
+				<ul>
+					
+					<?php foreach ( $tools as $slug => $html ) : ?>
+						
+						<li class="simmer-recipe-<?php echo esc_attr( $slug ); ?>">
+							<?php echo wp_kses_post( $html ); ?>
+						</li>
+						
+					<?php endforeach; ?>
+					
+				</ul>
+				
+			</div><!-- .simmer-recipe-tools -->
+			
+		<?php endif; ?>
+		
+		<div class="simmer-recipe-source">
+			<?php simmer_the_source(); ?>
+		</div>
+		
+	</div><!-- .simmer-recipe-footer -->
 	
 </div>
