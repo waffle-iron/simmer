@@ -55,6 +55,11 @@ class Simmer_Front_End_Loader {
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-styles.php' );
 		
 		/**
+		 * The JS scripts class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-frontend-scripts.php' );
+		
+		/**
 		 * The supporting functions.
 		 */
 		require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
@@ -82,6 +87,16 @@ class Simmer_Front_End_Loader {
 		if ( $styles->enable_styles() ) {
 			add_action( 'wp_enqueue_scripts', array( $styles, 'enqueue_styles' ) );
 			add_action( 'wp_head', array( $styles, 'add_custom_styles' ) );
+		}
+		
+		/**
+		 * Set up the scripts.
+		 */
+		$scripts = new Simmer_Frontend_Scripts();
+		
+		// Check if front-end scripts should be enqueued.
+		if ( $scripts->enable_scripts() ) {
+			add_action( 'wp_enqueue_scripts', array( $scripts, 'enqueue_scripts' ) );
 		}
 	}
 	
