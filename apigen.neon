@@ -1,6 +1,6 @@
 source: ./
 
-destination: codex
+destination: codex/src
 
 # list of scanned file extensions (e.g. php5, phpt...)
 extensions: [php]
@@ -19,7 +19,7 @@ main: Simmer
 title: Simmer
 
 # base url used for sitemap (useful for public doc)
-baseUrl: http://docs.simmerwp.com/codex/
+baseUrl: http://develop.simmerwp.com/
 
 # choose ApiGen template theme
 templateTheme: default
