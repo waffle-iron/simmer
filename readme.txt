@@ -57,7 +57,9 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 
 = 1.2.1 =
 * New: Easy recipe printing
+* Tweak: Refine microdata markup for single recipes
 * Tweak: Ensure WordPress 4.2 compatibility
+* Fix: Instructions microdata error
 
 = 1.2.0 =
 * New: Bulk add recipe ingredients or instructions
