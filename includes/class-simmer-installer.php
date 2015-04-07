@@ -30,12 +30,52 @@ final class Simmer_Installer {
 		delete_option( 'simmer_version' );
 		add_option( 'simmer_version', Simmer::VERSION, '', 'no' );
 		
+		// Create the custom database tables.
+		self::create_db_tables();
+		
 		/**
 		 * Fires after Simmer has been installed.
 		 *
 		 * @since 0.1.0
 		 */
 		do_action( 'simmer_installed' );
+	}
+	
+	/**
+	 * Create the custom database tables.
+	 *
+	 * @since  1.3.0
+	 * @access private
+	 *
+	 * @global $wpdb The WordPress database object.
+	 */
+	private static function create_db_tables() {
+		
+		global $wpdb;
+		
+		$charset_collate = $wpdb->get_charset_collate();
+		
+		$schema = "CREATE TABLE {$wpdb->prefix}simmer_recipe_items (
+			recipe_item_id bigint(20) NOT NULL auto_increment,
+			recipe_item_name longtext NOT NULL,
+			recipe_item_type varchar(200) NOT NULL DEFAULT '',
+			recipe_id bigint(20) NOT NULL,
+			PRIMARY KEY  (recipe_item_id),
+			KEY recipe_id (recipe_id)
+			) $charset_collate;
+			CREATE TABLE {$wpdb->prefix}simmer_recipe_itemmeta (
+			meta_id bigint(20) NOT NULL auto_increment,
+			recipe_item_id bigint(20) NOT NULL,
+			meta_key varchar(255) NULL,
+			meta_value longtext NULL,
+			PRIMARY KEY  (meta_id),
+			KEY recipe_item_id (recipe_item_id),
+			KEY meta_key (meta_key)
+			) $charset_collate;";
+		
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		
+		dbDelta( $schema );
 	}
 	
 	public static function uninstall() {
@@ -105,5 +145,10 @@ final class Simmer_Installer {
 			}
 			
 		}
+	}
+	
+	private function remove_db_tables() {
+		
+		return true;
 	}
 }
