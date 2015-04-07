@@ -36,11 +36,6 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'SIMMER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 
 /**
- * Load the main Simmer license class definition.
- */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-license.php' );
-
-/**
  * Load the main Simmer class definition.
  */
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );

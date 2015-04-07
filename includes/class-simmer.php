@@ -122,6 +122,11 @@ final class Simmer {
 		require( plugin_dir_path( __FILE__ ) . 'class-simmer-installer.php'  );
 		
 		/**
+		 * The license class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-license.php' );
+		
+		/**
 		 * Supporting functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'functions/general.php'     );
