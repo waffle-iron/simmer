@@ -36,14 +36,6 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'SIMMER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 
 /**
- * Load the main activation class definition.
- */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-activation.php' );
-
-register_activation_hook( __FILE__, 'Simmer_Activation::activate' );
-register_deactivation_hook( __FILE__, 'Simmer_Activation::deactivate' );
-
-/**
  * Load the main Simmer license class definition.
  */
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-license.php' );
@@ -54,7 +46,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-license.php' 
 require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );
 
 // After all other plugins are loaded, instantiate Simmer.
-add_action( 'plugins_loaded', array( 'Simmer', 'get_instance' ) );
+Simmer::get_instance();
 
 /**
  * Require the widgets class definition.

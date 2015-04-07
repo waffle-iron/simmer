@@ -117,6 +117,11 @@ final class Simmer {
 	private function require_files() {
 		
 		/**
+		 * The installer class.
+		 */
+		require( plugin_dir_path( __FILE__ ) . 'class-simmer-installer.php'  );
+		
+		/**
 		 * Supporting functions.
 		 */
 		require( plugin_dir_path( __FILE__ ) . 'functions/general.php'     );
@@ -161,6 +166,9 @@ final class Simmer {
 	 * @access private
 	 */
 	private function add_actions() {
+		
+		// Perform on plugin activation.
+		register_activation_hook( SIMMER_PLUGIN_FILE, 'Simmer_Installer::install' );
 		
 		// Load the text domain for i18n.
 		add_action( 'init', array( $this, 'load_textdomain' ) );
