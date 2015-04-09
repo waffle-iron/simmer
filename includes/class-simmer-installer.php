@@ -185,7 +185,7 @@ final class Simmer_Installer {
 		$query .= "DROP TABLE IF EXISTS $item_meta_table_name;";
 		
 		$wpdb->query(
-			$wpdb->prepare( $query );
+			$wpdb->prepare( $query )
 		);
 	}
 }
