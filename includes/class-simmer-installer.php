@@ -53,29 +53,46 @@ final class Simmer_Installer {
 		
 		global $wpdb;
 		
+		$items_table_name     = $wpdb->prefix . 'simmer_recipe_items';
+		$item_meta_table_name = $wpdb->prefix . 'simmer_recipe_itemmeta';
+		
+		$query = '';
+		
 		$charset_collate = $wpdb->get_charset_collate();
 		
-		$schema = "CREATE TABLE {$wpdb->prefix}simmer_recipe_items (
-			recipe_item_id bigint(20) NOT NULL auto_increment,
-			recipe_item_name longtext NOT NULL,
-			recipe_item_type varchar(200) NOT NULL DEFAULT '',
-			recipe_id bigint(20) NOT NULL,
-			PRIMARY KEY  (recipe_item_id),
-			KEY recipe_id (recipe_id)
-			) $charset_collate;
-			CREATE TABLE {$wpdb->prefix}simmer_recipe_itemmeta (
-			meta_id bigint(20) NOT NULL auto_increment,
-			recipe_item_id bigint(20) NOT NULL,
-			meta_key varchar(255) NULL,
-			meta_value longtext NULL,
-			PRIMARY KEY  (meta_id),
-			KEY recipe_item_id (recipe_item_id),
-			KEY meta_key (meta_key)
-			) $charset_collate;";
+		if ( $items_table_name != $wpdb->get_var( "SHOW TABLES LIKE '$items_table_name'" ) ) {
+			
+			// The recipe items table.
+			$query .= "CREATE TABLE $items_table_name (
+				recipe_item_id bigint(20) NOT NULL auto_increment,
+				recipe_item_type varchar(200) NOT NULL DEFAULT '',
+				recipe_id bigint(20) NOT NULL,
+				recipe_item_order int(11) NOT NULL DEFAULT '0',
+				PRIMARY KEY  (recipe_item_id),
+				KEY recipe_id (recipe_id)
+				) $charset_collate;";
+		}
 		
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		if ( $item_meta_table_name != $wpdb->get_var( "SHOW TABLES LIKE '$item_meta_table_name'" ) ) {
+			
+			// The recipe item meta table.
+			$query .= "CREATE TABLE $item_meta_table_name (
+				meta_id bigint(20) NOT NULL auto_increment,
+				recipe_item_id bigint(20) NOT NULL,
+				meta_key varchar(255) NULL,
+				meta_value longtext NULL,
+				PRIMARY KEY  (meta_id),
+				KEY recipe_item_id (recipe_item_id),
+				KEY meta_key (meta_key)
+				) $charset_collate;";
+		}
 		
-		dbDelta( $schema );
+		if ( '' != $query ) {
+			
+			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+			
+			dbDelta( $query );
+		}
 	}
 	
 	public static function uninstall() {
