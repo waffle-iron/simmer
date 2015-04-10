@@ -26,12 +26,17 @@ final class Simmer_Installer {
 			define( 'SIMMER_INSTALLING', true );
 		}
 		
+		// Create the custom database tables.
+		self::create_db_tables();
+		
+		// Upgrade older versions of Simmer.
+		if ( get_option( 'simmer_version' ) && version_compare( get_option( 'simmer_version' ), Simmer::VERSION, '<' ) ) {
+			self::upgrade();
+		}
+		
 		// Reset the version number.
 		delete_option( 'simmer_version' );
 		add_option( 'simmer_version', Simmer::VERSION, '', 'no' );
-		
-		// Create the custom database tables.
-		self::create_db_tables();
 		
 		/**
 		 * Fires after Simmer has been installed.
@@ -92,6 +97,105 @@ final class Simmer_Installer {
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			
 			dbDelta( $query );
+		}
+	}
+	
+	private static function upgrade() {
+		
+		global $wpdb;
+		
+		// Get all recipe IDs.
+		$recipe_ids = get_posts( array(
+			'post_type'   => 'recipe',
+			'post_status' => 'any',
+			'numberposts' => -1,
+			'fields'      => 'ids',
+		) );
+		
+		if ( $recipe_ids ) {
+			
+			foreach ( $recipe_ids as $recipe_id ) {
+				
+				$ingredients = get_post_meta( $recipe_id, '_recipe_ingredients', true );
+				
+				if ( $ingredients ) {
+					
+					$order = 0;
+					
+					foreach ( $ingredients as $ingredient ) {
+						
+						$wpdb->insert(
+							$wpdb->prefix . 'simmer_recipe_items',
+							array(
+								'recipe_item_type' => 'ingredient',
+								'recipe_id' => $recipe_id,
+								'recipe_item_order' => $order,
+							),
+							array(
+								'%s',
+								'%d',
+								'%d',
+							)
+						);
+						
+						$order++;
+						
+						$item_id = $wpdb->insert_id;
+						
+						if ( isset( $ingredient['amt'] ) ) {
+							
+							$wpdb->insert(
+								$wpdb->prefix . 'simmer_recipe_itemmeta',
+								array(
+									'recipe_item_id' => $item_id,
+									'meta_key'       => 'amount',
+									'meta_value'     => $ingredient['amt'],
+								),
+								array(
+									'%d',
+									'%s',
+									'%s',
+								)
+							);
+						}
+						
+						if ( isset( $ingredient['unit'] ) ) {
+							
+							$wpdb->insert(
+								$wpdb->prefix . 'simmer_recipe_itemmeta',
+								array(
+									'recipe_item_id' => $item_id,
+									'meta_key'       => 'unit',
+									'meta_value'     => $ingredient['unit'],
+								),
+								array(
+									'%d',
+									'%s',
+									'%s',
+								)
+							);
+						}
+						
+						if ( isset( $ingredient['desc'] ) ) {
+							
+							$wpdb->insert(
+								$wpdb->prefix . 'simmer_recipe_itemmeta',
+								array(
+									'recipe_item_id' => $item_id,
+									'meta_key'       => 'description',
+									'meta_value'     => $ingredient['desc'],
+								),
+								array(
+									'%d',
+									'%s',
+									'%s',
+								)
+							);
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
