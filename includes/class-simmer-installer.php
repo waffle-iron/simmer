@@ -194,6 +194,68 @@ final class Simmer_Installer {
 						}
 					}
 				}
+				
+				$instructions = get_post_meta( $recipe_id, '_recipe_instructions', true );
+				
+				if ( $instructions ) {
+					
+					$order = 0;
+					
+					foreach ( $instructions as $instruction ) {
+						
+						$wpdb->insert(
+							$wpdb->prefix . 'simmer_recipe_items',
+							array(
+								'recipe_item_type'  => 'instruction',
+								'recipe_id'         => $recipe_id,
+								'recipe_item_order' => $order,
+							),
+							array(
+								'%s',
+								'%d',
+								'%d',
+							)
+						);
+						
+						$order++;
+						
+						$item_id = $wpdb->insert_id;
+						
+						if ( isset( $instruction['desc'] ) ) {
+							
+							$wpdb->insert(
+								$wpdb->prefix . 'simmer_recipe_itemmeta',
+								array(
+									'recipe_item_id' => $item_id,
+									'meta_key'       => 'description',
+									'meta_value'     => $instruction['desc'],
+								),
+								array(
+									'%d',
+									'%s',
+									'%s',
+								)
+							);
+						}
+						
+						if ( isset( $instruction['heading'] ) && 1 == $instruction['heading'] ) {
+							
+							$wpdb->insert(
+								$wpdb->prefix . 'simmer_recipe_itemmeta',
+								array(
+									'recipe_item_id' => $item_id,
+									'meta_key'       => 'is_heading',
+									'meta_value'     => $instruction['heading'],
+								),
+								array(
+									'%d',
+									'%s',
+									'%d',
+								)
+							);
+						}
+					}
+				}
 			}
 			
 		}
