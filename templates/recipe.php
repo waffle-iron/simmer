@@ -19,33 +19,27 @@
 		
 		<?php if ( $prep_time = simmer_get_the_prep_time() ) : ?>
 			
-			<?php $machine_time = simmer_format_machine_duration( simmer_get_the_time( 'prep', get_the_ID() ) ); ?>
-			
 			<li>
 				<strong><?php _e( 'Prep Time', Simmer::SLUG ); ?>:</strong> 
-				<meta itemprop="prepTime" content="<?php echo esc_attr( $machine_time ); ?>"><?php echo esc_html( $prep_time ); ?>
+				<meta itemprop="prepTime" content="<?php echo esc_attr( simmer_get_the_prep_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $prep_time ); ?>
 			</li>
 			
 		<?php endif; ?>
 		
 		<?php if ( $cook_time = simmer_get_the_cook_time() ) : ?>
 			
-			<?php $machine_time = simmer_format_machine_duration( simmer_get_the_time( 'cook', get_the_ID() ) ); ?>
-			
 			<li>
 				<strong><?php _e( 'Cook Time', Simmer::SLUG ); ?>:</strong> 
-				<meta itemprop="cookTime" content="<?php echo esc_attr( $machine_time ); ?>"><?php echo esc_html( $cook_time ); ?>
+				<meta itemprop="cookTime" content="<?php echo esc_attr( simmer_get_the_cook_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $cook_time ); ?>
 			</li>
 			
 		<?php endif; ?>
 		
 		<?php if ( $total_time = simmer_get_the_total_time() ) : ?>
 			
-			<?php $machine_time = simmer_format_machine_duration( simmer_get_the_time( 'total', get_the_ID() ) ); ?>
-			
 			<li>
 				<strong><?php _e( 'Total Time', Simmer::SLUG ); ?>:</strong> 
-				<meta itemprop="totalTime" content="<?php echo esc_attr( $machine_time ); ?>"><?php echo esc_html( $total_time ); ?>
+				<meta itemprop="totalTime" content="<?php echo esc_attr( simmer_get_the_total_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $total_time ); ?>
 			</li>
 			
 		<?php endif; ?>

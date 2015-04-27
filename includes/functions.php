@@ -4,13 +4,8 @@
  *
  * @since 1.0.0
  *
- * @package Simmer\General_Functions
+ * @package Simmer
  */
-
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Return the main recipe object type.

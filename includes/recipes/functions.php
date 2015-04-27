@@ -1,15 +1,27 @@
 <?php
 /**
- * Define the recipe information functions
- * 
- * @since 1.0.0
+ * Define the recipe functions
  *
- * @package Simmer\Functions
+ * @since 1.3.0
+ *
+ * @package Simmer/Recipes
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+/**
+ * Get a specific recipe.
+ *
+ * @since 1.3.0
+ *
+ * @param  int    $recipe_id A recipe ID.
+ * @return object Simmer_Recipe
+ */
+function simmer_get_recipe( $recipe_id ) {
+	
+	if ( ! is_numeric( $recipe_id ) ) {
+		return false;
+	}
+	
+	return new Simmer_Recipe( $recipe_id );
 }
 
 /**

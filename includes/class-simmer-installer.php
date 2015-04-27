@@ -114,6 +114,8 @@ final class Simmer_Installer {
 		
 		if ( $recipe_ids ) {
 			
+			$items_api = new Simmer_Recipe_Items;
+			
 			foreach ( $recipe_ids as $recipe_id ) {
 				
 				$ingredients = get_post_meta( $recipe_id, '_recipe_ingredients', true );
@@ -124,23 +126,7 @@ final class Simmer_Installer {
 					
 					foreach ( $ingredients as $ingredient ) {
 						
-						$wpdb->insert(
-							$wpdb->prefix . 'simmer_recipe_items',
-							array(
-								'recipe_item_type' => 'ingredient',
-								'recipe_id' => $recipe_id,
-								'recipe_item_order' => $order,
-							),
-							array(
-								'%s',
-								'%d',
-								'%d',
-							)
-						);
-						
-						$order++;
-						
-						$item_id = $wpdb->insert_id;
+						$item_id = $items_api->add_item( $recipe_id, 'ingredient', $order );
 						
 						if ( isset( $ingredient['amt'] ) ) {
 							
@@ -192,6 +178,8 @@ final class Simmer_Installer {
 								)
 							);
 						}
+						
+						$order++;
 					}
 				}
 				
@@ -203,23 +191,7 @@ final class Simmer_Installer {
 					
 					foreach ( $instructions as $instruction ) {
 						
-						$wpdb->insert(
-							$wpdb->prefix . 'simmer_recipe_items',
-							array(
-								'recipe_item_type'  => 'instruction',
-								'recipe_id'         => $recipe_id,
-								'recipe_item_order' => $order,
-							),
-							array(
-								'%s',
-								'%d',
-								'%d',
-							)
-						);
-						
-						$order++;
-						
-						$item_id = $wpdb->insert_id;
+						$item_id = $items_api->add_item( $recipe_id, 'instruction', $order );
 						
 						if ( isset( $instruction['desc'] ) ) {
 							
@@ -254,6 +226,8 @@ final class Simmer_Installer {
 								)
 							);
 						}
+						
+						$order++;
 					}
 				}
 			}

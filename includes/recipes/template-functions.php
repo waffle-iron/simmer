@@ -1,16 +1,121 @@
 <?php
 /**
- * Template tags related to other recipe information.
+ * Define the recipe template functions
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
- * @package Simmer\Template_Tags
+ * @package Simmer/Recipes
  */
 
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+/**** Durations ****/
+
+/**
+ * Print the prep time of the current recipe in human-readable format.
+ *
+ * @since 1.0.0
+ * 
+ * @return void
+ */
+function simmer_the_prep_time() {
+	
+	echo esc_html( simmer_get_the_prep_time() );
 }
+
+/**
+ * Get the prep time for a recipe.
+ *
+ * @since 1.0.0
+ * 
+ * @param  int    $recipe_id Optional. A recipe's ID.
+ * @param  string $format    Optional. The duration format to return. Specify 'machine'
+	 *                       for microdata-friendly format. Default: 'human'.
+ * @return string $time      The recipe prep time.
+ */
+function simmer_get_the_prep_time( $recipe_id = null, $format = 'human' ) {
+	
+	if ( ! is_numeric( $recipe_id ) ) {
+		$recipe_id = get_the_ID();
+	}
+	
+	$recipe = simmer_get_recipe( $recipe_id );
+	
+	$prep_time = $recipe->get_prep_time( $format );
+	
+	return $prep_time;
+}
+
+/**
+ * Print the total cook of the current recipe in human-readable format.
+ *
+ * @since 1.0.0
+ * 
+ * @return void
+ */
+function simmer_the_cook_time() {
+	
+	echo esc_html( simmer_get_the_cook_time() );
+}
+
+/**
+ * Get the cook time for a recipe.
+ *
+ * @since 1.0.0
+ * 
+ * @param  int    $recipe_id Optional. A recipe's ID.
+ * @param  string $format    Optional. The duration format to return. Specify 'machine'
+	 *                       for microdata-friendly format. Default: 'human'.
+ * @return string $time      The recipe cook time.
+ */
+function simmer_get_the_cook_time( $recipe_id = null, $format = 'human' ) {
+	
+	if ( ! is_numeric( $recipe_id ) ) {
+		$recipe_id = get_the_ID();
+	}
+	
+	$recipe = simmer_get_recipe( $recipe_id );
+	
+	$cook_time = $recipe->get_cook_time( $format );
+	
+	return $cook_time;
+}
+
+/**
+ * Print the total time of the current recipe in human-readable format.
+ *
+ * @since 1.0.0
+ * 
+ * @return void
+ */
+function simmer_the_total_time() {
+	
+	echo esc_html( simmer_get_the_total_time() );
+}
+
+/**
+ * Get the total time for a recipe.
+ *
+ * @since 1.0.0
+ * 
+ * @param  int    $recipe_id Optional. A recipe's ID.
+ * @param  string $format    Optional. The duration format to return. Specify 'machine'
+	 *                       for microdata-friendly format. Default: 'human'.
+ * @return string $time      The recipe total time.
+ */
+function simmer_get_the_total_time( $recipe_id = null, $format = 'human' ) {
+	
+	if ( ! is_numeric( $recipe_id ) ) {
+		$recipe_id = get_the_ID();
+	}
+	
+	$recipe = simmer_get_recipe( $recipe_id );
+	
+	$total_time = $recipe->get_total_time( $format );
+	
+	return $total_time;
+}
+
+
+/**** General Recipe Information ****/
 
 /**
  * Print the current recipe's servings.

@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 function simmer_units_select_field( $args = '', $count = 1 ) {
 	
 	// Get the available measurement units.
-	$units = Simmer_Ingredients::get_units();
+	$units = Simmer_Recipe_Ingredients::get_units();
 	
 	// If there are none, then stop generating the <select> field.
 	if ( empty( $units ) ) {

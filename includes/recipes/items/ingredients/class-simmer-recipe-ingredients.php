@@ -2,27 +2,73 @@
 /**
  * Define the main ingredients class
  * 
- * @since 1.0.0
+ * @since 1.3.0
  * 
- * @package Simmer\Ingredients
+ * @package Simmer/Recipes/Items/Ingredients
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * The class that handles the specialty ingredients funcitonality.
  * 
- * @since 1.0.0
+ * @since 1.3.0
  */
-final class Simmer_Ingredients {
+final class Simmer_Recipe_Ingredients {
+	
+	/**
+	 * Get the ingredients list heading text.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return string $heading The ingredients list heading text.
+	 */
+	public function get_list_heading() {
+		
+		$heading = get_option( 'simmer_ingredients_list_heading', __( 'Ingredients', Simmer::SLUG ) );
+		
+		/**
+		 * Allow others to filter the ingredients list heading text.
+		 *
+		 * @since 1.0.0
+		 * 
+		 * @param string $heading The ingredients list heading text.
+		 */
+		$heading = apply_filters( 'simmer_ingredients_list_heading', $heading );
+		
+		return $heading;
+	}
+	
+	/**
+	 * Get the ingredients list type.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return string $type The ingredients list type.
+	 */
+	function get_list_type() {
+		
+		$type = get_option( 'simmer_ingredients_list_type', 'ul' );
+		
+		/**
+		 * Allow others to filter the ingredients list type.
+		 *
+		 * @since 1.0.0
+		 * 
+		 * @param string $type The ingredients list type.
+		 */
+		$type = apply_filters( 'simmer_ingredients_list_type', $type );
+		
+		return $type;
+	}
+	
+	public function add_ingredient( $amount = '', $unit = '', $description ) {
+		
+		
+	}
 	
 	/**
 	 * Get the available units of measure.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.0
 	 *
 	 * @return array $units The filtered units.
 	 */

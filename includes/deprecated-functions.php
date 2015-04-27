@@ -169,3 +169,61 @@ function simmer_enqueue_styles() {
 	
 	return (bool) $enqueue_styles;
 }
+
+/**
+ * Return the given time of a given recipe.
+ *
+ * @since 1.0.0
+ * 
+ * @param  string $type      The type of time, prep|cook|total.
+ * @param  int    $recipe_id The recipe's ID.
+ * @return int    $time      The given recipe time, in minutes.
+ */
+function simmer_get_the_time( $type, $recipe_id ) {
+	
+	_simmer_deprecated_function( __FUNCTION__, '1.3.0' );
+	
+	$durations_api = new Simmer_Recipe_Durations;
+		
+	$time = $durations_api->get_duration( $type, $recipe_id );
+	
+	return $time;
+}
+
+/**
+ * Format a given duration to a human-readable format.
+ * 
+ * @since 1.0.0
+ * 
+ * @param int $time A duration, in minutes.
+ * @return string|bool $duration The human-readable duration or false on failure.
+ */
+function simmer_format_human_duration( $time ) {
+	
+	_simmer_deprecated_function( __FUNCTION__, '1.3.0', 'Simmer_Recipe_Durations::format_human_duration' );
+	
+	$durations_api = new Simmer_Recipe_Durations;
+	
+	$duration = $durations_api->format_human_duration( $time );
+	
+	return $duration;
+}
+
+/**
+ * Format a given duration to a machine-readable format.
+ * 
+ * @since 1.0.0
+ * 
+ * @param int $time A duration, in minutes.
+ * @return string|bool $duration The machine-readable duration or false on failure.
+ */
+function simmer_format_machine_duration( $time ) {
+	
+	_simmer_deprecated_function( __FUNCTION__, '1.3.0', 'Simmer_Recipe_Durations::format_machine_duration' );
+	
+	$durations_api = new Simmer_Recipe_Durations;
+	
+	$duration = $durations_api->format_machine_duration( $time );
+	
+	return $duration;
+}

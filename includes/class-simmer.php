@@ -129,34 +129,40 @@ final class Simmer {
 		/**
 		 * Supporting functions.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'functions/general.php'     );
-		require( plugin_dir_path( __FILE__ ) . 'functions/durations.php'   );
-		require( plugin_dir_path( __FILE__ ) . 'functions/ingredients.php' );
-		require( plugin_dir_path( __FILE__ ) . 'functions/information.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'functions.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'deprecated-functions.php' );
 		
 		/**
-		 * Template tag functions.
+		 * The general recipes functionality.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'template-tags/durations.php'    );
-		require( plugin_dir_path( __FILE__ ) . 'template-tags/information.php'  );
-		require( plugin_dir_path( __FILE__ ) . 'template-tags/ingredients.php'  );
-		require( plugin_dir_path( __FILE__ ) . 'template-tags/instructions.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe-durations.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe-shortcode.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/functions.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/template-functions.php' );
 		
 		/**
-		 * The single ingredient class.
+		 * The recipe items functionality.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-ingredients.php'  );
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-ingredient.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/class-simmer-recipe-items.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/class-simmer-recipe-item-meta.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/functions.php' );
 		
 		/**
-		 * The shortcode functions.
+		 * The recipe ingredients functionality.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-recipe-shortcode.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/ingredients/class-simmer-recipe-ingredients.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/ingredients/class-simmer-recipe-ingredient.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/ingredients/functions.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/ingredients/template-functions.php'  );
 		
 		/**
-		 * The deprecated functions.
+		 * The recipe instructions functionality.
 		 */
-		require( plugin_dir_path( __FILE__ ) . 'deprecated-functions.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/class-simmer-recipe-instructions.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/class-simmer-recipe-instruction.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/functions.php'  );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/template-functions.php'  );
 		
 		/**
 		 * The front-end loader.
@@ -175,6 +181,10 @@ final class Simmer {
 		// Perform on plugin activation.
 		register_activation_hook( SIMMER_PLUGIN_FILE, 'Simmer_Installer::install' );
 		
+		// Add the custom table names to the database object for later use.
+		add_action( 'plugins_loaded', array( 'Simmer_Recipe_Item_Meta', 'add_meta_table_names' ), 0 );
+		add_action( 'switch_blog',    array( 'Simmer_Recipe_Item_Meta', 'add_meta_table_names' ), 0 );
+
 		// Load the text domain for i18n.
 		add_action( 'init', array( $this, 'load_textdomain' ) );
 		

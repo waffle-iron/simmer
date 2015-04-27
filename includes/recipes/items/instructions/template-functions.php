@@ -1,10 +1,10 @@
 <?php
 /**
- * Template tags related to instructions.
+ * Template tags for instructions.
  *
  * @since 1.0.0
  *
- * @package Simmer\Template_Tags
+ * @package Simmer/Recipes/Items/Instructions
  */
 
 // If this file is called directly, bail.
@@ -20,23 +20,20 @@ if ( ! defined( 'WPINC' ) ) {
  * @param  int        $recipe_id    Optional. A recipe's ID.
  * @return array|bool $instructions The array of instructions or false if none set.
  */
-function simmer_get_the_instructions( $recipe_id = null ) {
+function simmer_get_the_instructions() {
 	
-	if ( ! is_numeric( $recipe_id ) ) {
-		$recipe_id = get_the_ID();
-	}
+	$recipe = simmer_get_recipe( get_the_ID() );
 	
-	$instructions = get_post_meta( $recipe_id, '_recipe_instructions', true );
+	$instructions = $recipe->get_instructions();
 	
 	/**
-	 * Allow others to modify the returned array of instructions.
+	 * Filter the returned array of instructions.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @param array $instructions The returned array of instructions or empty if none set.
-	 * @param int   $recipe_id    The recipe's ID.
 	 */
-	$instructions = apply_filters( 'simmer_get_the_instructions', $instructions, $recipe_id );
+	$instructions = apply_filters( 'simmer_get_the_instructions', $instructions );
 	
 	return $instructions;
 }
@@ -50,16 +47,9 @@ function simmer_get_the_instructions( $recipe_id = null ) {
  */
 function simmer_get_instructions_list_heading() {
 	
-	$heading = get_option( 'simmer_instructions_list_heading', __( 'Instructions', Simmer::SLUG ) );
+	$instructions = new Simmer_Recipe_Instructions;
 	
-	/**
-	 * Allow others to filter the instructions list heading text.
-	 *
-	 * @since 1.0.0
-	 * 
-	 * @param string $heading The instructions list heading text.
-	 */
-	$heading = apply_filters( 'simmer_instructions_list_heading', $heading );
+	$heading = $instructions->get_list_heading();
 	
 	return $heading;
 }
@@ -73,16 +63,9 @@ function simmer_get_instructions_list_heading() {
  */
 function simmer_get_instructions_list_type() {
 	
-	$type = get_option( 'simmer_instructions_list_type', 'ol' );
+	$instructions = new Simmer_Recipe_Instructions;
 	
-	/**
-	 * Allow others to filter the instructions list type.
-	 *
-	 * @since 1.0.0
-	 * 
-	 * @param string $type The instructions list type.
-	 */
-	$type = apply_filters( 'simmer_instructions_list_type', $type );
+	$type = $instructions->get_list_type();
 	
 	return $type;
 }
@@ -178,7 +161,7 @@ function simmer_list_instructions( $args = array() ) {
 		 */
 		$list_attributes = (array) apply_filters( 'simmer_instructions_list_attributes', $list_attributes );
 		
-		if ( isset( $instructions[0]['heading'] ) && 1 === $instructions[0]['heading'] ) {
+		if ( $instructions[0]->is_heading() ) {
 			
 			$list_open = false;
 			
@@ -213,7 +196,7 @@ function simmer_list_instructions( $args = array() ) {
 				do_action( 'simmer_before_instructions_list_item', $instruction );
 				
 				// If this is an instruction heading, change the item tag.
-				if ( isset( $instruction['heading'] ) && 1 === $instruction['heading'] ) {
+				if ( $instruction->is_heading() ) {
 					
 					if ( true == $list_open ) {
 						
@@ -283,8 +266,8 @@ function simmer_list_instructions( $args = array() ) {
 						
 					$output .= '>';
 						
-						if ( isset( $instruction['desc'] ) ) {
-							$output .= esc_html( $instruction['desc'] );
+						if ( $description = $instruction->get_description() ) {
+							$output .= esc_html( $description );
 						}
 						
 					// Close the list item.

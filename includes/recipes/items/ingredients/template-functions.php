@@ -1,54 +1,33 @@
 <?php
 /**
- * Template tags related to ingredients.
+ * Template tags for ingredients.
  *
  * @since 1.0.0
  *
- * @package Simmer\Template_Tags
+ * @package Simmer/Recipes/Items/Ingredients
  */
-
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Get the ingredients for a recipe.
  *
  * @since 1.0.0
  * 
- * @param  int        $recipe_id   Optional. A recipe's ID.
- * @return array|bool $ingredients The array of ingredients or false if none set.
+ * @return array|bool $ingredients The array of ingredients or false if none found.
  */
-function simmer_get_the_ingredients( $recipe_id = null, $filter = 'display' ) {
+function simmer_get_the_ingredients() {
 	
-	if ( ! is_numeric( $recipe_id ) ) {
-		$recipe_id = get_the_ID();
-	}
+	$recipe = simmer_get_recipe( get_the_ID() );
 	
-	$ingredients = get_post_meta( $recipe_id, '_recipe_ingredients', true );
-	
-	if ( ! empty( $ingredients ) ) {
-		
-		$_ingredients = array();
-		
-		// Convert each ingredient array to a Simmer_Ingredient instance.
-		foreach ( $ingredients as $ingredient ) {
-			$_ingredients[] = simmer_get_ingredient( $ingredient, $filter );
-		}
-		
-		$ingredients = $_ingredients;
-	}
+	$ingredients = $recipe->get_ingredients();
 	
 	/**
-	 * Allow others to modify the returned array of ingredients.
+	 * Filter the returned array of ingredients.
 	 * 
 	 * @since 1.0.0
 	 * 
 	 * @param array $ingredients The returned array of ingredients or empty if none set.
-	 * @param int   $recipe_id    The recipe's ID.
 	 */
-	$ingredients = apply_filters( 'simmer_get_the_ingredients', $ingredients, $recipe_id );
+	$ingredients = apply_filters( 'simmer_get_the_ingredients', $ingredients );
 	
 	return $ingredients;
 }
@@ -62,16 +41,9 @@ function simmer_get_the_ingredients( $recipe_id = null, $filter = 'display' ) {
  */
 function simmer_get_ingredients_list_heading() {
 	
-	$heading = get_option( 'simmer_ingredients_list_heading', __( 'Ingredients', Simmer::SLUG ) );
+	$ingredients = new Simmer_Recipe_Ingredients;
 	
-	/**
-	 * Allow others to filter the ingredients list heading text.
-	 *
-	 * @since 1.0.0
-	 * 
-	 * @param string $heading The ingredients list heading text.
-	 */
-	$heading = apply_filters( 'simmer_ingredients_list_heading', $heading );
+	$heading = $ingredients->get_list_heading();
 	
 	return $heading;
 }
@@ -85,16 +57,9 @@ function simmer_get_ingredients_list_heading() {
  */
 function simmer_get_ingredients_list_type() {
 	
-	$type = get_option( 'simmer_ingredients_list_type', 'ul' );
+	$ingredients = new Simmer_Recipe_Ingredients;
 	
-	/**
-	 * Allow others to filter the ingredients list type.
-	 *
-	 * @since 1.0.0
-	 * 
-	 * @param string $type The ingredients list type.
-	 */
-	$type = apply_filters( 'simmer_ingredients_list_type', $type );
+	$type = $ingredients->get_list_type();
 	
 	return $type;
 }
@@ -251,16 +216,16 @@ function simmer_list_ingredients( $args = array() ) {
 					
 				$output .= '>';
 					
-					if ( $ingredient->amount ) {
-						$output .= '<span class="simmer-ingredient-amount">' . esc_html( $ingredient->amount ) . '</span> ';
+					if ( $amount = $ingredient->get_amount() ) {
+						$output .= '<span class="simmer-ingredient-amount">' . esc_html( $amount ) . '</span> ';
 					}
 					
-					if ( $ingredient->unit ) {
-						$output .= '<span class="simmer-ingredient-unit">' . esc_html( $ingredient->unit ) . '</span> ';
+					if ( $unit = $ingredient->get_unit() ) {
+						$output .= '<span class="simmer-ingredient-unit">' . esc_html( $unit ) . '</span> ';
 					}
 					
-					if ( $ingredient->description ) {
-						$output .= '<span class="simmer-ingredient-description">' . esc_html( $ingredient->description ) . '</span>';
+					if ( $description = $ingredient->get_description() ) {
+						$output .= '<span class="simmer-ingredient-description">' . esc_html( $description ) . '</span>';
 					}
 					
 				// Close the list item.

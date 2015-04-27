@@ -2,22 +2,26 @@
 /**
  * Define the single ingredient class
  * 
- * @since 1.0.0
+ * @since 1.3.0
  * 
- * @package Simmer/Ingredients
+ * @package Simmer/Recipes/Items/Ingredients
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * The class for gathering and formatting information about a single recipe ingredient.
  * 
- * @since 1.0.0
+ * @since 1.3.0
  */
-final class Simmer_Ingredient {
+final class Simmer_Recipe_Ingredient {
+	
+	/**
+	 * The ingredient's item ID.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var int $id
+	 */
+	public $id;
 	
 	/**
 	 * The ingredient amount.
@@ -47,44 +51,132 @@ final class Simmer_Ingredient {
 	public $description = '';
 	
 	/**
+	 * The ingredient order number.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var int $order
+	 */
+	public $order = 0;
+	
+	/**
 	 * Construct the ingredient object.
 	 * 
 	 * @since 1.0.0
 	 * 
-	 * @param array $ingredient The single ingredient's data from post meta.
-	 * @param bool  $raw        Optional. Whether the ingredient object should be raw or formatted for output.
+	 * @param int|object $ingredient The ingredient item or item ID.
 	 */
-	public function __construct( $ingredient, $filter = 'display' ) {
+	public function __construct( $ingredient ) {
 		
-		if ( isset( $ingredient['amt'] ) ) {
+		if ( is_numeric( $ingredient ) ) {
 			
-			$raw_amount = $ingredient['amt'];
+			$items_api = new Simmer_Recipe_Items;
+		
+			$ingredient = $items_api->get_item( $ingredient );
 			
-			if ( 'raw' == $filter ) {
-				$amount = $raw_amount;
-			} else {
-				$amount = $this->convert_amount_to_string( $raw_amount );
-			}
-			
-			$this->amount = $amount;
 		}
 		
-		if ( isset( $ingredient['unit'] ) ) {
-			
-			$raw_unit = $ingredient['unit'];
-			
-			if ( 'raw' == $filter ) {
-				$unit = $raw_unit;
-			} else {
-				$unit = $this->get_unit_label( $raw_unit, $raw_amount );
-			}
-			
-			$this->unit = $unit;
+		$this->id    = $ingredient->recipe_item_id;
+		$this->order = $ingredient->recipe_item_order;
+		
+		$this->amount      = $this->get_amount();
+		$this->unit        = $this->get_unit();
+		$this->description = $this->get_description();
+		
+	}
+	
+	/**
+	 * Get the amount.
+	 * 
+	 * @since 1.3.0
+	 *
+	 * @param  bool   $raw    Optional. Whether to get the unaltered amount. Default: false.
+	 * @return string $amount The ingredient amount.
+	 */
+	public function get_amount( $raw = false ) {
+		
+		$amount = simmer_get_recipe_item_meta( $this->id, 'amount', true );
+		
+		// Allow bypassing of the formatting and filter.
+		if ( $raw ) {
+			return $amount;
 		}
 		
-		if ( isset( $ingredient['desc'] ) ) {
-			$this->description = $ingredient['desc'];
+		$amount = $this->convert_amount_to_string( $amount );
+		
+		/**
+		 * Filter the ingredient amount.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param string $amount The ingredient amount.
+		 * @param int    $id     The recipe ID.
+		 */
+		$amount = apply_filters( 'simmer_recipe_ingredient_amount', $amount, $this->id );
+		
+		return $amount;
+	}
+	
+	/**
+	 * Get the unit of measure.
+	 * 
+	 * @since 1.3.0
+	 *
+	 * @param  bool   $raw  Optional. Whether to get the unaltered unit. Default: false.
+	 * @return string $unit The ingredient unit.
+	 */
+	public function get_unit( $raw = false ) {
+		
+		$unit = simmer_get_recipe_item_meta( $this->id, 'unit', true );
+		
+		// Allow bypassing of the formatting and filter.
+		if ( $raw ) {
+			return $unit;
 		}
+		
+		$unit = $this->get_unit_label( $unit );
+		
+		/**
+		 * Filter the ingredient unit of measure.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param string $unit The ingredient unit of measure.
+		 * @param int    $id   The recipe ID.
+		 */
+		$unit = apply_filters( 'simmer_recipe_ingredient_unit', $unit, $this->id );
+		
+		return $unit;
+	}
+	
+	/**
+	 * Get the description.
+	 * 
+	 * @since 1.3.0
+	 *
+	 * @param  bool   $raw         Optional. Whether to get the unaltered description. Default: false.
+	 * @return string $description The ingredient description.
+	 */
+	public function get_description( $raw = false ) {
+		
+		$description = simmer_get_recipe_item_meta( $this->id, 'description', true );
+		
+		// Allow bypassing of the filter.
+		if ( $raw ) {
+			return $description;
+		}
+		
+		/**
+		 * Filter the ingredient description.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param string $description The ingredient description.
+		 * @param int    $id          The recipe ID.
+		 */
+		$description = apply_filters( 'simmer_recipe_ingredient_description', $description, $this->id );
+		
+		return $description;
 	}
 	
 	/**
@@ -200,7 +292,7 @@ final class Simmer_Ingredient {
 		
 		if ( ! is_array( $unit ) ) {
 			
-			$units = Simmer_Ingredients::get_units();
+			$units = Simmer_Recipe_Ingredients::get_units();
 			
 			foreach( $units as $type => $units ) {
 				if ( isset( $units[ $unit ] ) ) {
@@ -230,6 +322,15 @@ final class Simmer_Ingredient {
 			return false;
 		}
 		
+		/**
+		 * Filter a single unit of measure's label.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $label The generated label.
+		 * @param string $unit  The raw unit slug.
+		 * @param int    $count The ingredient count. Used to determine singular vs. plural.
+		 */
 		$label = apply_filters( 'simmer_get_unit_label', $label, $unit, $count );
 		
 		return $label;

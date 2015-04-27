@@ -265,7 +265,7 @@ final class Simmer_Admin_Bulk_Add {
 		$first_word = strtok( $string, ' ' );
 		
 		// Get the available measurement units.
-		$units = Simmer_Ingredients::get_units();
+		$units = Simmer_Recipe_Ingredients::get_units();
 		$_units = array();
 		
 		// Remove unit types (volume, weight, etc...) from array.
