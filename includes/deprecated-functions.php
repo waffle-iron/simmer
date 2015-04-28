@@ -227,3 +227,33 @@ function simmer_format_machine_duration( $time ) {
 	
 	return $duration;
 }
+
+/**
+ * Get a specific ingredient.
+ * 
+ * @since 1.0.0
+ * 
+ * @param  int    $ingredient_id The ingredient item ID.
+ * @return object $ingredient    The single ingredient item.
+ */
+function simmer_get_ingredient( $ingredient_id ) {
+	
+	_simmer_deprecated_function( __FUNCTION__, '1.3.0', 'simmer_get_recipe_ingredient' );
+	
+	return simmer_get_recipe_ingredient( $ingredient_id );
+}
+
+/**
+ * Get a specific instruction.
+ * 
+ * @since 1.0.0
+ * 
+ * @param  int    $instruction_id The instruction item ID.
+ * @return object $instruction    The single instruction item.
+ */
+function simmer_get_instruction( $instruction_id ) {
+	
+	_simmer_deprecated_function( __FUNCTION__, '1.3.0', 'simmer_get_recipe_instruction' );
+	
+	return simmer_get_recipe_instruction( $instruction_id );
+}

@@ -214,115 +214,111 @@ final class Simmer_Admin_Recipes {
 		
 		/** Ingredients **/
 		
-		$_ingredients = array();
-		
-		if ( isset( $_POST['simmer_ingredients'] ) ) {
+		// Add or update ingredient items.
+		if ( isset( $_POST['simmer_ingredients'] ) && ! empty( $_POST['simmer_ingredients'] ) ) {
 			
-			$ingredients = $_POST['simmer_ingredients'];
-			
-			if ( is_array( $ingredients ) ) {
+			foreach ( $_POST['simmer_ingredients'] as $key => $ingredient ) {
 				
-				foreach ( $ingredients as $ingredient ) {
-					
-				 	if ( isset( $ingredient['desc'] ) && ! empty( $ingredient['desc'] ) ) {
-						
-						// Get the passed order.
-						$order = (int) $ingredient['order'];
-						
-						// Be sure we don't overwrite any items with the same order number.
-						if ( array_key_exists( $order, $_ingredients ) ) {
-							$order = $order + 1;
-						}
-						
-						$_ingredients[ $order ]['desc'] = $ingredient['desc'];
-						
-						// Check for an amount value.
-						if ( ! empty( $ingredient['amt'] ) ) {
-							
-							$amount = Simmer_Ingredient::convert_amount_to_float( $ingredient['amt'] );
-							
-							$_ingredients[ $order ]['amt'] = $amount;
-						}
-						
-						if ( ! empty( $ingredient['unit'] ) ) {
-							$_ingredients[ $order ]['unit'] = $ingredient['unit'];
-						}
-				 	}
-				 	
+				if ( empty( $ingredient['description'] ) ) {
+					continue;
 				}
+				
+				$amount = Simmer_Recipe_Ingredient::convert_amount_to_float( $ingredient['amount'] );
+				
+				if ( isset( $ingredient['id'] ) && $ingredient['id'] ) {
+					
+					$ingredient_id = simmer_update_recipe_ingredient( $ingredient['id'], array(
+						'amount'      => $amount,
+						'unit'        => $ingredient['unit'],
+						'description' => $ingredient['description'],
+						'order'       => $ingredient['order'],
+					) );
+					
+				} else {
+					
+					$ingredient_id = simmer_add_recipe_ingredient( get_the_ID(), $ingredient['description'], $amount, $ingredient['unit'], $ingredient['order'] );
+					
+				}
+				
+				/**
+				 * Fire after saving a recipe ingredient.
+				 *
+				 * @since 1.3.0
+				 *
+				 * @param int $ingredient_id The ingredient ID.
+				 * @param int $id            The recipe ID.
+				 */
+				do_action( 'simmer_admin_save_recipe_ingredient', $ingredient_id, $id );
 			}
 		}
 		
-		// Maybe save the ingredients.
-		if ( ! empty( $_ingredients ) ) {
+		// Delete 'removed' ingredient items.
+		if ( isset( $_POST['simmer_ingredients_remove'] ) && ! empty( $_POST['simmer_ingredients_remove'] ) ) {
 			
-			// Sort the ingredients by index.
-			ksort( $_ingredients, SORT_NUMERIC );
-			
-			// Reset the indexes to start at zero.
-			$_ingredients = array_values( $_ingredients );
-			
-			update_post_meta( $id, '_recipe_ingredients', $_ingredients );
-			
-		} else {
-			
-			delete_post_meta( $id, '_recipe_ingredients' );
-			
+			foreach ( $_POST['simmer_ingredients_remove'] as $ingredient_id ) {
+				
+				simmer_delete_recipe_ingredient( $ingredient_id );
+				
+				/**
+				 * Fire after deleting a recipe ingredient.
+				 *
+				 * @since 1.3.0
+				 */
+				do_action( 'simmer_admin_delete_recipe_ingredient' );
+			}
 		}
 		
 		/** Instructions **/
 		
-		$_instructions = array();
-		
-		if ( isset( $_POST['simmer_instructions'] ) ) {
+		// Add or update instruction items.
+		if ( isset( $_POST['simmer_instructions'] ) && ! empty( $_POST['simmer_instructions'] ) ) {
 			
-			$instructions = $_POST['simmer_instructions'];
-			
-			if ( is_array( $instructions ) ) {
+			foreach ( $_POST['simmer_instructions'] as $key => $instruction ) {
 				
-				foreach ( $instructions as $instruction ) {
-					
-					if ( isset( $instruction['desc'] ) && ! empty( $instruction['desc'] ) ) {
-						
-						// Get the passed order.
-						$order = (int) $instruction['order'];
-						
-						// Be sure we don't overwrite any items with the same order number.
-						if ( array_key_exists( $order, $_instructions ) ) {
-							$order = $order + 1;
-						}
-						
-						if ( isset( $instruction['heading'] ) && 'true' == $instruction['heading'] ) {
-							$_instructions[ $order ]['heading'] = 1;
-						} else {
-							$_instructions[ $order ]['heading'] = 0;
-						}
-						
-						$_instructions[ $order ]['desc'] = $instruction['desc'];
-					 	
-					 	$i++;
-					}
-				 	
+				if ( empty( $instruction['description'] ) ) {
+					continue;
 				}
 				
+				if ( isset( $instruction['id'] ) && $instruction['id'] ) {
+					
+					$instruction_id = simmer_update_recipe_instruction( $instruction['id'], array(
+						'description' => $instruction['description'],
+						'is_heading'  => $instruction['heading'],
+						'order'       => $instruction['order'],
+					) );
+					
+				} else {
+					
+					$instruction_id = simmer_add_recipe_instruction( get_the_ID(), $instruction['description'], $instruction['heading'], $instruction['order'] );
+					
+				}
+				
+				/**
+				 * Fire after saving a recipe instruction.
+				 *
+				 * @since 1.3.0
+				 *
+				 * @param int $instruction_id The instruction ID.
+				 * @param int $id            The recipe ID.
+				 */
+				do_action( 'simmer_admin_save_recipe_instruction', $instruction_id, $id );
 			}
 		}
 		
-		// Maybe save the instructions.
-		if ( ! empty( $_instructions ) ) {
+		// Delete 'removed' instruction items.
+		if ( isset( $_POST['simmer_instructions_remove'] ) && ! empty( $_POST['simmer_instructions_remove'] ) ) {
 			
-			// Sort the instructions by index.
-			ksort( $_instructions, SORT_NUMERIC );
-			
-			// Reset the indexes to start at zero.
-			$_instructions = array_values( $_instructions );
-			
-			update_post_meta( $id, '_recipe_instructions', $_instructions );
-			
-		} else {
-			
-			delete_post_meta( $id, '_recipe_instructions' );
-			
+			foreach ( $_POST['simmer_instructions_remove'] as $instruction_id ) {
+				
+				simmer_delete_recipe_instruction( $instruction_id );
+				
+				/**
+				 * Fire after deleting a recipe instruction.
+				 *
+				 * @since 1.3.0
+				 */
+				do_action( 'simmer_admin_delete_recipe_instruction' );
+			}
 		}
 			
 		/** Information **/

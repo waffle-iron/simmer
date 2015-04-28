@@ -8,6 +8,83 @@
  */
 
 /**
+ * Get a recipe item by its ID.
+ *
+ * @since 1.3.0
+ *
+ * @param  int         $item_id The ID of the desired item.
+ * @return object|bool $item    The requested item or false on failure.
+ */
+function simmer_get_recipe_item( $item_id ) {
+	
+	$items_api = new Simmer_Recipe_Items;
+		
+	$item = $items_api->get_item( $item_id );
+	
+	return $item;
+}
+
+/**
+ * Add a recipe item to the database.
+ *
+ * @since 1.3.0
+ *
+ * @param  int      $recipe_id The ID of the recipe for which the item will be added.
+ * @param  string   $type      The item type.
+ * @param  int      $order     Optional. The item order number. Default: 0.
+ * @return int|bool $result    The ID of the newly added item or false on failure.
+ */
+function simmer_add_recipe_item( $recipe_id, $type, $order = 0 ) {
+	
+	$items_api = new Simmer_Recipe_Items;
+		
+	$item_id = $items_api->add_item( $recipe_id, $type, $order );
+	
+	return $item_id;
+}
+
+/**
+ * Update an existing recipe item.
+ *
+ * @since 1.3.0
+ *
+ * @param int $item_id The ID of the item to update.
+ * @param array $args {
+ *     The values to update. All values default to their existing database values.
+ *
+ *     @type string $recipe_item_type  The item type.
+ *     @type int    $recipe_id         The ID of the associated recipe.
+ *     @type int    $recipe_item_order The item's order.
+ * }
+ * @return bool $result Whether the item was updated.
+ */
+function simmer_update_recipe_item( $item_id, $args ) {
+	
+	$items_api = new Simmer_Recipe_Items;
+		
+	$result = $items_api->update_item( $item_id, $args );
+	
+	return $result;
+}
+
+/**
+ * Delete an existing recipe item from the database.
+ *
+ * @since 1.3.0
+ *
+ * @param  int  $item_id The ID of the item to delete.
+ * @return bool $result  Whether the item was deleted.
+ */
+function simmer_delete_recipe_item( $item_id ) {
+	
+	$items_api = new Simmer_Recipe_Items;
+		
+	$result = $items_api->delete_item( $item_id );
+	
+	return $result;
+}
+
+/**
  * Get metadata for an item.
  *
  * @since 1.3.0
@@ -20,9 +97,9 @@
  */
 function simmer_get_recipe_item_meta( $item_id, $meta_key = '', $single = false ) {
 	
-	$items_api = new Simmer_Recipe_Item_Meta;
+	$item_meta_api = new Simmer_Recipe_Item_Meta;
 	
-	$metadata = $items_api->get_item_meta( $item_id, $meta_key, $single );
+	$metadata = $item_meta_api->get_item_meta( $item_id, $meta_key, $single );
 	
 	return $metadata;
 }
@@ -42,9 +119,9 @@ function simmer_get_recipe_item_meta( $item_id, $meta_key = '', $single = false 
  */
 function simmer_add_recipe_item_meta( $item_id, $meta_key, $meta_value, $unique = false ) {
 	
-	$items_api = new Simmer_Recipe_Item_Meta;
+	$item_meta_api = new Simmer_Recipe_Item_Meta;
 	
-	$result = $items_api->add_item_meta( $item_id, $meta_key, $meta_value, $unique );
+	$result = $item_meta_api->add_item_meta( $item_id, $meta_key, $meta_value, $unique );
 	
 	return $result;
 }
@@ -68,9 +145,9 @@ function simmer_add_recipe_item_meta( $item_id, $meta_key, $meta_value, $unique 
  */
 function simmer_update_recipe_item_meta( $item_id, $meta_key, $meta_value, $prev_value = '' ) {
 	
-	$items_api = new Simmer_Recipe_Item_Meta;
+	$item_meta_api = new Simmer_Recipe_Item_Meta;
 	
-	$result = $items_api->update_item_meta( $item_id, $meta_key, $meta_value, $prev_value );
+	$result = $item_meta_api->update_item_meta( $item_id, $meta_key, $meta_value, $prev_value );
 	
 	return $result;
 }
@@ -89,9 +166,9 @@ function simmer_update_recipe_item_meta( $item_id, $meta_key, $meta_value, $prev
  */
 function simmer_delete_recipe_item_meta( $item_id, $meta_key, $meta_value = '' ) {
 	
-	$items_api = new Simmer_Recipe_Item_Meta;
+	$item_meta_api = new Simmer_Recipe_Item_Meta;
 	
-	$result = $items_api->delete_item_meta( $item_id, $meta_key, $meta_value );
+	$result = $item_meta_api->delete_item_meta( $item_id, $meta_key, $meta_value );
 	
 	return $result;
 }

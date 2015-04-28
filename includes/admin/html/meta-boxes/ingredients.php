@@ -28,29 +28,34 @@
 	<tbody>
 		
 		<?php // Get the recipe's ingredients.
-		$ingredients = simmer_get_the_ingredients( get_the_ID(), 'raw' ); ?>
+		$ingredients = simmer_get_the_ingredients(); ?>
 		
 		<?php if ( ! empty( $ingredients ) ) : ?>
 			
-			<?php foreach ( $ingredients as $order => $ingredient ) : ?>
+			<?php foreach ( $ingredients as $key => $ingredient ) : ?>
 				
 				<tr class="simmer-ingredient simmer-row">
 							
 					<td class="simmer-sort">
-						<input class="hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[<?php echo $order; ?>][order]" value="<?php echo $order; ?>" />
+						<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $ingredient->order ); ?>" />
+						<input class="simmer-id" name="simmer_ingredients[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $ingredient->id ); ?>" />
 						<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 					</td>
 					<td class="simmer-amt">
-						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo $order; ?>][amt]" value="<?php echo esc_html( $ingredient->amount ); ?>" placeholder="2" />
+						
+						<?php // Filter whether ingredient amounts should be raw (floats) in the admin.
+						$amount = ( apply_filters( 'simmer_admin_raw_ingredient_amounts', false ) ) ? $ingredient->amount : $ingredient->convert_amount_to_string( $ingredient->amount ); ?>
+						
+						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][amount]" value="<?php echo esc_html( $amount ); ?>" placeholder="2" />
 					</td>
 					<td class="simmer-unit">
 						<?php simmer_units_select_field( array(
-							'name'     => 'simmer_ingredients[' . $order . '][unit]',
+							'name'     => 'simmer_ingredients[' . absint( $key ) . '][unit]',
 							'selected' => $ingredient->unit,
-						), $ingredient->convert_amount_to_float( $ingredient->amount ) ); ?>
+						), $ingredient->amount ); ?>
 					</td>
 					<td class="simmer-desc">
-						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo $order; ?>][desc]" value="<?php echo esc_html( $ingredient->description ); ?>" placeholder="onions, diced" />
+						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" placeholder="onions, diced" />
 					</td>
 					<td class="simmer-remove">
 						<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="ingredient" title="Remove"></a>
@@ -69,7 +74,7 @@
 					<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 				</td>
 				<td class="simmer-amt">
-					<input type="text" style="width:100%;" name="simmer_ingredients[0][amt]" value="" placeholder="2" />
+					<input type="text" style="width:100%;" name="simmer_ingredients[0][amount]" value="" placeholder="2" />
 				</td>
 				<td class="simmer-unit">
 					<?php simmer_units_select_field( array(
@@ -77,7 +82,7 @@
 					) ); ?>
 				</td>
 				<td class="simmer-desc">
-					<input type="text" style="width:100%;" name="simmer_ingredients[0][desc]" value="" placeholder="onions, diced" />
+					<input type="text" style="width:100%;" name="simmer_ingredients[0][description]" value="" placeholder="onions, diced" />
 				</td>
 				<td class="simmer-remove">
 					<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="ingredient" title="Remove"></a>

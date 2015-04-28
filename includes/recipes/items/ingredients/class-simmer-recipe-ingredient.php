@@ -74,14 +74,17 @@ final class Simmer_Recipe_Ingredient {
 		
 			$ingredient = $items_api->get_item( $ingredient );
 			
+			if ( ! $ingredient ) {
+				return false;
+			}
 		}
 		
 		$this->id    = $ingredient->recipe_item_id;
 		$this->order = $ingredient->recipe_item_order;
 		
-		$this->amount      = $this->get_amount();
-		$this->unit        = $this->get_unit();
-		$this->description = $this->get_description();
+		$this->amount      = $this->get_amount( true );
+		$this->unit        = $this->get_unit( true );
+		$this->description = $this->get_description( true );
 		
 	}
 	
@@ -183,12 +186,11 @@ final class Simmer_Recipe_Ingredient {
 	 * Convert an ingredient amount float to a string.
 	 *
 	 * @since  1.0.0
-	 * @access private
 	 
 	 * @param  float      $amount The amount to convert.
 	 * @return string|int $amount The converted amount.
 	 */
-	private function convert_amount_to_string( $amount ) {
+	public static function convert_amount_to_string( $amount ) {
 		
 		if ( ! is_numeric( $amount ) ) {
 			return false;

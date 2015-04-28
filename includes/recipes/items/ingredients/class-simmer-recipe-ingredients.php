@@ -44,7 +44,7 @@ final class Simmer_Recipe_Ingredients {
 	 *
 	 * @return string $type The ingredients list type.
 	 */
-	function get_list_type() {
+	public function get_list_type() {
 		
 		$type = get_option( 'simmer_ingredients_list_type', 'ul' );
 		
@@ -60,9 +60,168 @@ final class Simmer_Recipe_Ingredients {
 		return $type;
 	}
 	
-	public function add_ingredient( $amount = '', $unit = '', $description ) {
+	/**
+	 * Get an existing ingredient.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param int          $ingredient_id The ingredient ID.
+	 * @return object|bool $ingredient    The ingredient object on success, false on failure.
+	 */
+	public function get_ingredient( $ingredient_id ) {
 		
+		$ingredient = new Simmer_Recipe_Ingredient( $ingredient_id );
 		
+		if ( is_null( $ingredient->id ) ) {
+			$ingredient = false;
+		}
+		
+		return $ingredient;
+	}
+	
+	/**
+	 * Add a new ingredient.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  int      $recipe_id   The recipe ID.
+	 * @param  string   $description The ingredient description.
+	 * @param  float    $amount      Optional. The ingredient amount.
+	 * @param  string   $unit        Optional. The ingredient unit.
+	 * @param  int      $order       Optional. The ingredient order number.
+	 * @return int|bool $result      The new ingredient's ID or false on failure.
+	 */
+	public function add_ingredient( $recipe_id, $description, $amount = null, $unit = '', $order = 0 ) {
+		
+		if ( ! absint( $recipe_id ) ) {
+			return false;
+		}
+		
+		// Try adding the item to the database.
+		$item_id = simmer_add_recipe_item( $recipe_id, 'ingredient', $order );
+		
+		// If successful, add the metadata.
+		if ( $item_id ) {
+			
+			simmer_add_recipe_item_meta( $item_id, 'description', $description );
+			
+			$amount = floatval( $amount );
+			
+			if ( ! empty( $amount ) ) {
+				simmer_add_recipe_item_meta( $item_id, 'amount', $amount );
+			}
+			
+			$unit = sanitize_text_field( $unit );
+			
+			if ( ! empty( $unit ) ) {
+				simmer_add_recipe_item_meta( $item_id, 'unit', $unit );
+			}
+		}
+		
+		return $item_id;
+	}
+	
+	/**
+	 * Update an existing ingredient.
+	 *
+	 * @since 1.3.0
+	 * 
+	 * @param int   $ingredient_id The ID for the ingredient to update.
+	 * @param array $args {
+	 *     The updated ingredient values.
+	 *     
+	 *     @type int    $recipe_id   The recipe ID.
+	 *     @type float  $amount      The ingredient amount.
+	 *     @type string $unit        Optional. The ingredient unit.
+	 *     @type string $description Optional. The ingredient description.
+	 *     @type int    $order       Optional. The ingredient order number.
+	 * }
+	 * @return int|bool $result The ingredient ID or false on failure.
+	 */
+	public function update_ingredient( $ingredient_id, $args ) {
+		
+		$exists = simmer_get_recipe_ingredient( $ingredient_id );
+		
+		if ( ! $exists ) {
+			return false;
+		}
+		
+		$item_args = array();
+		
+		if ( isset( $args['recipe_id'] ) ) {
+			
+			$recipe_id = absint( $args['recipe_id'] );
+			
+			if ( $recipe_id ) {
+				$item_args['recipe_id'] = $recipe_id;
+			}
+		}
+		
+		if ( isset( $args['order'] ) ) {
+			
+			if ( is_numeric( $args['order'] ) ) {
+				$item_args['recipe_item_order'] = absint( $args['order'] );
+			}
+		}
+		
+		if ( ! empty( $item_args ) ) {
+			simmer_update_recipe_item( $ingredient_id, $item_args );
+		}
+		
+		if ( isset( $args['amount'] ) ) {
+			
+			$amount = floatval( $args['amount'] );
+			
+			if ( $amount ) {
+				simmer_update_recipe_item_meta( $ingredient_id, 'amount', $amount );
+			} else {
+				simmer_delete_recipe_item_meta( $ingredient_id, 'amount' );
+			}
+		}
+		
+		if ( isset( $args['unit'] ) ) {
+			
+			$unit = sanitize_text_field( $args['unit'] );
+			
+			if ( ! empty( $unit ) ) {
+				simmer_update_recipe_item_meta( $ingredient_id, 'unit', $unit );
+			} else {
+				simmer_delete_recipe_item_meta( $ingredient_id, 'unit' );
+			}
+		}
+		
+		if ( isset( $args['description'] ) ) {
+			
+			if ( ! empty( $args['description'] ) ) {
+				simmer_update_recipe_item_meta( $ingredient_id, 'description', $args['description'] );
+			} else {
+				simmer_delete_recipe_item_meta( $ingredient_id, 'description' );
+			}
+		}
+		
+		return $ingredient_id;
+	}
+	
+	/**
+	 * Delete an existing ingredient.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  int  $ingredient_id The ID for the ingredient you want to delete.
+	 * @return bool $result        Whether the ingredient was deleted.
+	 */
+	public function delete_ingredient( $ingredient_id ) {
+		
+		$result = simmer_delete_recipe_item( $ingredient_id );
+		
+		if ( $result ) {
+			
+			simmer_delete_recipe_item_meta( $ingredient_id, 'amount' );
+			simmer_delete_recipe_item_meta( $ingredient_id, 'unit' );
+			simmer_delete_recipe_item_meta( $ingredient_id, 'description' );
+		}
+		
+		return $result;
 	}
 	
 	/**

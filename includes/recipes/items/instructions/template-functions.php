@@ -7,11 +7,6 @@
  * @package Simmer/Recipes/Items/Instructions
  */
 
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Get the instructions for a recipe.
  *
@@ -209,7 +204,7 @@ function simmer_list_instructions( $args = array() ) {
 					
 					// Build the heading.
 					$output .= '<' . sanitize_html_class( $args['item_heading_type'] ) . '>';
-						$output .= esc_html( $instruction['desc'] );
+						$output .= esc_html( $instruction->get_description() );
 					$output .= '</' . sanitize_html_class( $args['item_heading_type'] ) . '>';
 					
 					// Build the new list's opening tag based on the attributes above.

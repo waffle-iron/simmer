@@ -99,7 +99,7 @@ function simmer_units_select_field( $args = '', $count = 1 ) {
 				foreach ( $units as $unit => $labels ) {
 					
 					$output .= '<option value="' . esc_attr( $unit ) . '" ' . selected( $unit, $args['selected'], false ) . '>';
-						$output .= esc_html( Simmer_Ingredient::get_unit_label( $labels, $count ) );
+						$output .= esc_html( Simmer_Recipe_Ingredient::get_unit_label( $labels, $count ) );
 					$output .= '</option>';
 					
 				}

@@ -56,13 +56,16 @@ final class Simmer_Recipe_Instruction {
 		
 			$instruction = $items_api->get_item( $instruction );
 			
+			if ( ! $instruction ) {
+				return false;
+			}
 		}
 		
 		$this->id    = $instruction->recipe_item_id;
 		$this->order = $instruction->recipe_item_order;
 		
-		$this->description = $this->get_description();
-		$this->is_heading  = $this->is_heading();
+		$this->description = $this->get_description( true );
+		$this->is_heading  = $this->is_heading( true );
 	}
 	
 	public function get_description( $raw = false ) {
@@ -78,9 +81,13 @@ final class Simmer_Recipe_Instruction {
 		return $description;
 	}
 	
-	public function is_heading() {
+	public function is_heading( $raw = false ) {
 		
 		$is_heading = simmer_get_recipe_item_meta( $this->id, 'is_heading', true );
+		
+		if ( $raw ) {
+			return $is_heading;
+		}
 		
 		$is_heading = apply_filters( 'simmer_recipe_instruction_is_heading', $is_heading, $this->id );
 		

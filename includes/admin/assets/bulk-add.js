@@ -152,7 +152,8 @@ var simmerBulkModal;
 				
 			} );
 			
-			clone.find( '.simmer-sort input' ).attr( 'value', parseInt( count ) );
+			clone.find( '.simmer-sort input.simmer-order' ).attr( 'value', parseInt( count ) );
+			clone.find( '.simmer-sort input.simmer-id' ).attr( 'value', '' );
 			
 			clone.insertAfter( row );
 			

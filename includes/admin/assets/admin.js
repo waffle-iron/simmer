@@ -45,7 +45,7 @@ jQuery( document ).ready( function( $ ) {
 		        	
 		    	} );
 		    	
-		    	$( this ).find( '.simmer-sort input' ).attr( 'value', rowIndex );
+		    	$( this ).find( '.simmer-sort input.simmer-order' ).attr( 'value', rowIndex );
 		    	
 		    } );
 
@@ -81,7 +81,7 @@ jQuery( document ).ready( function( $ ) {
 			
 		} );
 		
-		clone.find( '.simmer-sort input' ).attr( 'value', parseInt( count ) );
+		clone.find( '.simmer-sort input.simmer-order' ).attr( 'value', parseInt( count ) );
 		
 		clone.insertAfter( row );
 		
@@ -106,6 +106,8 @@ jQuery( document ).ready( function( $ ) {
 		
 		var type  = $( this ).data( 'type' );
 		
+		var item_id = $( row ).find( '.simmer-id' ).val();
+		
 		if ( count == 1 && 'heading' != type ) {
 		
 			switch( type ) {
@@ -119,6 +121,9 @@ jQuery( document ).ready( function( $ ) {
 			
 		} else {
 			
+			if ( item_id.length ) {
+				$( row ).parents( '.inside' ).prepend( '<input name="simmer_ingredients_remove[]" type="hidden" value=" ' + item_id + '" />' );
+			}
 			
 			// Target the next row.
 			var nextRow = $( row ).next()
@@ -140,7 +145,7 @@ jQuery( document ).ready( function( $ ) {
 			}
 			
 		}
-
+		
 		$( rows ).each( function( rowIndex ) {
 			
 	        $( this ).find( 'input, select, textarea' ).each( function() {

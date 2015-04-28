@@ -9,9 +9,11 @@
 <?php wp_nonce_field( 'simmer_save_recipe_meta', 'simmer_nonce' ); ?>
 
 <?php // Build the formatted times.
-$prep_time  = (int) simmer_get_the_time( 'prep',  $recipe->ID );
-$cook_time  = (int) simmer_get_the_time( 'cook',  $recipe->ID );
-$total_time = (int) simmer_get_the_time( 'total', $recipe->ID );
+$durations_api = new Simmer_Recipe_Durations;
+
+$prep_time  = (int) $durations_api->get_duration( 'prep',  $recipe->ID );
+$cook_time  = (int) $durations_api->get_duration( 'cook',  $recipe->ID );
+$total_time = (int) $durations_api->get_duration( 'total', $recipe->ID );
 
 if ( $prep_time ) {
 	$prep_h = zeroise( floor( $prep_time / 60 ), 2 );

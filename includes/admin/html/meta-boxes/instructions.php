@@ -6,11 +6,7 @@
  */
 ?>
 
-<?php wp_nonce_field( 'simmer_save_recipe_meta', 'simmer_nonce' );
-
-$instructions = array();
-
-$instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
+<?php wp_nonce_field( 'simmer_save_recipe_meta', 'simmer_nonce' ); ?>
 
 <table width="100%" cellspacing="5" class="simmer-list-table instructions">
 	
@@ -29,11 +25,11 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 		
 		<tr class="simmer-heading simmer-row-hidden simmer-row">
 			<td class="simmer-sort">
-				<input class="hide-if-js" style="width:100%;" type="text" name="simmer_instructions[0][order]" value="0" />
+				<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_instructions[0][order]" value="0" />
 				<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 			</td>
 			<td class="simmer-desc">
-				<input type="text" name="simmer_instructions[0][desc]" value="" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer::SLUG ); ?></span>
+				<input type="text" name="simmer_instructions[0][description]" value="" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer::SLUG ); ?></span>
 				<input class="simmer-heading-input" type="hidden" name="simmer_instructions[0][heading]" value="true" />
 			</td>
 			<td class="simmer-remove">
@@ -41,20 +37,23 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 			</td>
 		</tr>
 		
-		<?php if ( ! empty( $instructions ) ) :
+		<?php $instructions = simmer_get_the_instructions(); ?>
+		
+		<?php if ( ! empty( $instructions ) ) : ?>
 			
-			foreach ( $instructions as $order => $instruction ) :
+			<?php foreach ( $instructions as $key => $instruction ) : ?>
 				
-				if ( isset( $instruction['heading'] ) && 1 === $instruction['heading'] ) : ?>
+				<?php if ( $instruction->is_heading() ) : ?>
 					
 					<tr class="simmer-heading simmer-row">
 						<td class="simmer-sort">
-							<input class="hide-if-js" style="width:100%;" type="text" name="simmer_instructions[<?php echo $order; ?>][order]" value="<?php echo $order; ?>" />
+							<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_instructions[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $instruction->order ); ?>" />
+							<input class="simmer-id" name="simmer_instructions[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $instruction->id ); ?>" />
 							<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 						</td>
 						<td class="simmer-desc">
-							<input type="text" name="simmer_instructions[<?php echo $order; ?>][desc]" value="<?php echo $instruction['desc']; ?>" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer::SLUG ); ?></span>
-							<input class="simmer-heading-input" type="hidden" name="simmer_instructions[<?php echo $order; ?>][heading]" value="true" />
+							<input type="text" name="simmer_instructions[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $instruction->description ); ?>" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer::SLUG ); ?></span>
+							<input class="simmer-heading-input" type="hidden" name="simmer_instructions[<?php echo absint( $key ); ?>][heading]" value="1" />
 						</td>
 						<td class="simmer-remove">
 							<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="heading" title="Remove"></a>
@@ -66,12 +65,13 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 					<tr class="simmer-instruction simmer-row">
 								
 						<td class="simmer-sort">
-							<input class="hide-if-js" style="width:100%;" type="text" name="simmer_instructions[<?php echo $order; ?>][order]" value="<?php echo $order; ?>" />
+							<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_instructions[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $instruction->order ); ?>" />
+							<input class="simmer-id" name="simmer_instructions[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $instruction->id ); ?>" />
 							<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 						</td>
 						<td class="simmer-desc">
-							<textarea style="width:100%;" name="simmer_instructions[<?php echo $order; ?>][desc]" placeholder="Preheat oven to 450 degrees. In a large bowl, mix stuff."><?php echo $instruction['desc']; ?></textarea>
-							<input type="hidden" name="simmer_instructions[<?php echo $order; ?>][heading]" value="false" />
+							<textarea style="width:100%;" name="simmer_instructions[<?php echo absint( $key ); ?>][description]" placeholder="Preheat oven to 450 degrees. In a large bowl, mix stuff."><?php echo esc_textarea( $instruction->description ); ?></textarea>
+							<input type="hidden" name="simmer_instructions[<?php echo absint( $key ); ?>][heading]" value="0" />
 						</td>
 						<td class="simmer-remove">
 							<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="instruction" title="Remove"></a>
@@ -88,12 +88,12 @@ $instructions = get_post_meta( $recipe->ID, '_recipe_instructions', true ); ?>
 			<tr class="simmer-instruction simmer-row">
 				
 				<td class="simmer-sort">
-					<input class="hide-if-js" style="width:100%;" type="text" name="simmer_instructions[0][order]" value="0" />
+					<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_instructions[0][order]" value="0" />
 					<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 				</td>
 				<td class="simmer-desc">
-					<textarea style="width:100%;" name="simmer_instructions[0][desc]" placeholder="Preheat oven to 450 degrees. In a large bowl, mix stuff."></textarea>
-					<input type="hidden" name="simmer_instructions[0][heading]" value="false" />
+					<textarea style="width:100%;" name="simmer_instructions[0][description]" placeholder="Preheat oven to 450 degrees. In a large bowl, mix stuff."></textarea>
+					<input type="hidden" name="simmer_instructions[0][heading]" value="0" />
 				</td>
 				<td class="simmer-remove">
 					<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="instruction" title="Remove"></a>

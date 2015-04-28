@@ -202,7 +202,7 @@ final class Simmer_Admin_Bulk_Add {
 			
 			// Format the amount.
 			$amount = trim( $amount_string );
-			$amount = Simmer_Ingredient::convert_amount_to_float( $amount );
+			$amount = Simmer_Recipe_Ingredient::convert_amount_to_float( $amount );
 			
 			// Isolate the second word to check for fractions or floats.
 			$string = substr( $string, $amount_length );
@@ -222,7 +222,7 @@ final class Simmer_Admin_Bulk_Add {
 				
 				// Format the fraction to a float.
 				$fraction_amount = trim( $fraction_string );
-				$fraction_amount = Simmer_Ingredient::convert_amount_to_float( $fraction_amount );
+				$fraction_amount = Simmer_Recipe_Ingredient::convert_amount_to_float( $fraction_amount );
 				
 				// Add the two together for one final value.
 				$amount = $amount + $fraction_amount;
