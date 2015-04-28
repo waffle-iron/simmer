@@ -68,6 +68,14 @@ final class Simmer_Recipe_Instruction {
 		$this->is_heading  = $this->is_heading( true );
 	}
 	
+	/**
+	 * Get the instruction description.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  bool   $raw         Whether to get the description unaltered from the database.
+	 * @return string $description The instruction description.
+	 */
 	public function get_description( $raw = false ) {
 		
 		$description = simmer_get_recipe_item_meta( $this->id, 'description', true );
@@ -81,6 +89,14 @@ final class Simmer_Recipe_Instruction {
 		return $description;
 	}
 	
+	/**
+	 * Determine if the instruction is a heading.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  bool   $raw        Whether to get the heading status unaltered from the database.
+	 * @return string $is_heading Whether the instruction is a heading..
+	 */
 	public function is_heading( $raw = false ) {
 		
 		$is_heading = simmer_get_recipe_item_meta( $this->id, 'is_heading', true );
