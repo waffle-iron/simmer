@@ -52,6 +52,30 @@ final class Simmer_Recipe {
 	}
 	
 	/**
+	 * Get the items that belong to the recipe.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  string $type  Optional. The type of items to get. If blank, all items
+	 *                       will be returned. Default: all items.
+	 * @return array  $items The attached items.
+	 */
+	public function get_items( $type = '' ) {
+		
+		$args = array();
+		
+		if ( $type ) {
+			$args['type'] = esc_attr( $type );
+		}
+		
+		$items_api = new Simmer_Recipe_Items;
+		
+		$items = (array) $items_api->get_items( $this->id, $args );
+		
+		return $items;
+	}
+	
+	/**
 	 * Get the ingredients.
 	 *
 	 * @since 1.3.0
@@ -61,11 +85,7 @@ final class Simmer_Recipe {
 	 */
 	public function get_ingredients() {
 		
-		$items_api = new Simmer_Recipe_Items;
-		
-		$items = (array) $items_api->get_items( $this->id, array(
-			'type' => 'ingredient',
-		) );
+		$items = $this->get_items( 'ingredient' );
 		
 		$ingredients = array();
 		
@@ -97,11 +117,7 @@ final class Simmer_Recipe {
 	 */
 	public function get_instructions() {
 		
-		$items_api = new Simmer_Recipe_Items;
-		
-		$items = (array) $items_api->get_items( $this->id, array(
-			'type' => 'instruction',
-		) );
+		$items = $this->get_items( 'instruction' );
 		
 		$instructions = array();
 		
