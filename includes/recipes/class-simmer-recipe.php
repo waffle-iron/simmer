@@ -72,6 +72,16 @@ final class Simmer_Recipe {
 		
 		$items = (array) $items_api->get_items( $this->id, $args );
 		
+		/**
+		 * Filter a recipe's retrieved items.
+		 *
+		 * @since 1.3.0
+		 *
+		 * @param array $items     The retrieved items.
+		 * @param int   $recipe_id The recipe ID.
+		 */
+		$items = apply_filters( 'simmer_get_recipe_items', $items, $this->id );
+		
 		return $items;
 	}
 	
