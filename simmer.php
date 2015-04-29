@@ -42,14 +42,3 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );
 
 // After all other plugins are loaded, instantiate Simmer.
 Simmer::get_instance();
-
-// Only do the following when in the admin & not AJAXing something.
-if ( is_admin() ) {
-	
-	/**
-	 * Require the plugins list table row customizing class.
-	 */
-	require_once( plugin_dir_path( __FILE__ ) . 'includes/admin/settings/class-simmer-plugins-list-table-row.php' );
-	
-	add_action( 'admin_init', array( 'Simmer_Plugins_List_Table_Row', 'get_instance' ) );
-}

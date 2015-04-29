@@ -133,6 +133,11 @@ final class Simmer_Admin {
 		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-shortcode-ui.php' );
 		
 		$shortcode_ui = new Simmer_Admin_Shortcode_UI();
+		
+		/**
+		 * Require the plugins list table row customizing class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'settings/class-simmer-plugins-list-table-row.php' );
 	}
 	
 	/**
@@ -147,6 +152,9 @@ final class Simmer_Admin {
 		
 		// Enqueue the custom Javascript files.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		
+		// Add the plugin list table row settings link.
+		add_action( 'admin_init', array( 'Simmer_Plugins_List_Table_Row', 'get_instance' ) );
 	}
 	
 	/**
