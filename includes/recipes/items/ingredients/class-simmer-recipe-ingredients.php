@@ -23,7 +23,7 @@ final class Simmer_Recipe_Ingredients {
 	 */
 	public function get_list_heading() {
 		
-		$heading = get_option( 'simmer_ingredients_list_heading', __( 'Ingredients', Simmer::SLUG ) );
+		$heading = get_option( 'simmer_ingredients_list_heading', __( 'Ingredients', Simmer()->domain ) );
 		
 		/**
 		 * Allow others to filter the ingredients list heading text.

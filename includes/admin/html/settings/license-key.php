@@ -20,7 +20,7 @@
 	
 	<label for="simmer_license_deactivate">
 		<input id="simmer_license_deactivate" name="simmer_license[deactivate]" type="checkbox" value="1" />
-		<?php _e( 'Remove', Simmer::SLUG ); ?>
+		<?php _e( 'Remove', Simmer()->domain ); ?>
 	</label>
 	
 <?php else : ?>

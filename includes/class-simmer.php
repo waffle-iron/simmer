@@ -44,7 +44,16 @@ final class Simmer {
 	 *
 	 * @var string $version
 	 */
-	public $version = Simmer::VERSION;
+	public $version = self::VERSION;
+	
+	/**
+	 * The plugin domain.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var string $domain
+	 */
+	public $domain = self::SLUG;
 	
 	/**
 	 * The admin class.
@@ -131,7 +140,7 @@ final class Simmer {
 	 */
 	public function __clone() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', self::SLUG ), self::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', $this->domain ), $this->version );
 	}
 	
 	/**
@@ -141,7 +150,7 @@ final class Simmer {
 	 */
 	public function __wakeup() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', self::SLUG ), self::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', $this->domain ), $this->version );
 	}
 	
 	/** Private Methods **/
@@ -265,21 +274,21 @@ final class Simmer {
 	public function load_textdomain() {
 		
 		$locale = get_locale();
-		$locale = apply_filters( 'plugin_locale',  $locale, self::SLUG );
+		$locale = apply_filters( 'plugin_locale',  $locale, $this->domain );
 		
-		$mofile        = sprintf( self::SLUG . '-%s.mo', $locale );
+		$mofile        = sprintf( $this->domain . '-%s.mo', $locale );
 		$mofile_local  = plugin_dir_path( dirname( __FILE__ ) ) . 'languages/' . $mofile;
-		$mofile_global = WP_LANG_DIR . '/' . self::SLUG . '/' . $mofile;
+		$mofile_global = WP_LANG_DIR . '/' . $this->domain . '/' . $mofile;
 		
 		if ( file_exists( $mofile_local ) ) {
-			return load_textdomain( self::SLUG, $mofile_local );
+			return load_textdomain( $this->domain, $mofile_local );
 		}
 		
 		if ( file_exists( $mofile_global ) ) {
-			return load_textdomain( self::SLUG, $mofile_global );
+			return load_textdomain( $this->domain, $mofile_global );
 		}
 		
-		load_plugin_textdomain( self::SLUG );
+		load_plugin_textdomain( $this->domain );
 		
 		return false;
 	}
@@ -294,16 +303,16 @@ final class Simmer {
 		// The arguments that define the object type's labels and functionality.
 		$args = array(
 			'labels'  => array(
-				'name'               => __( 'Recipes',                   self::SLUG ),
-				'singular_name'      => __( 'Recipe',                    self::SLUG ),
-				'all_items'          => __( 'All Recipes',               self::SLUG ),
-				'add_new_item'       => __( 'Add New Recipe',            self::SLUG ),
-				'edit_item'          => __( 'Edit Recipe',               self::SLUG ),
-				'new_item'           => __( 'New Recipe',                self::SLUG ),
-				'view_item'          => __( 'View Recipe',               self::SLUG ),
-				'search_items'       => __( 'Search Recipes',            self::SLUG ),
-				'not_found'          => __( 'No recipes found',          self::SLUG ),
-				'not_found_in_trash' => __( 'No recipes found in Trash', self::SLUG ),
+				'name'               => __( 'Recipes',                   $this->domain ),
+				'singular_name'      => __( 'Recipe',                    $this->domain ),
+				'all_items'          => __( 'All Recipes',               $this->domain ),
+				'add_new_item'       => __( 'Add New Recipe',            $this->domain ),
+				'edit_item'          => __( 'Edit Recipe',               $this->domain ),
+				'new_item'           => __( 'New Recipe',                $this->domain ),
+				'view_item'          => __( 'View Recipe',               $this->domain ),
+				'search_items'       => __( 'Search Recipes',            $this->domain ),
+				'not_found'          => __( 'No recipes found',          $this->domain ),
+				'not_found_in_trash' => __( 'No recipes found in Trash', $this->domain ),
 			),
 			'public'  => true,
 			'supports' => array(

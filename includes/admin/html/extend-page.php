@@ -22,9 +22,9 @@
 
 	<?php if ( $license->is_active() ) : ?>
 		
-		<h2><?php _e( 'Recipe Extensions', Simmer::SLUG ); ?></h2>
+		<h2><?php _e( 'Recipe Extensions', Simmer()->domain ); ?></h2>
 		
-		<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Purchase just the extensions you need, and shop around to fit your business\' goals.', Simmer::SLUG ); ?></p>
+		<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Purchase just the extensions you need, and shop around to fit your business\' goals.', Simmer()->domain ); ?></p>
 		
 		<div class="wp-list-table widefat simmer-extensions-list">
 			
@@ -39,12 +39,12 @@
 						</a>
 						
 						<h4 class="extension-name">
-							<a href="http://simmerwp.dev/product/recipe-connector/" target="_blank"><?php _e( 'Recipe Connector', Simmer::SLUG ); ?></a>
+							<a href="http://simmerwp.dev/product/recipe-connector/" target="_blank"><?php _e( 'Recipe Connector', Simmer()->domain ); ?></a>
 						</h4>
 						
-						<a class="extension-get button button-primary" href="http://simmerwp.dev/product/recipe-connector/" target="_blank"><?php _e( 'Get', Simmer::SLUG ); ?></a>
+						<a class="extension-get button button-primary" href="http://simmerwp.dev/product/recipe-connector/" target="_blank"><?php _e( 'Get', Simmer()->domain ); ?></a>
 						
-						<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', Simmer::SLUG ); ?></p>
+						<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', Simmer()->domain ); ?></p>
 						
 					</div><!-- .simmer-extension-card-top -->
 					<?php /*
@@ -85,12 +85,12 @@
 						</a>
 						
 						<h4 class="extension-name">
-							<a href="http://simmerwp.dev/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Tinypass for Simmer', Simmer::SLUG ); ?></a>
+							<a href="http://simmerwp.dev/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Tinypass for Simmer', Simmer()->domain ); ?></a>
 						</h4>
 						
-						<a class="extension-get button button-primary" href="http://simmerwp.dev/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Get', Simmer::SLUG ); ?></a>
+						<a class="extension-get button button-primary" href="http://simmerwp.dev/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Get', Simmer()->domain ); ?></a>
 						
-						<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', Simmer::SLUG ); ?></p>
+						<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', Simmer()->domain ); ?></p>
 						
 					</div><!-- .simmer-extension-card-top -->
 					<?php /*
@@ -128,7 +128,7 @@
 		
 	<?php else : ?>
 		
-		<h2><?php _e( 'Get the Most out of Simmer', Simmer::SLUG ); ?></h2>
+		<h2><?php _e( 'Get the Most out of Simmer', Simmer()->domain ); ?></h2>
 		
 		<div class="simmer-coming-soon">
 			

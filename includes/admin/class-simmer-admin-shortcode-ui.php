@@ -97,8 +97,8 @@ class Simmer_Admin_Shortcode_UI {
 		
 		printf( '<a href="#" id="simmer-add-recipe" class="simmer-icon-fork button" data-editor="%s" title="%s">%s</a>',
 			esc_attr( $editor_id ),
-			esc_attr__( 'Add Recipe', Simmer::SLUG ),
-			esc_html__( 'Add Recipe', Simmer::SLUG )
+			esc_attr__( 'Add Recipe', Simmer()->domain ),
+			esc_html__( 'Add Recipe', Simmer()->domain )
 		);
 	}
 	

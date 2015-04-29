@@ -51,7 +51,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Ingredients meta box.
 		add_meta_box(
 			'simmer_ingredients',
-			__( 'Ingredients', Simmer::SLUG ),
+			__( 'Ingredients', Simmer()->domain ),
 			array( $this, 'meta_box_ingredients' ),
 			$object_type,
 			'normal',
@@ -61,7 +61,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Instructions meta box.
 		add_meta_box(
 			'simmer_instructions',
-			__( 'Instructions', Simmer::SLUG ),
+			__( 'Instructions', Simmer()->domain ),
 			array( $this, 'meta_box_instructions' ),
 			$object_type,
 			'normal',
@@ -71,7 +71,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Information meta box.
 		add_meta_box(
 			'simmer_information',
-			__( 'Information', Simmer::SLUG ),
+			__( 'Information', Simmer()->domain ),
 			array( $this, 'meta_box_information' ),
 			$object_type,
 			'side'
@@ -400,31 +400,31 @@ final class Simmer_Admin_Recipes {
 		
 		$messages[ simmer_get_object_type() ] = array(
 			1 => sprintf(
-				__( 'Recipe updated. <a href="%s">View recipe</a>', Simmer::SLUG ),
+				__( 'Recipe updated. <a href="%s">View recipe</a>', Simmer()->domain ),
 				$recipe_url
 			),
-			4 => __( 'Recipe updated.', Simmer::SLUG ),
+			4 => __( 'Recipe updated.', Simmer()->domain ),
 			5 => isset( $_GET['revision'] ) ? sprintf(
-				__( 'Recipe restored to revision from %s', Simmer::SLUG ),
+				__( 'Recipe restored to revision from %s', Simmer()->domain ),
 				wp_post_revision_title( (int) $_GET['revision'], false )
 			) : false,
 			6 => sprintf(
-				__( 'Recipe created. <a href="%s">View recipe</a>', Simmer::SLUG ),
+				__( 'Recipe created. <a href="%s">View recipe</a>', Simmer()->domain ),
 				$recipe_url
 			),
-			7 => __( 'Recipe saved.', Simmer::SLUG ),
+			7 => __( 'Recipe saved.', Simmer()->domain ),
 			8 => sprintf(
-				__( 'Recipe submitted. <a target="_blank" href="%s">Preview recipe</a>', Simmer::SLUG ),
+				__( 'Recipe submitted. <a target="_blank" href="%s">Preview recipe</a>', Simmer()->domain ),
 				esc_url( add_query_arg( 'preview', 'true', $recipe_url ) )
 			),
 			9 => sprintf(
-				__( 'Recipe scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview recipe</a>', Simmer::SLUG ),
+				__( 'Recipe scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview recipe</a>', Simmer()->domain ),
 				date_i18n( __( 'M j, Y @ G:i' ),
 				strtotime( $post->post_date ) ),
 				$recipe_url
 			),
 			10 => sprintf(
-				__( 'Recipe draft updated. <a target="_blank" href="%s">Preview recipe</a>', Simmer::SLUG ),
+				__( 'Recipe draft updated. <a target="_blank" href="%s">Preview recipe</a>', Simmer()->domain ),
 				esc_url( add_query_arg( 'preview', 'true', $recipe_url ) )
 			),
 		);

@@ -33,10 +33,10 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 		
 		parent::__construct(
 			$this->widget_slug,
-			__( 'Recent Recipes', Simmer::SLUG ),
+			__( 'Recent Recipes', Simmer()->domain ),
 			array(
 				'classname'   => $this->widget_slug . '-widget',
-				'description' => __( "Your site's most recent recipes", Simmer::SLUG ),
+				'description' => __( "Your site's most recent recipes", Simmer()->domain ),
 			)
 		);
 		

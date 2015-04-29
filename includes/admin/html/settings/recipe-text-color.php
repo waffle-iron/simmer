@@ -10,7 +10,7 @@
 
 <fieldset>
 	<legend class="screen-reader-text">
-		<span><?php _e( 'Text Color', Simmer::SLUG ); ?></span>
+		<span><?php _e( 'Text Color', Simmer()->domain ); ?></span>
 	</legend>
 	<input type="text" name="simmer_recipe_text_color" id="simmer_recipe_text_color" value="#<?php echo esc_attr( get_option( 'simmer_recipe_text_color', '000' ) ); ?>" data-default-color="#000" />
 </fieldset>

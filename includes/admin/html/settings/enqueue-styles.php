@@ -10,10 +10,10 @@
 
 <fieldset>
 	<legend class="screen-reader-text">
-		<span><?php _e( 'Default Styles', Simmer::SLUG ); ?></span>
+		<span><?php _e( 'Default Styles', Simmer()->domain ); ?></span>
 	</legend>
 	<label for="simmer_enqueue_styles">
 		<input id="simmer_enqueue_styles" name="simmer_enqueue_styles" type="checkbox" value="1" <?php checked( 1, get_option( 'simmer_enqueue_styles', 1 ) ); ?> />
-		<?php _e( 'Enable built-in front end styles', Simmer::SLUG ); ?>
+		<?php _e( 'Enable built-in front end styles', Simmer()->domain ); ?>
 	</label>
 </fieldset>

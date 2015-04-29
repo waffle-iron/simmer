@@ -87,7 +87,7 @@ class Simmer_Plugins_List_Table_Row {
 		$new_action = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( get_admin_url( null, 'options-general.php?page=simmer-settings' ) ),
-			__( 'Settings', Simmer::SLUG )
+			__( 'Settings', Simmer()->domain )
 		);
 		
 		// Add the new action to the front of the array.

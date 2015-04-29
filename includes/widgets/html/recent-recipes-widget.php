@@ -20,7 +20,7 @@
 				<a class="title" href="<?php the_permalink(); ?>" role="link"><?php the_title(); ?></a>
 				<?php if ( $instance['show_dates'] ) : ?>
 					<span class="divider">-</span>
-					<span class="date"><?php printf( __( '%s ago', Simmer::SLUG ), human_time_diff( get_the_time( 'U' ) ) ); ?></span>
+					<span class="date"><?php printf( __( '%s ago', Simmer()->domain ), human_time_diff( get_the_time( 'U' ) ) ); ?></span>
 				<?php endif; ?>
 			</li>
 			
@@ -32,6 +32,6 @@
 	
 <?php else : ?>
 	
-	<p class="simmer-recent-recipes-none"><?php _e( 'No recent recipes.', Simmer::SLUG ); ?></p>
+	<p class="simmer-recent-recipes-none"><?php _e( 'No recent recipes.', Simmer()->domain ); ?></p>
 	
 <?php endif; ?>

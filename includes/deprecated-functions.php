@@ -30,7 +30,7 @@ function _simmer_deprecated_function( $function, $version, $replacement = null )
 		if ( ! is_null( $replacement ) ) {
 			
 			trigger_error(
-				sprintf( __( '%1$s is <strong>deprecated</strong> since Simmer version %2$s! Use %3$s instead.', Simmer::SLUG ),
+				sprintf( __( '%1$s is <strong>deprecated</strong> since Simmer version %2$s! Use %3$s instead.', Simmer()->domain ),
 					$function,
 					$version,
 					$replacement
@@ -40,7 +40,7 @@ function _simmer_deprecated_function( $function, $version, $replacement = null )
 		} else {
 			
 			trigger_error(
-				sprintf( __( '%1$s is <strong>deprecated</strong> since Simmer version %2$s with no alternative available.', Simmer::SLUG ),
+				sprintf( __( '%1$s is <strong>deprecated</strong> since Simmer version %2$s with no alternative available.', Simmer()->domain ),
 					$function,
 					$version
 				)

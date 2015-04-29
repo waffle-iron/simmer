@@ -78,7 +78,7 @@ final class Simmer_Admin {
 	 */
 	public function __clone() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer()->domain ), Simmer()->version );
 	}
 	
 	/**
@@ -90,7 +90,7 @@ final class Simmer_Admin {
 	 */
 	public function __wakeup() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer()->domain ), Simmer()->version );
 	}
 	
 	/** Private Methods **/
@@ -190,9 +190,9 @@ final class Simmer_Admin {
 			wp_enqueue_script( 'simmer-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/admin.js', array( 'jquery' ), Simmer()->version, true );
 			
 			wp_localize_script( 'simmer-admin-scripts', 'simmer_vars', array(
-				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     Simmer::SLUG ),
-				'remove_instruction_min' => __( 'You must have at least one instruction!',    Simmer::SLUG ),
-				'remove_ays'             => __( 'Are you sure you want to remove this item?', Simmer::SLUG ),
+				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     Simmer()->domain ),
+				'remove_instruction_min' => __( 'You must have at least one instruction!',    Simmer()->domain ),
+				'remove_ays'             => __( 'Are you sure you want to remove this item?', Simmer()->domain ),
 			) );
 			
 			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer()->version, true );
@@ -200,19 +200,19 @@ final class Simmer_Admin {
 			wp_localize_script( 'simmer-admin-bulk-script', 'simmer_bulk_add_vars', array(
 				
 				// Ingredients text.
-				'ingredients_title'       => __( 'Add Bulk Ingredients', Simmer::SLUG ),
-				'ingredients_help'        => __( 'Type or paste the list of ingredients below, one ingredient per line.', Simmer::SLUG ),
-				'ingredients_placeholder' => __( 'e.g. 1 cup flour, sifted', Simmer::SLUG ),
-				'ingredients_button'      => __( 'Add Ingredients',      Simmer::SLUG ),
+				'ingredients_title'       => __( 'Add Bulk Ingredients', Simmer()->domain ),
+				'ingredients_help'        => __( 'Type or paste the list of ingredients below, one ingredient per line.', Simmer()->domain ),
+				'ingredients_placeholder' => __( 'e.g. 1 cup flour, sifted', Simmer()->domain ),
+				'ingredients_button'      => __( 'Add Ingredients',      Simmer()->domain ),
 				
 				// Instructions text.
-				'instructions_title'       => __( 'Add Bulk Instructions', Simmer::SLUG ),
-				'instructions_help'        => __( 'Type or paste the list of instructions below, one instruction per line.', Simmer::SLUG ),
-				'instructions_placeholder' => __( 'e.g. Preheat your oven to 450 degrees.', Simmer::SLUG ),
-				'instructions_button'      => __( 'Add Instructions',      Simmer::SLUG ),
+				'instructions_title'       => __( 'Add Bulk Instructions', Simmer()->domain ),
+				'instructions_help'        => __( 'Type or paste the list of instructions below, one instruction per line.', Simmer()->domain ),
+				'instructions_placeholder' => __( 'e.g. Preheat your oven to 450 degrees.', Simmer()->domain ),
+				'instructions_button'      => __( 'Add Instructions',      Simmer()->domain ),
 				
 				// Misc. text.
-				'error_message'       => __( 'Something went wrong. Please try again.', Simmer::SLUG ),
+				'error_message'       => __( 'Something went wrong. Please try again.', Simmer()->domain ),
 				'ajax_url'            => admin_url( 'admin-ajax.php' ),
 			) );
 		}
@@ -235,7 +235,7 @@ final class Simmer_Admin {
 		
 		if ( $num_posts && $num_posts->publish ) {
 			
-			$text = _n( '%s Recipe', '%s Recipes', $num_posts->publish, Simmer::SLUG );
+			$text = _n( '%s Recipe', '%s Recipes', $num_posts->publish, Simmer()->domain );
 			
 			$text = sprintf( $text, number_format_i18n( $num_posts->publish ) );
 			

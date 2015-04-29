@@ -21,7 +21,7 @@
 		
 		<p class="simmer-recipe-byline">
 			<?php printf(
-				__( 'Created by %1s on %2s', Simmer::SLUG ),
+				__( 'Created by %1s on %2s', Simmer()->domain ),
 				'<span itemprop="author">' . esc_html( get_the_author() ) . '</span>',
 				get_the_date()
 			); ?>
@@ -46,7 +46,7 @@
 			<?php if ( $prep_time = simmer_get_the_prep_time() ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Prep Time', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Prep Time', Simmer()->domain ); ?>:</strong> 
 					<meta itemprop="prepTime" content="<?php echo esc_attr( simmer_get_the_prep_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $prep_time ); ?>
 				</li>
 				
@@ -55,7 +55,7 @@
 			<?php if ( $cook_time = simmer_get_the_cook_time() ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Cook Time', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Cook Time', Simmer()->domain ); ?>:</strong> 
 					<meta itemprop="cookTime" content="<?php echo esc_attr( simmer_get_the_cook_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $cook_time ); ?>
 				</li>
 				
@@ -64,7 +64,7 @@
 			<?php if ( $total_time = simmer_get_the_total_time() ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Total Time', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Total Time', Simmer()->domain ); ?>:</strong> 
 					<meta itemprop="totalTime" content="<?php echo esc_attr( simmer_get_the_total_time( get_the_ID(), 'machine' ) ); ?>"><?php echo esc_html( $total_time ); ?>
 				</li>
 				
@@ -77,7 +77,7 @@
 			<?php if ( $servings = simmer_get_the_servings() ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Serves', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Serves', Simmer()->domain ); ?>:</strong> 
 					<span itemprop="recipeYield"><?php echo esc_html( $servings ); ?></span>
 				</li>
 				
@@ -86,7 +86,7 @@
 			<?php if ( $yield = simmer_get_the_yield() ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Yield', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Yield', Simmer()->domain ); ?>:</strong> 
 					<span itemprop="recipeYield"><?php echo esc_html( $yield ); ?></span>
 				</li>
 				
@@ -95,7 +95,7 @@
 			<?php if ( $categories = get_the_term_list( get_the_ID(), simmer_get_category_taxonomy(), '', ', ' ) ) : ?>
 				
 				<li>
-					<strong><?php _e( 'Category', Simmer::SLUG ); ?>:</strong> 
+					<strong><?php _e( 'Category', Simmer()->domain ); ?>:</strong> 
 					<span itemprop="recipeCategory"><?php echo $categories; ?></span>
 				</li>
 				
@@ -119,7 +119,7 @@
 			
 			<ul>
 				<li class="simmer-recipe-print simmer-icon-print">
-					<a href="#"><?php _e( 'Print', Simmer::SLUG ); ?></a>
+					<a href="#"><?php _e( 'Print', Simmer()->domain ); ?></a>
 				</li>
 				
 				<?php /**

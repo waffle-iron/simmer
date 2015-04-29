@@ -18,9 +18,9 @@
 				<span class="hide-if-js">Order</span>
 				<div class="dashicons dashicons-sort hide-if-no-js"></div>
 			</th>
-			<th><?php _e( 'Amount', Simmer::SLUG ); ?></th>
-			<th><?php _e( 'Unit', Simmer::SLUG ); ?></th>
-			<th><?php _e( 'Description', Simmer::SLUG ); ?></th>
+			<th><?php _e( 'Amount', Simmer()->domain ); ?></th>
+			<th><?php _e( 'Unit', Simmer()->domain ); ?></th>
+			<th><?php _e( 'Description', Simmer()->domain ); ?></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -98,11 +98,11 @@
 		<tr class="simmer-actions">
 			<td colspan="5">
 				
-				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient"><?php _e( '+ Add in Bulk', Simmer::SLUG ); ?></a>
+				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient"><?php _e( '+ Add in Bulk', Simmer()->domain ); ?></a>
 				
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>
-					<?php _e( 'Add an Ingredient', Simmer::SLUG ); ?>
+					<?php _e( 'Add an Ingredient', Simmer()->domain ); ?>
 				</a>
 				
 				<?php /**
