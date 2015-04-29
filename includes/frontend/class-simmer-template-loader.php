@@ -1,16 +1,11 @@
 <?php
 /**
- * Define the Template Loader class
+ * Define the template loader class
  *
  * @since 1.0.0
  *
- * @package Simmer\Template_Loader
+ * @package Simmer/Frontend
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * The template loader.
@@ -193,6 +188,6 @@ class Simmer_Template_Loader {
 	 */
 	private function get_templates_dir() {
 		
-		return trailingslashit( dirname( dirname( plugin_dir_path( __FILE__ ) ) ) ) . 'templates';
+		return trailingslashit( plugin_dir_path( __FILE__ ) . 'templates' );
 	}
 }

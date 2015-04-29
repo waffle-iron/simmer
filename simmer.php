@@ -55,14 +55,6 @@ add_action( 'widgets_init', array( 'Simmer_Widgets', 'get_instance' ) );
 if ( is_admin() ) {
 	
 	/**
-	 * Load Simmer's admin class definition.
-	 */
-	require_once( plugin_dir_path( __FILE__ ) . 'includes/admin/class-simmer-admin.php' );
-	
-	// After all other plugins are loaded, instantiate the Simmer admin.
-	add_action( 'plugins_loaded', array( 'Simmer_Admin', 'get_instance' ) );
-	
-	/**
 	 * Require the plugins list table row customizing class.
 	 */
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/admin/settings/class-simmer-plugins-list-table-row.php' );

@@ -37,6 +37,24 @@ final class Simmer {
 	 */
 	const SLUG = 'simmer';
 	
+	/**
+	 * The admin class.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var object $admin;
+	 */
+	public $admin;
+	
+	/**
+	 * The front-end class.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var object $frontend;
+	 */
+	public $frontend;
+	
 	/** Singleton **/
 	
 	/**
@@ -74,6 +92,17 @@ final class Simmer {
 		
 		// Load the necessary supporting files.
 		$this->require_files();
+		
+		if ( is_admin() ) {
+			
+			// Load the admin.
+			$this->admin = Simmer_Admin::get_instance();
+			
+		} else {
+			
+			// Load the front-end.
+			$this->frontend = new Simmer_Frontend;
+		}
 		
 		// Add the essential action hooks.
 		$this->add_actions();
@@ -164,10 +193,20 @@ final class Simmer {
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/functions.php'  );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/template-functions.php'  );
 		
-		/**
-		 * The front-end loader.
-		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'front-end/class-simmer-front-end-loader.php' );
+		if ( is_admin() ) {
+			
+			/**
+			 * The admin class.
+			 */
+			require_once( plugin_dir_path( __FILE__ ) . 'admin/class-simmer-admin.php' );
+			
+		} else {
+			
+			/**
+			 * The front-end class.
+			 */
+			require_once( plugin_dir_path( __FILE__ ) . 'frontend/class-simmer-frontend.php' );
+		}
 	}
 	
 	/**
@@ -193,10 +232,6 @@ final class Simmer {
 		
 		// Register the category taxonomy.
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
-		
-		// Load the front-end functionality.
-		$front_end = new Simmer_Front_End_Loader();
-		add_action( 'wp', array( $front_end, 'load' ) );
 	}
 	
 	/** Public Methods **/

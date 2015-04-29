@@ -1,18 +1,45 @@
 <?php
 /**
- * Set up the front-end
+ * Define the main front-end class
  * 
- * @since 1.2.0
+ * @since 1.3.0
  * 
- * @package Simmer\Front_End
+ * @package Simmer/Frontend
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-class Simmer_Front_End_Loader {
+/**
+ * Set up the front-end.
+ *
+ * @since 1.3.0
+ */
+final class Simmer_Frontend {
+	
+	/**
+	 * The styles class.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var object $styles
+	 */
+	public $styles;
+	
+	/**
+	 * The scripts class.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var object $scripts
+	 */
+	public $scripts;
+	
+	/**
+	 * The HTML classes class.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var object $html_classes
+	 */
+	public $html_classes;
 	
 	/**
 	 * Whether the recipe schema wrapper has been opened.
@@ -25,14 +52,29 @@ class Simmer_Front_End_Loader {
 	private $schema_wrap_open = false;
 	
 	/**
-	 * Get the loader running.
+	 * Get the front-end running.
 	 * 
-	 * @since 1.2.0
+	 * @since 1.3.0
 	 */
-	public function load() {
+	public function __construct() {
 		
 		// Load the necessary files.
 		$this->load_files();
+		
+		/**
+		 * Load the styles class.
+		 */
+		$this->styles = new Simmer_Frontend_Styles;
+		
+		/**
+		 * Load the scripts class.
+		 */
+		$this->scripts = new Simmer_Frontend_Scripts;
+		
+		/**
+		 * Load the HTML classes class.
+		 */
+		$this->html_classes = new Simmer_Frontend_HTML_Classes;
 		
 		// Add the necessary actions.
 		$this->add_actions();
@@ -57,12 +99,12 @@ class Simmer_Front_End_Loader {
 		/**
 		 * The HTML classes class.
 		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-classes.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-frontend-html-classes.php' );
 		
 		/**
 		 * The CSS styles class.
 		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-front-end-styles.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-frontend-styles.php' );
 		
 		/**
 		 * The JS scripts class.
@@ -88,25 +130,15 @@ class Simmer_Front_End_Loader {
 	 */
 	private function add_actions() {
 		
-		/**
-		 * Set up the styles.
-		 */
-		$styles = new Simmer_Front_End_Styles();
-		
 		// Check if front-end styles should be enqueued.
-		if ( $styles->enable_styles() ) {
-			add_action( 'wp_enqueue_scripts', array( $styles, 'enqueue_styles' ) );
-			add_action( 'wp_head', array( $styles, 'add_custom_styles' ) );
+		if ( $this->styles->enable_styles() ) {
+			add_action( 'wp_enqueue_scripts', array( $this->styles, 'enqueue_styles' ) );
+			add_action( 'wp_head', array( $this->styles, 'add_custom_styles' ) );
 		}
 		
-		/**
-		 * Set up the scripts.
-		 */
-		$scripts = new Simmer_Frontend_Scripts();
-		
 		// Check if front-end scripts should be enqueued.
-		if ( $scripts->enable_scripts() ) {
-			add_action( 'wp_enqueue_scripts', array( $scripts, 'enqueue_scripts' ) );
+		if ( $this->scripts->enable_scripts() ) {
+			add_action( 'wp_enqueue_scripts', array( $this->scripts, 'enqueue_scripts' ) );
 		}
 		
 		// Add the opening schema markup before outputting the recipe.
@@ -125,12 +157,8 @@ class Simmer_Front_End_Loader {
 	 */
 	private function add_filters() {
 		
-		/**
-		 * Setup the HTML classes.
-		 */
-		$html_classes = new Simmer_Front_End_Classes();
-		add_filter( 'body_class', array( $html_classes, 'add_body_classes' ), 20, 1 );
-		add_filter( 'post_class', array( $html_classes, 'add_recipe_classes' ), 20, 3 );
+		add_filter( 'body_class', array( $this->html_classes, 'add_body_classes' ), 20, 1 );
+		add_filter( 'post_class', array( $this->html_classes, 'add_recipe_classes' ), 20, 3 );
 		
 		// Wrap the title with the proper schema markup.
 		add_filter( 'the_title', array( $this, 'add_title_schema' ), 10, 2 );

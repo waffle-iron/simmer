@@ -1,18 +1,18 @@
 <?php
 /**
- * Add custom classes to the HTML body & single recipes.
+ * Define the front-end HTML classes class
  * 
- * @since 1.2.0
+ * @since 1.3.0
  * 
- * @package Simmer\Front_End
+ * @package Simmer/Frontend
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-class Simmer_Front_End_Classes {
+/**
+ * Add custom classes to the HTML body & single recipes.
+ *
+ * @since 1.3.0
+ */
+final class Simmer_Frontend_HTML_Classes {
 	
 	/**
 	 * Add special Simmer classes to <body>.

@@ -2,17 +2,17 @@
 /**
  * Define the front-end styles class
  * 
- * @since 1.2.0
+ * @since 1.3.0
  * 
- * @package Simmer\Front_End
+ * @package Simmer/Frontend
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-class Simmer_Front_End_Styles {
+/**
+ * Set up the front-end styles.
+ *
+ * @since 1.3.0
+ */
+final class Simmer_Frontend_Styles {
 	
 	/**
 	 * Enqueue the front-end styles.

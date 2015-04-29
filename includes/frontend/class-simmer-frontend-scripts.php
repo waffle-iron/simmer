@@ -4,15 +4,15 @@
  * 
  * @since 1.2.1
  * 
- * @package Simmer/FrontEnd
+ * @package Simmer/Frontend
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-class Simmer_Frontend_Scripts {
+/**
+ * Set up the front-end scripts.
+ *
+ * @since 1.2.1
+ */
+final class Simmer_Frontend_Scripts {
 	
 	/**
 	 * Enqueue the front-end scripts.
