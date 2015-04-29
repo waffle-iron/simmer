@@ -193,6 +193,11 @@ final class Simmer {
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/functions.php'  );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/items/instructions/template-functions.php'  );
 		
+		/**
+		 * The widgets class.
+		 */
+		require_once( plugin_dir_path( __FILE__ ) . 'widgets/class-simmer-widgets.php' );
+		
 		if ( is_admin() ) {
 			
 			/**
@@ -232,6 +237,9 @@ final class Simmer {
 		
 		// Register the category taxonomy.
 		add_action( 'init', array( $this, 'register_category_taxonomy' ) );
+		
+		// Load the widgets.
+		add_action( 'widgets_init', array( 'Simmer_Widgets', 'get_instance' ) );
 	}
 	
 	/** Public Methods **/
