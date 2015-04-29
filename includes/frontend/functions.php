@@ -4,23 +4,17 @@
  * 
  * @since 1.2.0
  * 
- * @package Simmer\Front_End
+ * @package Simmer/Frontend
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Retrieve a template part from the appropriate Simmer directory.
  *
  * @since 1.0.0
  *
- * @param string  $slug
- * @param string  $name Optional. Default null.
- * @param bool    $load Optional. Default true.
- *
+ * @param  string $slug
+ * @param  string $name Optional. Default null.
+ * @param  bool   $load Optional. Default true.
  * @return string
  */
 function simmer_get_template_part( $slug, $name = null, $load = true ) {

@@ -4,13 +4,8 @@
  * 
  * @since 1.2.0
  * 
- * @package Simmer\Front_End
+ * @package Simmer/Frontend
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Determine if a recipe's featured image has been set.

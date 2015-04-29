@@ -4,13 +4,8 @@
  * 
  * @since 1.0.0
  * 
- * @package Simmer\Shortcode
+ * @package Simmer/Recipes/Shortcode
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Set up the [recipe] shortcode.
