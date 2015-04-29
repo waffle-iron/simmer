@@ -38,7 +38,7 @@ define( 'SIMMER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 /**
  * Load the main Simmer class definition.
  */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'core/class-simmer.php' );
 
 // After all other plugins are loaded, instantiate Simmer.
 Simmer::get_instance();
