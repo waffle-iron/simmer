@@ -8,6 +8,20 @@
  */
 
 /**
+ * Load the main plugin object.
+ *
+ * @since 1.3.0
+ *
+ * @return object $simmer The singleton instance of Simmer.
+ */
+function Simmer() {
+	
+	$simmer = Simmer::get_instance();
+	
+	return $simmer;
+}
+
+/**
  * Return the main recipe object type.
  *
  * We have this function in case, in the future, we want to
