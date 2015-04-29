@@ -38,6 +38,15 @@ final class Simmer {
 	const SLUG = 'simmer';
 	
 	/**
+	 * The plugin version.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @var string $version
+	 */
+	public $version = Simmer::VERSION;
+	
+	/**
 	 * The admin class.
 	 *
 	 * @since 1.3.0

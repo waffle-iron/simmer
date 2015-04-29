@@ -300,7 +300,7 @@ final class Simmer_Admin_Settings {
 		wp_enqueue_script( 'simmer-plugin-settings-scripts', plugin_dir_url( __FILE__ ) . 'assets/settings.js', array(
 			'jquery',
 			'wp-color-picker'
-		), Simmer::VERSION );
+		), Simmer()->version );
 	}
 	
 	/**

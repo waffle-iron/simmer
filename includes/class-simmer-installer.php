@@ -30,13 +30,13 @@ final class Simmer_Installer {
 		self::create_db_tables();
 		
 		// Upgrade older versions of Simmer.
-		if ( get_option( 'simmer_version' ) && version_compare( get_option( 'simmer_version' ), Simmer::VERSION, '<' ) ) {
+		if ( get_option( 'simmer_version' ) && version_compare( get_option( 'simmer_version' ), Simmer()->version, '<' ) ) {
 			self::upgrade();
 		}
 		
 		// Reset the version number.
 		delete_option( 'simmer_version' );
-		add_option( 'simmer_version', Simmer::VERSION, '', 'no' );
+		add_option( 'simmer_version', Simmer()->version, '', 'no' );
 		
 		/**
 		 * Fires after Simmer has been installed.

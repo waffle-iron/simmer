@@ -77,7 +77,7 @@ class Simmer_Admin_Shortcode_UI {
 		wp_enqueue_script( 'simmer-admin-shortcode-script', plugin_dir_url( __FILE__ ) . 'assets/shortcode.js', array(
 			'jquery',
 			'select2-script',
-		), Simmer::VERSION, true );
+		), Simmer()->version, true );
 		
 		wp_enqueue_style( 'select2-style', plugin_dir_url( __FILE__ ) . 'assets/plugins/select2.min.css', array(), '4.0.0' );
 	}

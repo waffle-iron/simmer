@@ -78,7 +78,7 @@ final class Simmer_Admin {
 	 */
 	public function __clone() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer()->version );
 	}
 	
 	/**
@@ -90,7 +90,7 @@ final class Simmer_Admin {
 	 */
 	public function __wakeup() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer::VERSION );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer::SLUG ), Simmer()->version );
 	}
 	
 	/** Private Methods **/
@@ -182,12 +182,12 @@ final class Simmer_Admin {
 	 */
 	public function enqueue_scripts( $hook ) {
 		
-		wp_enqueue_style( 'simmer-admin-styles', plugin_dir_url( __FILE__ ) . 'assets/admin.css', array( 'dashicons' ), Simmer::VERSION );
+		wp_enqueue_style( 'simmer-admin-styles', plugin_dir_url( __FILE__ ) . 'assets/admin.css', array( 'dashicons' ), Simmer()->version );
 		
 		// Only enqueue the script when dealing with our main object type (recipe).
 		if ( ( 'post.php' == $hook || 'post-new.php' == $hook ) && get_post_type() == simmer_get_object_type() ) {
 			
-			wp_enqueue_script( 'simmer-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/admin.js', array( 'jquery' ), Simmer::VERSION, true );
+			wp_enqueue_script( 'simmer-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/admin.js', array( 'jquery' ), Simmer()->version, true );
 			
 			wp_localize_script( 'simmer-admin-scripts', 'simmer_vars', array(
 				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     Simmer::SLUG ),
@@ -195,7 +195,7 @@ final class Simmer_Admin {
 				'remove_ays'             => __( 'Are you sure you want to remove this item?', Simmer::SLUG ),
 			) );
 			
-			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer::VERSION, true );
+			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer()->version, true );
 			
 			wp_localize_script( 'simmer-admin-bulk-script', 'simmer_bulk_add_vars', array(
 				

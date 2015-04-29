@@ -22,12 +22,12 @@ final class Simmer_Frontend_Styles {
 	public function enqueue_styles() {
 		
 		// The icon font.
-		wp_register_style( 'simmer-icons', dirname( plugin_dir_url( __FILE__ ) ) . '/assets/icons/css/simmer-icons.css', array(), Simmer::VERSION );
+		wp_register_style( 'simmer-icons', dirname( plugin_dir_url( __FILE__ ) ) . '/assets/icons/css/simmer-icons.css', array(), Simmer()->version );
 		
 		// The main front-end stylsheet.
 		wp_enqueue_style( 'simmer-plugin-styles', plugin_dir_url( __FILE__ ) . 'assets/styles.css', array(
 			'simmer-icons',
-		), Simmer::VERSION );
+		), Simmer()->version );
 	}
 	
 	/**

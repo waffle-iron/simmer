@@ -30,7 +30,7 @@ final class Simmer_Frontend_Scripts {
 		wp_enqueue_script( 'simmer-plugin-scripts', plugin_dir_url( __FILE__ ) . 'assets/simmer-scripts.js', array(
 			'jquery',
 			'simmer-print-this',
-		), Simmer::VERSION, true );
+		), Simmer()->version, true );
 		
 		wp_localize_script( 'simmer-plugin-scripts', 'simmerStrings', array(
 			'printStylesURL' => plugin_dir_url( __FILE__ ) . 'assets/simmer-print.css',
