@@ -152,7 +152,7 @@
 				
 			</div><!-- .extensions -->
 			
-			<a class="button button-primary" href="http://simmerwp.com/pricing/" target="_blank">Purchase Now</a>
+			<a class="button button-primary" href="https://simmerwp.com/pricing/" target="_blank">Purchase Now</a>
 			
 		</div><!-- .simmer-coming-soon -->
 		

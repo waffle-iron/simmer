@@ -2,14 +2,14 @@
 /**
  * The plugin bootstrap
  *
- * @link http://simmerwp.com
+ * @link https://simmerwp.com
  * @since 1.0.0
  * @package Simmer
  */
 
 /**
  * Plugin Name: Simmer
- * Plugin URI:  http://simmerwp.com
+ * Plugin URI:  https://simmerwp.com
  * Description: A recipe publishing tool for WordPress.
  * Version:     1.3.0
  * Author:      BWD inc.
