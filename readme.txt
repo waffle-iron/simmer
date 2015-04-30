@@ -27,8 +27,9 @@ Simmer is built with developers in mind. Utilize the many actions and filters de
 
 **Additional Features**
 
-* Add recipe servings, yield, and source name and/or link
+* Bulk-add ingredients & instructions
 * Recipe categories
+* Add recipe servings, yield, and source name and/or link
 * Embed recipes anywhere in your posts or pages
 * Front-end recipe printing
 
