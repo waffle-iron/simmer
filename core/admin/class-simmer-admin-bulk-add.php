@@ -1,12 +1,17 @@
 <?php
 /**
- * Define the bulk add class
+ * Define the bulk-add class
  * 
  * @since 1.2.0
  * 
- * @package Simmer\Admin\Bulk
+ * @package Simmer/Admin/Bulk
  */
 
+/**
+ * Set up the bulk-add functionality.
+ *
+ * @since 1.2.0
+ */
 final class Simmer_Admin_Bulk_Add {
 	
 	/**
@@ -105,7 +110,7 @@ final class Simmer_Admin_Bulk_Add {
 	 * 
 	 * @param  string $input The input to parse.
 	 * @param  string $type  The type of items to parse. 'ingredient' or 'instruction'.
-	 * @return array  $itesm The parsed items.
+	 * @return array  $items The parsed items.
 	 */
 	public function parse_input( $input, $type ) {
 		
@@ -183,7 +188,7 @@ final class Simmer_Admin_Bulk_Add {
 	 * two words of a string, a total value will be determined by adding
 	 * them together.
 	 * 
-	 * @since 1.2.0
+	 * @since  1.2.0
 	 * @access private
 	 * 
 	 * @param  string      $string The string from user input.
@@ -250,7 +255,7 @@ final class Simmer_Admin_Bulk_Add {
 	 * unit label matches as defined by the core measurement units.
 	 * It will account for capitalization, abbreviation, & other oddities.
 	 * 
-	 * @since 1.2.0
+	 * @since  1.2.0
 	 * @access private
 	 * 
 	 * @param  string      $string The string from user input.

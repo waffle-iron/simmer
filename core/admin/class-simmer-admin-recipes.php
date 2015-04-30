@@ -4,22 +4,25 @@
  * 
  * @since 1.0.0
  * 
- * @package Simmer\Admin\Recipes
+ * @package Simmer/Admin/Recipes
  */
 
-// If this file is called directly, get outa' town.
+// If this file is called directly, bail.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Set up the recipes admin.
+ *
+ * @since 1.0.0
+ */
 final class Simmer_Admin_Recipes {
 	
 	/**
 	 * Construct the class.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		
@@ -40,8 +43,6 @@ final class Simmer_Admin_Recipes {
 	 * Add the custom meta boxes.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void
 	 */
 	public function add_metaboxes() {
 		
@@ -78,7 +79,7 @@ final class Simmer_Admin_Recipes {
 		);
 		
 		/**
-		 * Allow developers to register additional Simmer metaboxes.
+		 * Fires to allow additional Simmer metaboxes.
 		 *
 		 * @since 1.0.0
 		 */
@@ -86,17 +87,16 @@ final class Simmer_Admin_Recipes {
 	}
 	
 	/**
-	 * Print the ingredients meta box.
+	 * Display the ingredients meta box.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  object $recipe The current recipe.
-	 * @return void
+	 * @param object $recipe The current recipe.
 	 */
 	public function meta_box_ingredients( $recipe ) {
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires before displaying the ingredients meta box.
 		 *
 		 * @since 1.0.0
 		 * 
@@ -110,7 +110,7 @@ final class Simmer_Admin_Recipes {
 		include_once( 'html/meta-boxes/ingredients.php' );
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires after displaying the ingredients meta box.
 		 *
 		 * @since 1.0.0
 		 * 
@@ -120,17 +120,16 @@ final class Simmer_Admin_Recipes {
 	}
 	
 	/**
-	 * Print the instructions meta box.
+	 * Display the instructions meta box.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  object $recipe The current recipe.
-	 * @return void
+	 * @param object $recipe The current recipe.
 	 */
 	public function meta_box_instructions( $recipe ) {
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires before displaying the instructions meta box.
 		 *
 		 * @since 1.0.0
 		 * 
@@ -144,7 +143,7 @@ final class Simmer_Admin_Recipes {
 		include_once( 'html/meta-boxes/instructions.php' );
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires after displaying the instructions meta box.
 		 *
 		 * @since 1.0.0
 		 * 
@@ -154,17 +153,16 @@ final class Simmer_Admin_Recipes {
 	}
 	
 	/**
-	 * Print the information meta box.
+	 * Display the information meta box.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  object $recipe The current recipe.
-	 * @return void
+	 * @param object $recipe The current recipe.
 	 */
 	public function meta_box_information( $recipe ) {
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires before displaying the information meta box.
 		 *
 		 * @since 1.0.0
 		 * 
@@ -178,7 +176,7 @@ final class Simmer_Admin_Recipes {
 		include_once( 'html/meta-boxes/information.php' );
 		
 		/**
-		 * Allow others to add to this meta box.
+		 * Fires after displaying the information meta box.
 		 *
 		 * @since 1.0.0
 		 * 

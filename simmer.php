@@ -1,9 +1,9 @@
 <?php
 /**
- * The plugin bootstrap
+ * Load the plugin
  *
- * @link https://simmerwp.com
  * @since 1.0.0
+ *
  * @package Simmer
  */
 
@@ -20,12 +20,10 @@
  * Domain Path: /languages
  */
 
-// If this file is called directly, get outa' town.
+// If this file is called directly, bail.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-/** Constants **/
 
 /**
  * The base plugin file path (this file).
@@ -36,9 +34,9 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'SIMMER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 
 /**
- * Load the main Simmer class definition.
+ * Load the main Simmer class.
  */
 require_once( plugin_dir_path( __FILE__ ) . 'core/class-simmer.php' );
 
-// After all other plugins are loaded, instantiate Simmer.
+// Instantiate Simmer.
 Simmer::get_instance();

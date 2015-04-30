@@ -1,10 +1,10 @@
 <?php
 /**
- * Define he settings admin class
+ * Define the settings admin class
  *
  * @since 1.0.0
  *
- * @package Simmer\Admin\Settings
+ * @package Simmer/Admin/Settings
  */
  
 // If this file is called directly, bail.
@@ -12,15 +12,17 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Set up the setting admin.
+ *
+ * @since 1.0.0
+ */
 final class Simmer_Admin_Settings {
 	
 	/**
-	 * Construct this class.
+	 * Construct settings admin.
 	 *
 	 * @since 1.0.0
-	 * @access private
-	 * 
-	 * @return void
 	 */
 	public function __construct() {
 		
@@ -30,8 +32,10 @@ final class Simmer_Admin_Settings {
 		// Register the available settings with the Settings API.
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		
+		// Enqueue the admin styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		
+		// Enqueue the admin scripts.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 	
@@ -39,8 +43,6 @@ final class Simmer_Admin_Settings {
 	 * Add the Recipes settings page.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void
 	 */
 	public function add_options_page() {
 		
@@ -66,8 +68,6 @@ final class Simmer_Admin_Settings {
 	 * Register the settings.
 	 *
 	 * @since 1.0.0
-	 *
-	 * @return void
 	 */
 	public function register_settings() {
 		
@@ -290,11 +290,21 @@ final class Simmer_Admin_Settings {
 		
 	}
 	
+	/**
+	 * Enqueue the admin styles.
+	 *
+	 * @since x.x.x
+	 */
 	public function enqueue_styles() {
 		
 		wp_enqueue_style(  'wp-color-picker' );
 	}
 	
+	/**
+	 * Enqueue the admin scripts.
+	 *
+	 * @since x.x.x
+	 */
 	public function enqueue_scripts() {
 		
 		wp_enqueue_script( 'simmer-plugin-settings-scripts', plugin_dir_url( __FILE__ ) . 'assets/settings.js', array(
@@ -307,8 +317,6 @@ final class Simmer_Admin_Settings {
 	 * Display the extend page markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function extend_page_callback() {
 		
@@ -322,8 +330,6 @@ final class Simmer_Admin_Settings {
 	 * Display the settings page markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function settings_page_callback() {
 		
@@ -363,8 +369,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Ingredients List Heading setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function ingredients_list_heading_callback() {
 		
@@ -392,8 +396,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Ingredients List Type setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function ingredients_list_type_callback() {
 		
@@ -421,8 +423,6 @@ final class Simmer_Admin_Settings {
 	 * Display the units format settings field markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function units_format_callback() {
 		
@@ -450,8 +450,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Instructions List Heading setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function instructions_list_heading_callback() {
 		
@@ -479,8 +477,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Instructions List Type setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function instructions_list_type_callback() {
 		
@@ -508,8 +504,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "enqueue styles" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function enqueue_styles_callback() {
 		
@@ -537,8 +531,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "recipe accent color" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function recipe_accent_color_callback() {
 		
@@ -566,8 +558,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "recipe text color" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function recipe_text_color_callback() {
 		
@@ -595,8 +585,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "license" section markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function license_section_callback() {
 		
@@ -611,8 +599,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "license key" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function license_key_callback() {
 		
@@ -640,8 +626,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "license email" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function license_email_callback() {
 		
@@ -669,8 +653,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "extensions license" section markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function license_extensions_section_callback() {
 		
@@ -689,8 +671,6 @@ final class Simmer_Admin_Settings {
 	 * Display the "on uninstall" setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function on_uninstall_callback() {
 		
@@ -718,8 +698,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Archive Base setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function archive_base_callback() {
 		
@@ -733,8 +711,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Recipe Base setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function recipe_base_callback() {
 		
@@ -748,8 +724,6 @@ final class Simmer_Admin_Settings {
 	 * Display the Category Base setting markup.
 	 * 
 	 * @since 1.0.0
-	 * 
-	 * @return void
 	 */
 	public function category_base_callback() {
 		

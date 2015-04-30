@@ -4,7 +4,7 @@
  * 
  * @since 1.0.0
  *
- * @package Simmer\Uninstall
+ * @package Simmer/Uninstall
 */
 
 // If uninstall not called from WordPress, then exit.
