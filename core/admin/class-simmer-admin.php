@@ -155,6 +155,9 @@ final class Simmer_Admin {
 		
 		// Add the plugin list table row settings link.
 		add_action( 'admin_init', array( 'Simmer_Plugins_List_Table_Row', 'get_instance' ) );
+		
+		// Add a Simmer thanks link to the admin footer.
+		add_filter( 'admin_footer_text', array( $this, 'footer_text' ), 20 );
 	}
 	
 	/**
@@ -251,5 +254,30 @@ final class Simmer_Admin {
 		}
 		
 		return $elements;
+	}
+	
+	/**
+	 * Add a Simmer thanks link to the admin footer.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  string $text The default admin footer text.
+	 * @return string $text The new admin footer text with the Simmer link appended.
+	 */
+	public function footer_text( $text ) {
+		
+		$text = '<span id="footer-thankyou">';
+			
+			$text .= sprintf(
+				__( 'Thank you for creating with %sWordPress%s and cooking with %sSimmer%s.', Simmer()->domain ),
+				'<a href="http://wordpress.org/">',
+				'</a>',
+				'<a href="https://simmerwp.com/">',
+				'</a>'
+			);
+			
+		$text .= '</span>';
+		
+		return $text;
 	}
 }
