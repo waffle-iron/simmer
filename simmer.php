@@ -11,7 +11,7 @@
  * Plugin Name: Simmer
  * Plugin URI:  http://simmerwp.com
  * Description: A recipe plugin for WordPress.
- * Version:     1.2.3
+ * Version:     1.3.0-dev
  * Author:      BWD inc.
  * Author URI:  http://gobwd.com
  * License:     GPL-2.0+
@@ -36,49 +36,9 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'SIMMER_PLUGIN_FILE', plugin_basename( __FILE__ ) );
 
 /**
- * Load the main activation class definition.
- */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-activation.php' );
-
-register_activation_hook( __FILE__, 'Simmer_Activation::activate' );
-register_deactivation_hook( __FILE__, 'Simmer_Activation::deactivate' );
-
-/**
- * Load the main Simmer license class definition.
- */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer-license.php' );
-
-/**
  * Load the main Simmer class definition.
  */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/class-simmer.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'core/class-simmer.php' );
 
 // After all other plugins are loaded, instantiate Simmer.
-add_action( 'plugins_loaded', array( 'Simmer', 'get_instance' ) );
-
-/**
- * Require the widgets class definition.
- */
-require_once( plugin_dir_path( __FILE__ ) . 'includes/widgets/class-simmer-widgets.php' );
-
-// Init the widgets class.
-add_action( 'widgets_init', array( 'Simmer_Widgets', 'get_instance' ) );
-
-// Only do the following when in the admin & not AJAXing something.
-if ( is_admin() ) {
-	
-	/**
-	 * Load Simmer's admin class definition.
-	 */
-	require_once( plugin_dir_path( __FILE__ ) . 'includes/admin/class-simmer-admin.php' );
-	
-	// After all other plugins are loaded, instantiate the Simmer admin.
-	add_action( 'plugins_loaded', array( 'Simmer_Admin', 'get_instance' ) );
-	
-	/**
-	 * Require the plugins list table row customizing class.
-	 */
-	require_once( plugin_dir_path( __FILE__ ) . 'includes/admin/settings/class-simmer-plugins-list-table-row.php' );
-	
-	add_action( 'admin_init', array( 'Simmer_Plugins_List_Table_Row', 'get_instance' ) );
-}
+Simmer::get_instance();
