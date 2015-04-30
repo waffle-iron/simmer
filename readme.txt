@@ -7,7 +7,7 @@ Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simmer is a recipe app on the WordPress platform for people who love to create & market things with food & drink.
+Simmer is a recipe publishing tool for WordPress.
 
 == Description ==
 
