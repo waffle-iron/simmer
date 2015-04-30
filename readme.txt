@@ -15,7 +15,7 @@ We all love the simple, human act of sharing how to prepare a favorite meal. Sim
 
 **Elegant UI**
 
-Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a simple, user-friendly, drag and drop interface.
+Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a user-friendly drag and drop interface.
 
 **Built for Discovery**
 
@@ -24,6 +24,13 @@ Simmer automatically bakes semantic structure and [schema.org](http://schema.org
 **Easily Extendable**
 
 Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or, check out the official [Extensions Library](https://simmerwp.com/extensions/) to find an extension that meets your needs. Check back often as new extensions are always being developed!
+
+**Additional Features**
+
+* Add recipe servings, yield, and source name and/or link
+* Recipe categories
+* Embed recipes anywhere in your posts or pages
+* Front-end recipe printing
 
 **Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/)**
 
