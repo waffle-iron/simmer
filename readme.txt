@@ -11,15 +11,21 @@ Simmer is a recipe publishing tool for WordPress.
 
 == Description ==
 
-Simmer is a recipe app on the WordPress platform for people who love to create or market products with food & drink media. We all love the simple, human act of sharing how to prepare a favorite meal.
+We all love the simple, human act of sharing how to prepare a favorite meal. Simmer enables WordPress users to quickly and easily publish their recipes with minimal hassle. With a focus on the key areas necessary for a great recipe publishing experience, Simmer stays lightweight and easy to use and doesn't get bogged down by 101 half-baked features.
 
-**Standardized Recipe Data for the Semantic Web**
+**Elegant UI**
 
-Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a simple, user friendly, drag and drop interface. Reorder with ease, and think critically about how you’re compiling content for your target audiences every step of the way.
+Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a simple, user-friendly, drag and drop interface.
 
-**Simplicity**
+**Built for Discovery**
 
-Simmer seamlessly fits within the existing structure and style of WordPress, so you'll barely notice it’s even a 3rd party plugin. Our team of leading user interface (UI) experts continually works to polish every part of the overall user experience for our customers as a part of our active, frequent release schedule, ensuring Simmer will always remain fluid, secure, and as close to flawless as we can achieve.
+Simmer automatically bakes semantic structure and [schema.org](http://schema.org) microdata in to the core of every recipe you publish. This allows Google to standardize and serve your recipes across a variety of devices and platforms.
+
+**Easily Extendable**
+
+Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or, check out the official [Extensions Library](https://simmerwp.com/extensions/) to find an extension that meets your needs. Check back often as new extensions are always being developed!
+
+**Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/)**
 
 == Installation ==
 
