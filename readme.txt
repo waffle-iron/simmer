@@ -2,8 +2,8 @@
 Contributors: ChaseWiseman, lchelak, gobwd
 Tags: recipes, recipe, cooking, food, food blog, content marketing, food content marketing, drinks, drink recipes, tutorial maker, tutorials, recipe maker, baking, crafts, DIY, do it yourself
 Requires at least: 3.8
-Tested up to: 4.2 Beta 4
-Stable tag: 1.2.3
+Tested up to: 4.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,12 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 
 == Changelog ==
 
+= 1.3.0 =
+* New: Items API for handling ingredients, instructions, and other custom recipe data
+* New: Refactored architecture and file structure to allow for greater extensibility
+* New: Major version upgrade welcome screen to detail new features and improvements
+* Tweak: Documentation overhaul for the [Developer API reference](http://develop.simmerwp.com)
+
 = 1.2.3 =
 * Fix: Prevent theme icon font incompatibilities
 
@@ -104,6 +110,9 @@ Fixed an early exit error on clean uninstall
 Preheating the oven to 450...
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+This update makes significant database changes. It is recommended that you fully back up your recipes before proceeding.
 
 = 1.0.1 =
 This version fixes an error some encounter when attempting to uninstall the plugin. Please upgrade.
