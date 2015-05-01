@@ -297,6 +297,20 @@ final class Simmer_Recipe_Items {
 					'%d',
 				)
 			);
+			
+			// If the item was deleted, delete its metadata too.
+			if ( $result ) {
+				
+				$wpdb->delete(
+					$wpdb->prefix . 'simmer_recipe_itemmeta',
+					array(
+						'recipe_item_id' => $item->recipe_item_id,
+					),
+					array(
+						'%d',
+					)
+				);
+			}
 		}
 		
 		return $result;
