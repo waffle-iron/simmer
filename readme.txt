@@ -72,7 +72,7 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 = 1.3.0 =
 * New: Items API for handling ingredients, instructions, and other custom recipe data
 * New: Refactored architecture and file structure to allow for greater extensibility
-* New: Major version upgrade welcome screen to detail new features and improvements
+* New: Major feature addition welcome screen
 * Tweak: Documentation overhaul for the [Developer API reference](http://develop.simmerwp.com)
 
 = 1.2.3 =
