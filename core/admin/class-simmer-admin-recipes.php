@@ -35,6 +35,9 @@ final class Simmer_Admin_Recipes {
 		// Add custom "updated" messages.
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 		
+		// Remove the recipe items on recipe deletion.
+		add_action( 'delete_post', array( $this, 'delete_recipe_items' ) );
+		
 		// Remove the "Quick Edit" link from the recipe row actions.
 		add_filter( 'post_row_actions', array( $this, 'hide_quick_edit_link' ), 10, 2 );
 	}
@@ -428,6 +431,30 @@ final class Simmer_Admin_Recipes {
 		);
 
 		return $messages;
+	}
+	
+	/**
+	 * Remove a recipe's items when it is deleted.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param int $recipe_id The recipe ID.
+	 */
+	public function delete_recipe_items( $recipe_id ) {
+		
+		if ( ! current_user_can( 'delete_posts' ) ) {
+			return;
+		}
+		
+		if ( simmer_get_object_type() !== get_post_type( $recipe_id ) ) {
+			return;
+		}
+		
+		$items = simmer_get_recipe_items( $recipe_id );
+		
+		foreach ( $items as $item ) {
+			simmer_delete_recipe_item( $item->recipe_item_id );
+		}
 	}
 	
 	/**
