@@ -35,6 +35,9 @@ final class Simmer_Admin_Recipes {
 		// Add custom "updated" messages.
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
 		
+		// Add custom bulk 'recipe updated' messages.
+		add_filter( 'bulk_post_updated_messages', array( $this, 'bulk_updated_messages' ), 10, 2 );
+		
 		// Remove the recipe items on recipe deletion.
 		add_action( 'delete_post', array( $this, 'delete_recipe_items' ) );
 		
@@ -430,6 +433,28 @@ final class Simmer_Admin_Recipes {
 			),
 		);
 
+		return $messages;
+	}
+	
+	/**
+	 * Add custom bulk 'recipe updated' messages.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param  array $messages The default bulk 'post updated' messages.
+	 * @param  array $counts   The bulk counts.
+	 * @return array $messages The customized bulk 'recipe updated' messages.
+	 */
+	public function bulk_updated_messages( $messages, $counts ) {
+		
+		$messages[ simmer_get_object_type() ] = array(
+			'updated'   => _n( '%s recipe updated.', '%s recipes updated.', $counts['updated'], Simmer()->domain ),
+			'locked'    => _n( '%s recipe not updated, somebody is editing it.', '%s recipes not updated, somebody is editing them.', $counts['locked'], Simmer()->domain ),
+			'deleted'   => _n( '%s recipe permanently deleted.', '%s recipes permanently deleted.', $counts['deleted'], Simmer()->domain ),
+			'trashed'   => _n( '%s recipe moved to the Trash.', '%s recipes moved to the Trash.', $counts['trashed'], Simmer()->domain ),
+			'untrashed' => _n( '%s recipe restored from the Trash.', '%s recipes restored from the Trash.', $counts['untrashed'], Simmer()->domain ),
+		);
+		
 		return $messages;
 	}
 	
