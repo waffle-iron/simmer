@@ -8,6 +8,32 @@
  */
 
 /**
+ * Get items for a specific recipe.
+ *
+ * @since 1.3.0
+ *
+ * @param int   $recipe_id The recipe for which to get the items.
+ * @param array $args {
+ *     Optional. The query parameters.
+ *
+ *     @type string       $type   The item type to retrieve. Default: 'all'.
+ *     @type bool|int     $limit  The number of items to get or false for no limit. Default: 'false'.
+ *     @type bool|int     $offset The number of items by which to offset the query or false for no
+ *                                offset. Default: 'false'.
+ *     @type string       $order  The order in which to return the items. Default: 'ASC'. Accepts 'ASC' or 'DESC'.
+ * }
+ * @return array $items The retrieved items.
+ */
+function simmer_get_recipe_items( $recipe_id, $args = array() ) {
+	
+	$items_api = new Simmer_Recipe_Items;
+		
+	$items = $items_api->get_items( $recipe_id, $args );
+	
+	return $items;
+}
+
+/**
  * Get a recipe item by its ID.
  *
  * @since 1.3.0
