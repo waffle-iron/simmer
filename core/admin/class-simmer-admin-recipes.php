@@ -227,20 +227,22 @@ final class Simmer_Admin_Recipes {
 					continue;
 				}
 				
-				$amount = Simmer_Recipe_Ingredient::convert_amount_to_float( $ingredient['amount'] );
+				$amount = ( isset( $ingredient['amount'] ) ) ? Simmer_Recipe_Ingredient::convert_amount_to_float( $ingredient['amount'] ) : '';
+				$unit = ( isset( $ingredient['unit'] ) ) ? $ingredient['unit'] : '';
 				
 				if ( isset( $ingredient['id'] ) && $ingredient['id'] ) {
 					
 					$ingredient_id = simmer_update_recipe_ingredient( $ingredient['id'], array(
 						'amount'      => $amount,
-						'unit'        => $ingredient['unit'],
+						'unit'        => $unit,
 						'description' => $ingredient['description'],
 						'order'       => $ingredient['order'],
+						'is_heading'  => $ingredient['heading'],
 					) );
 					
 				} else {
 					
-					$ingredient_id = simmer_add_recipe_ingredient( get_the_ID(), $ingredient['description'], $amount, $ingredient['unit'], $ingredient['order'] );
+					$ingredient_id = simmer_add_recipe_ingredient( get_the_ID(), $ingredient['description'], $amount, $unit, $ingredient['heading'], $ingredient['order'] );
 					
 				}
 				
