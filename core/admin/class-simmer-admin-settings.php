@@ -173,40 +173,7 @@ final class Simmer_Admin_Settings {
 			'simmer_display_styles'
 		);
 		
-		/** License **/
-		
-		// Add the license settings section.
-		add_settings_section(
-			'simmer_license_add',
-			__( 'Simmer License', Simmer()->domain ),
-			array( $this, 'license_section_callback' ),
-			'simmer_license'
-		);
-		
-		register_setting( 'simmer_license', 'simmer_license', array( $this, 'validate_license_input' ) );
-		
-		// Add the license settings fields.
-		add_settings_field(
-			'simmer_license_key',
-			__( 'License Key', Simmer()->domain ),
-			array( $this, 'license_key_callback' ),
-			'simmer_license',
-			'simmer_license_add'
-		);
-		
-		$license = new Simmer_License();
-
-		if ( ! $license->get_status() ) {
-				
-			add_settings_field(
-				'simmer_license_email',
-				__( 'License Email', Simmer()->domain ),
-				array( $this, 'license_email_callback' ),
-				'simmer_license',
-				'simmer_license_add'
-			);
-			
-		}
+		/** Licenses **/
 		
 		global $simmer_extensions;
 		
@@ -582,74 +549,6 @@ final class Simmer_Admin_Settings {
 	}
 	
 	/**
-	 * Display the "license" section markup.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function license_section_callback() {
-		
-		/**
-		 * Include the markup.
-		 */
-		include_once( 'html/settings/license-section.php' );
-		
-	}
-	
-	/**
-	 * Display the "license key" setting markup.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function license_key_callback() {
-		
-		/**
-		 * Allow others to add to this field.
-		 * 
-		 * @since 1.0.0
-		 */
-		do_action( 'simmer_before_license_key_settings_field' );
-		
-		/**
-		 * Include the markup.
-		 */
-		include_once( 'html/settings/license-key.php' );
-		
-		/**
-		 * Allow others to add to this field.
-		 * 
-		 * @since 1.0.0
-		 */
-		do_action( 'simmer_after_license_key_settings_field' );
-	}
-	
-	/**
-	 * Display the "license email" setting markup.
-	 * 
-	 * @since 1.0.0
-	 */
-	public function license_email_callback() {
-		
-		/**
-		 * Allow others to add to this field.
-		 * 
-		 * @since 1.0.0
-		 */
-		do_action( 'simmer_before_license_email_settings_field' );
-		
-		/**
-		 * Include the markup.
-		 */
-		include_once( 'html/settings/license-email.php' );
-		
-		/**
-		 * Allow others to add to this field.
-		 * 
-		 * @since 1.0.0
-		 */
-		do_action( 'simmer_after_license_email_settings_field' );
-	}
-	
-	/**
 	 * Display the "extensions license" section markup.
 	 * 
 	 * @since 1.0.0
@@ -750,83 +649,6 @@ final class Simmer_Admin_Settings {
 		} else {
 			return '';
 		}
-	}
-	
-	/**
-	 * Validate the license settings.
-	 * 
-	 * @since 1.0.0
-	 * 
-	 * @param  array $input The license settings field input.
-	 * @return array $license
-	 */
-	public function validate_license_input( $input ) {
-		
-		$license = new Simmer_License();
-		
-		$existing_license  = $license->license;
-		
-		$existing_key      = ( isset( $existing_license['key'] ) )   ? trim( $existing_license['key'] )   : '';
-		$existing_email    = ( isset( $existing_license['email'] ) ) ? trim( $existing_license['email'] ) : '';
-		
-		if ( isset( $input['deactivate'] ) && '1' == $input['deactivate'] ) {
-			
-			$result = $license->deactivate( array(
-				'licence_key' => $existing_key,
-				'email'       => $existing_email,
-			) );
-			
-			add_settings_error( 'simmer_license', 'simmer-deactivated', __( 'License deactivated.', Simmer()->domain ), 'error' );
-			
-			return false;
-			
-		} else if ( $license->exists() ) {
-			
-			return $existing_license;
-			
-		} else {
-			
-			$new_key   = ( isset( $input['key'] ) )   ? trim( $input['key'] )   : '';
-			$new_email = ( isset( $input['email'] ) ) ? trim( $input['email'] ) : '';
-			
-			if ( ! $new_key && ! $new_email ) {
-				return false;
-			}
-			
-			$result = $license->activate( array(
-				'licence_key' => $new_key,
-				'email'       => $new_email,
-			) );
-			
-			$new_license          = array();
-			$new_license['key']   = $new_key;
-			$new_license['email'] = $new_email;
-			
-			if ( isset( $result['activated'] ) && 1 == $result['activated'] ) {
-				
-				add_settings_error( 'simmer_license', 'simmer-activated', __( 'License activated.', Simmer()->domain ), 'updated' );
-				
-				return $new_license;
-				
-			}
-			
-			if ( false == $result ) {
-				
-				add_settings_error( 'simmer_license', 'simmer-error', __( 'Could not connect to the Simmer API. Please try again later.', Simmer()->domain ), 'error' );
-				
-				return false;
-				
-			} else if ( isset( $result['code'] ) ) {
-		
-				add_settings_error( 'simmer_license', 'simmer-error', $result['error'] . '. ' . $result['additional_info'], 'error' );
-				
-				return false;
-				
-			}
-			
-		}
-		
-		return $existing_license;
 	}
 }
 
