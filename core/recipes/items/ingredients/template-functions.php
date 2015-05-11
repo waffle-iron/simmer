@@ -12,13 +12,14 @@
  *
  * @since 1.0.0
  * 
+ * @param  array      $args        Optional. @see Simmer_Recipe::get_ingredients().
  * @return array|bool $ingredients The array of ingredients or false if none found.
  */
-function simmer_get_the_ingredients() {
+function simmer_get_the_ingredients( $args = array() ) {
 	
 	$recipe = simmer_get_recipe( get_the_ID() );
 	
-	$ingredients = $recipe->get_ingredients();
+	$ingredients = $recipe->get_ingredients( $args );
 	
 	/**
 	 * Filter the returned array of ingredients.
