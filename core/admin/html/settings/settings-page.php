@@ -18,7 +18,7 @@
 	 */
 	do_action( 'simmer_before_settings_page' ); ?>
 	
-	<h2><?php esc_html_e( 'Recipe Settings', Simmer()->domain ) ?></h2>
+	<h2><?php esc_html_e( 'Simmer Settings', Simmer()->domain ) ?></h2>
 	
 	<h2 class="simmer-nav-tab-wrapper nav-tab-wrapper">
 		

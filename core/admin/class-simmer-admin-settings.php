@@ -1,4 +1,4 @@
-<?php
+2	<?php
 /**
  * Define the settings admin class
  *
@@ -56,8 +56,8 @@ final class Simmer_Admin_Settings {
 		);
 		
 		add_options_page(
-			__( 'Recipes', Simmer()->domain ),
-			__( 'Recipes', Simmer()->domain ),
+			__( 'Simmer Settings', Simmer()->domain ),
+			__( 'Simmer', Simmer()->domain ),
 			'manage_options',
 			'simmer-settings',
 			array( $this, 'settings_page_callback' )
