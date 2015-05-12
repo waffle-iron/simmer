@@ -68,6 +68,8 @@ final class Simmer_Admin_Settings {
 	 * Register the settings.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @global array $simmer_extensions A list of registered Simmer extensions.
 	 */
 	public function register_settings() {
 		
@@ -179,14 +181,21 @@ final class Simmer_Admin_Settings {
 		
 		if ( ! empty( $simmer_extensions ) ) {
 			
-			// Add the extensions license settings section.
-			add_settings_section(
-				'simmer_license_extensions',
-				__( 'Extension Licenses', Simmer()->domain ),
-				array( $this, 'license_extensions_section_callback' ),
-				'simmer_license'
-			);
-			
+			foreach ( $simmer_extensions as $simmer_extension ) {
+				
+				if ( isset( $simmer_extension['license'] ) && true === $simmer_extension['license'] ) {
+					
+					// Add the extensions license settings section.
+					add_settings_section(
+						'simmer_license_extensions',
+						__( 'Extension Licenses', Simmer()->domain ),
+						array( $this, 'license_extensions_section_callback' ),
+						'simmer_license'
+					);
+					
+					break;
+				}
+			}
 		}
 		
 		/** Advanced **/
@@ -297,8 +306,12 @@ final class Simmer_Admin_Settings {
 	 * Display the settings page markup.
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @global array $simmer_extensions A list of registered Simmer extensions.
 	 */
 	public function settings_page_callback() {
+		
+		global $simmer_extensions;
 		
 		// Define the settings tabs.
 		$tabs = array(
@@ -314,9 +327,20 @@ final class Simmer_Admin_Settings {
 		 */
 		$tabs = apply_filters( 'simmer_settings_tabs', $tabs );
 		
-		// Append the Licenses tab to the end.
+		// Append the "Advanced" tab to the end.
 		$tabs['advanced'] = __( 'Advanced',  Simmer()->domain );
-		$tabs['license'] = __( 'Licenses',  Simmer()->domain );
+		
+		// If any licensed extensions are registered, display the "Licenses" tab.
+		if ( ! empty( $simmer_extensions ) ) {
+			
+			foreach ( $simmer_extensions as $simmer_extension ) {
+				
+				if ( isset( $simmer_extension['license'] ) && true === $simmer_extension['license'] ) {
+					$tabs['license'] = __( 'Licenses',  Simmer()->domain );
+					break;
+				}
+			}
+		}
 		
 		// Get current tab.
 		$current_tab = empty( $_GET['tab'] ) ? 'display' : sanitize_title( $_GET['tab'] );
