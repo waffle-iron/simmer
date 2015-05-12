@@ -8,7 +8,7 @@
  */
 
 /**
- * Plugin Name: Simmer
+ * Plugin Name: Simmer for Recipes
  * Plugin URI:  https://simmerwp.com
  * Description: A recipe publishing tool for WordPress.
  * Version:     1.3.2
