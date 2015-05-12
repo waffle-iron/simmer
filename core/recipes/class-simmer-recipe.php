@@ -93,7 +93,10 @@ final class Simmer_Recipe {
 	 * @param array $args {
 	 *     Optional. An array of arguments.
 	 *
-	 *     @type bool $exclude_headings Whether returned ingredients should exclude headings. Default 'false'.
+	 *     @type bool   $exclude_headings Whether returned ingredients should exclude headings. Default 'false'.
+	 *     @type string $orderby          What to order the ingredients by. Default 'order' for their set order.
+	 *                                    Accepts 'order', 'amount', 'unit', or 'random'. Requires $exclude_headings
+	 *                                    be set to 'true'.
 	 * }
 	 * @return array $ingredients An array of the recipe's ingredients. An empty array is returned when there
 	 *                            are no ingredients for the recipe.
@@ -102,9 +105,20 @@ final class Simmer_Recipe {
 		
 		$defaults = array(
 			'exclude_headings' => false,
+			'orderby'          => 'order',
 		);
 		
 		$args = wp_parse_args( $args, $defaults );
+		
+		/**
+		 * Filter the recipe's ingredients query args.
+		 *
+		 * @since 1.3.3
+		 *
+		 * @param array $args      The recipe's ingredients query args. @see Simmer_Recipe::get_ingredients().
+		 * @param int   $recipe_id The recipe ID.
+		 */
+		$args = apply_filters( 'simmer_get_recipe_ingredients_args', $args, $this->id );
 		
 		$items = $this->get_items( 'ingredient' );
 		
@@ -120,6 +134,16 @@ final class Simmer_Recipe {
 			$ingredients[] = new Simmer_Recipe_Ingredient( $item );
 		}
 		
+		// Maybe reorder the ingredients.
+		if ( $args['exclude_headings'] && 'order' !== $args['orderby'] ) {
+			
+			if ( 'random' == $args['orderby'] ) {
+				shuffle( $ingredients );
+			} else if ( method_exists( $this, 'sort_ingredients_by_' . $args['orderby'] ) ) {
+				usort( $ingredients, array( $this, 'sort_ingredients_by_' . $args['orderby'] ) );
+			}
+		}
+		
 		/**
 		 * Filter a recipe's retrieved ingredients.
 		 *
@@ -131,6 +155,52 @@ final class Simmer_Recipe {
 		$ingredients = apply_filters( 'simmer_get_recipe_ingredients', $ingredients, $this->id );
 		
 		return $ingredients;
+	}
+	
+	/**
+	 * Sort two ingredients by their amounts.
+	 *
+	 * @since  1.3.3
+	 * @access private
+	 *
+	 * @see usort()
+	 *
+	 * @param  object $a The first ingredient object.
+	 * @param  object $b The second ingredient object.
+	 * @return int       Whether first amount is greater than, less than, or equal to the second.
+	 */
+	private function sort_ingredients_by_amount( $a, $b ) {
+		
+		// Get the filtered amounts.
+		$a = $a->get_amount();
+		$b = $b->get_amount();
+		
+		// Convert the amounts to floats.
+		$a = Simmer_Recipe_Ingredient::convert_amount_to_float( $a );
+		$b = Simmer_Recipe_Ingredient::convert_amount_to_float( $b );
+		
+		if( $a == $b ) {
+			return 0;
+		}
+		
+		return ( $a < $b ) ? -1 : 1;
+	}
+	
+	/**
+	 * Sort two ingredients by their units (alphabetical).
+	 *
+	 * @since  1.3.3
+	 * @access private
+	 *
+	 * @see usort()
+	 *
+	 * @param  object $a The first ingredient object.
+	 * @param  object $b The second ingredient object.
+	 * @return int       Which unit is alphabetically superior.
+	 */
+	private function sort_ingredients_by_unit( $a, $b ) {
+		
+		return strcmp( $a->get_unit(), $b->get_unit() );
 	}
 	
 	/**
@@ -153,6 +223,16 @@ final class Simmer_Recipe {
 		);
 		
 		$args = wp_parse_args( $args, $defaults );
+		
+		/**
+		 * Filter the recipe's instructions query args.
+		 *
+		 * @since 1.3.3
+		 *
+		 * @param array $args      The recipe's instructions query args. @see Simmer_Recipe::get_instructions().
+		 * @param int   $recipe_id The recipe ID.
+		 */
+		$args = apply_filters( 'simmer_get_recipe_instructions_args', $args, $this->id );
 		
 		$items = $this->get_items( 'instruction' );
 		
