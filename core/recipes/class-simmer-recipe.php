@@ -110,6 +110,16 @@ final class Simmer_Recipe {
 		
 		$args = wp_parse_args( $args, $defaults );
 		
+		/**
+		 * Filter the recipe's ingredients query args.
+		 *
+		 * @since 1.3.3
+		 *
+		 * @param array $args      The recipe's ingredients query args. @see Simmer_Recipe::get_ingredients().
+		 * @param int   $recipe_id The recipe ID.
+		 */
+		$args = apply_filters( 'simmer_get_recipe_ingredients_args', $args, $this->id );
+		
 		$items = $this->get_items( 'ingredient' );
 		
 		$ingredients = array();
@@ -213,6 +223,16 @@ final class Simmer_Recipe {
 		);
 		
 		$args = wp_parse_args( $args, $defaults );
+		
+		/**
+		 * Filter the recipe's instructions query args.
+		 *
+		 * @since 1.3.3
+		 *
+		 * @param array $args      The recipe's instructions query args. @see Simmer_Recipe::get_instructions().
+		 * @param int   $recipe_id The recipe ID.
+		 */
+		$args = apply_filters( 'simmer_get_recipe_instructions_args', $args, $this->id );
 		
 		$items = $this->get_items( 'instruction' );
 		
