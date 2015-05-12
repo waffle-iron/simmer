@@ -343,7 +343,7 @@ final class Simmer_Admin_Settings {
 		}
 		
 		// Get current tab.
-		$current_tab = empty( $_GET['tab'] ) ? 'display' : sanitize_title( $_GET['tab'] );
+		$current_tab = ( empty( $_GET['tab'] ) || ! array_key_exists( $_GET['tab'], $tabs ) ) ? 'display' : sanitize_title( $_GET['tab'] );
 		
 		// Flush the rewrite rules.
 		if ( 'advanced' == $current_tab ) {
