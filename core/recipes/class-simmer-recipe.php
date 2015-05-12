@@ -90,16 +90,32 @@ final class Simmer_Recipe {
 	 *
 	 * @since 1.3.0
 	 *
+	 * @param array $args {
+	 *     Optional. An array of arguments.
+	 *
+	 *     @type bool $exclude_headings Whether returned ingredients should exclude headings. Default 'false'.
+	 * }
 	 * @return array $ingredients An array of the recipe's ingredients. An empty array is returned when there
 	 *                            are no ingredients for the recipe.
 	 */
-	public function get_ingredients() {
+	public function get_ingredients( $args = array() ) {
+		
+		$defaults = array(
+			'exclude_headings' => false,
+		);
+		
+		$args = wp_parse_args( $args, $defaults );
 		
 		$items = $this->get_items( 'ingredient' );
 		
 		$ingredients = array();
 		
 		foreach ( $items as $item ) {
+			
+			// Exclude headings if set to do so in the args.
+			if ( $args['exclude_headings'] && simmer_get_recipe_item_meta( $item->recipe_item_id, 'is_heading', true ) ) {
+				continue;
+			}
 			
 			$ingredients[] = new Simmer_Recipe_Ingredient( $item );
 		}
@@ -122,16 +138,32 @@ final class Simmer_Recipe {
 	 *
 	 * @since 1.3.0
 	 *
+	 * @param array $args {
+	 *     Optional. An array of arguments.
+	 *
+	 *     @type bool $exclude_headings Whether returned instructions should exclude headings. Default 'false'.
+	 * }
 	 * @return array $instructions An array of the recipe's instructions. An empty array is returned when there
 	 *                             are no instructions for the recipe.
 	 */
-	public function get_instructions() {
+	public function get_instructions( $args = array() ) {
+		
+		$defaults = array(
+			'exclude_headings' => false,
+		);
+		
+		$args = wp_parse_args( $args, $defaults );
 		
 		$items = $this->get_items( 'instruction' );
 		
 		$instructions = array();
 		
 		foreach ( $items as $item ) {
+			
+			// Exclude headings if set to do so in the args.
+			if ( $args['exclude_headings'] && simmer_get_recipe_item_meta( $item->recipe_item_id, 'is_heading', true ) ) {
+				continue;
+			}
 			
 			$instructions[] = new Simmer_Recipe_Instruction( $item );
 		}

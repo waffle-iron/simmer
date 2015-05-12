@@ -27,6 +27,20 @@
 	
 	<tbody>
 		
+		<tr class="simmer-heading simmer-row-hidden simmer-row">
+			<td class="simmer-sort">
+				<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[0][order]" value="0" />
+				<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
+			</td>
+			<td class="simmer-desc" colspan="3">
+				<input type="text" name="simmer_ingredients[0][description]" value="" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer()->domain ); ?></span>
+				<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[0][heading]" value="true" />
+			</td>
+			<td class="simmer-remove">
+				<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="heading" title="Remove"></a>
+			</td>
+		</tr>
+		
 		<?php // Get the recipe's ingredients.
 		$ingredients = simmer_get_the_ingredients(); ?>
 		
@@ -34,34 +48,56 @@
 			
 			<?php foreach ( $ingredients as $key => $ingredient ) : ?>
 				
-				<tr class="simmer-ingredient simmer-row">
-							
-					<td class="simmer-sort">
-						<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $ingredient->order ); ?>" />
-						<input class="simmer-id" name="simmer_ingredients[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $ingredient->id ); ?>" />
-						<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
-					</td>
-					<td class="simmer-amt">
-						
-						<?php // Filter whether ingredient amounts should be raw (floats) in the admin.
-						$amount = ( apply_filters( 'simmer_admin_raw_ingredient_amounts', false ) ) ? $ingredient->amount : $ingredient->convert_amount_to_string( $ingredient->amount ); ?>
-						
-						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][amount]" value="<?php echo esc_html( $amount ); ?>" placeholder="2" />
-					</td>
-					<td class="simmer-unit">
-						<?php simmer_units_select_field( array(
-							'name'     => 'simmer_ingredients[' . absint( $key ) . '][unit]',
-							'selected' => $ingredient->unit,
-						), $ingredient->amount ); ?>
-					</td>
-					<td class="simmer-desc">
-						<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" placeholder="onions, diced" />
-					</td>
-					<td class="simmer-remove">
-						<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="ingredient" title="Remove"></a>
-					</td>
+				<?php if ( $ingredient->is_heading() ) : ?>
 					
-				</tr>
+					<tr class="simmer-heading simmer-row">
+						<td class="simmer-sort">
+							<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $ingredient->order ); ?>" />
+							<input class="simmer-id" name="simmer_ingredients[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $ingredient->id ); ?>" />
+							<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
+						</td>
+						<td class="simmer-desc" colspan="3">
+							<input type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer()->domain ); ?></span>
+							<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[<?php echo absint( $key ); ?>][heading]" value="1" />
+						</td>
+						<td class="simmer-remove">
+							<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="heading" title="Remove"></a>
+						</td>
+					</tr>
+					
+				<?php else : ?>
+					
+					<tr class="simmer-ingredient simmer-row">
+								
+						<td class="simmer-sort">
+							<input class="simmer-order hide-if-js" style="width:100%;" type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][order]" value="<?php echo absint( $ingredient->order ); ?>" />
+							<input class="simmer-id" name="simmer_ingredients[<?php echo absint( $key ); ?>][id]" type="hidden" value="<?php echo absint( $ingredient->id ); ?>" />
+							<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
+						</td>
+						<td class="simmer-amt">
+							
+							<?php // Filter whether ingredient amounts should be raw (floats) in the admin.
+							$amount = ( apply_filters( 'simmer_admin_raw_ingredient_amounts', false ) ) ? $ingredient->amount : $ingredient->convert_amount_to_string( $ingredient->amount ); ?>
+							
+							<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][amount]" value="<?php echo esc_html( $amount ); ?>" placeholder="2" />
+						</td>
+						<td class="simmer-unit">
+							<?php simmer_units_select_field( array(
+								'name'     => 'simmer_ingredients[' . absint( $key ) . '][unit]',
+								'selected' => $ingredient->unit,
+							), $ingredient->amount ); ?>
+						</td>
+						<td class="simmer-desc">
+							<input type="text" style="width:100%;" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" placeholder="onions, diced" />
+							<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[<?php echo absint( $key ); ?>][heading]" value="0" />
+						</td>
+						<td class="simmer-remove">
+							<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="ingredient" title="Remove"></a>
+						</td>
+						
+					</tr>
+					
+				<?php endif; ?>
 				
 			<?php endforeach; ?>
 			
@@ -83,6 +119,7 @@
 				</td>
 				<td class="simmer-desc">
 					<input type="text" style="width:100%;" name="simmer_ingredients[0][description]" value="" placeholder="onions, diced" />
+					<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[0][heading]" value="0" />
 				</td>
 				<td class="simmer-remove">
 					<a href="#" class="simmer-remove-row dashicons dashicons-no" data-type="ingredient" title="Remove"></a>
@@ -103,6 +140,10 @@
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>
 					<?php _e( 'Add an Ingredient', Simmer()->domain ); ?>
+				</a>
+				<a class="simmer-add-row button" data-type="heading" href="#">
+					<span class="dashicons dashicons-plus"></span>
+					<?php _e( 'Add a Heading', Simmer()->domain ); ?>
 				</a>
 				
 				<?php /**
