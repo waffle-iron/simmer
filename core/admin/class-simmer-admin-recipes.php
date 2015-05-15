@@ -40,9 +40,6 @@ final class Simmer_Admin_Recipes {
 		
 		// Remove the recipe items on recipe deletion.
 		add_action( 'delete_post', array( $this, 'delete_recipe_items' ) );
-		
-		// Remove the "Quick Edit" link from the recipe row actions.
-		add_filter( 'post_row_actions', array( $this, 'hide_quick_edit_link' ), 10, 2 );
 	}
 	
 	/**
@@ -482,26 +479,6 @@ final class Simmer_Admin_Recipes {
 		foreach ( $items as $item ) {
 			simmer_delete_recipe_item( $item->recipe_item_id );
 		}
-	}
-	
-	/**
-	 * Remove the "Quick Edit" link from the recipe row actions.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param  array  $actions The list of post row actions.
-	 * @param  object $object  The current object.
-	 * @return array  $actions The list of post row actions.
-	 */
-	public function hide_quick_edit_link( $actions, $object ) {
-		
-		// Only remove the link if this is a recipe.
-		if ( $object->post_type == simmer_get_object_type() ) {
-			
-			unset( $actions['inline hide-if-no-js'] );
-		}
-
-		return $actions;
 	}
 }
 
