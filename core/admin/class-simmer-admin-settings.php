@@ -321,7 +321,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/extend-page.php' );
+		include_once( 'views/extend-page.php' );
 	}
 	
 	/**
@@ -375,7 +375,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/settings-page.php' );
+		include_once( 'views/settings/settings-page.php' );
 	}
 	
 	/**
@@ -395,7 +395,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/ingredients-list-heading.php' );
+		include_once( 'views/settings/ingredients-list-heading.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -422,7 +422,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/ingredients-list-type.php' );
+		include_once( 'views/settings/ingredients-list-type.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -449,7 +449,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/units-format.php' );
+		include_once( 'views/settings/units-format.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -476,7 +476,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/instructions-list-heading.php' );
+		include_once( 'views/settings/instructions-list-heading.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -503,7 +503,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/instructions-list-type.php' );
+		include_once( 'views/settings/instructions-list-type.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -530,7 +530,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/enqueue-styles.php' );
+		include_once( 'views/settings/enqueue-styles.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -557,7 +557,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/recipe-accent-color.php' );
+		include_once( 'views/settings/recipe-accent-color.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -584,7 +584,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/recipe-text-color.php' );
+		include_once( 'views/settings/recipe-text-color.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -606,7 +606,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/license-extensions-section.php' );
+		include_once( 'views/settings/license-extensions-section.php' );
 		
 		do_action( 'simmer_after_license_extensions_section' );
 		
@@ -629,7 +629,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/advanced/on-uninstall.php' );
+		include_once( 'views/settings/advanced/on-uninstall.php' );
 		
 		/**
 		 * Allow others to add to this field.
@@ -649,7 +649,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/permalink-archive-base.php' );
+		include_once( 'views/settings/permalink-archive-base.php' );
 	}
 	
 	/**
@@ -662,7 +662,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/permalink-recipe-base.php' );
+		include_once( 'views/settings/permalink-recipe-base.php' );
 	}
 	
 	/**
@@ -675,7 +675,7 @@ final class Simmer_Admin_Settings {
 		/**
 		 * Include the markup.
 		 */
-		include_once( 'html/settings/permalink-category-base.php' );
+		include_once( 'views/settings/permalink-category-base.php' );
 	}
 	
 	/**

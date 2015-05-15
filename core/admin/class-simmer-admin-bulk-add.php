@@ -73,7 +73,7 @@ final class Simmer_Admin_Bulk_Add {
 		// Only load the modal when editing or creating a new recipe.
 		if ( 'post' == $current_screen->base && $current_screen->post_type == simmer_get_object_type() ) {
 			
-			include_once( plugin_dir_path( __FILE__ ) . 'html/meta-boxes/bulk-add.php' );
+			include_once( plugin_dir_path( __FILE__ ) . 'views/meta-boxes/bulk-add.php' );
 		}
 	}
 	

@@ -134,7 +134,7 @@ final class Simmer_Admin_Recipes {
 		/**
 		 * Include the meta box HTML.
 		 */
-		include_once( 'html/meta-boxes/ingredients.php' );
+		include_once( 'views/meta-boxes/ingredients.php' );
 		
 		/**
 		 * Fires after displaying the ingredients meta box.
@@ -167,7 +167,7 @@ final class Simmer_Admin_Recipes {
 		/**
 		 * Include the meta box HTML.
 		 */
-		include_once( 'html/meta-boxes/instructions.php' );
+		include_once( 'views/meta-boxes/instructions.php' );
 		
 		/**
 		 * Fires after displaying the instructions meta box.
@@ -200,7 +200,7 @@ final class Simmer_Admin_Recipes {
 		/**
 		 * Include the meta box HTML.
 		 */
-		include_once( 'html/meta-boxes/information.php' );
+		include_once( 'views/meta-boxes/information.php' );
 		
 		/**
 		 * Fires after displaying the information meta box.

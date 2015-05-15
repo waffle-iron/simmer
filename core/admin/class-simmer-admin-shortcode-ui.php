@@ -136,7 +136,7 @@ class Simmer_Admin_Shortcode_UI {
 		// Only load the modal when editing or creating a new recipe.
 		if ( 'post' == $current_screen->base && in_array( $current_screen->post_type, $this->get_supported_post_types() ) ) {
 			
-			include_once( plugin_dir_path( __FILE__ ) . 'html/shortcode-modal.php' );
+			include_once( plugin_dir_path( __FILE__ ) . 'views/shortcode-modal.php' );
 		}
 	}
 	
