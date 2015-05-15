@@ -1,4 +1,4 @@
-2	<?php
+<?php
 /**
  * Define the settings admin class
  *
