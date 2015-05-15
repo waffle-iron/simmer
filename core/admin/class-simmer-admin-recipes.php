@@ -19,27 +19,51 @@ if ( ! defined( 'WPINC' ) ) {
  */
 final class Simmer_Admin_Recipes {
 	
+	/** Singleton **/
+	
 	/**
-	 * Construct the class.
-	 * 
-	 * @since 1.0.0
+	 * The singleton instance of the class.
+	 *
+	 * @since  1.3.3
+	 * @access private
+	 * @var    object $instance.
 	 */
-	public function __construct() {
+	private static $instance = null;
+	
+	/**
+	 * Get the singleton instance of the class.
+	 *
+	 * @since 1.3.3
+	 *
+	 * @return object self::$instance The single instance of the class.
+	 */
+	public static function get_instance() {
 		
-		// Add the recipe metaboxes.
-		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
 		
-		// Save the recipe meta.
-		add_action( 'save_post_recipe', array( $this, 'save_recipe_meta' ) );
+		return self::$instance;
+	}
+	
+	/**
+	 * Prevent the class from being cloned.
+	 *
+	 * @since 1.3.3
+	 */
+	public function __clone() {
 		
-		// Add custom "updated" messages.
-		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be cloned', Simmer()->domain ), Simmer()->version );
+	}
+	
+	/**
+	 * Prevent the class from being unserialized.
+	 *
+	 * @since 1.3.3
+	 */
+	public function __wakeup() {
 		
-		// Add custom bulk 'recipe updated' messages.
-		add_filter( 'bulk_post_updated_messages', array( $this, 'bulk_updated_messages' ), 10, 2 );
-		
-		// Remove the recipe items on recipe deletion.
-		add_action( 'delete_post', array( $this, 'delete_recipe_items' ) );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be unserialized', Simmer()->domain ), Simmer()->version );
 	}
 	
 	/**
@@ -481,5 +505,3 @@ final class Simmer_Admin_Recipes {
 		}
 	}
 }
-
-new Simmer_Admin_Recipes();

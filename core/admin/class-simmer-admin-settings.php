@@ -7,11 +7,6 @@
  * @package Simmer/Admin/Settings
  */
  
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Set up the setting admin.
  *
@@ -19,24 +14,51 @@ if ( ! defined( 'WPINC' ) ) {
  */
 final class Simmer_Admin_Settings {
 	
+	/** Singleton **/
+	
 	/**
-	 * Construct settings admin.
+	 * The singleton instance of the class.
 	 *
-	 * @since 1.0.0
+	 * @since  1.3.3
+	 * @access private
+	 * @var    object $instance.
 	 */
-	public function __construct() {
+	private static $instance = null;
+	
+	/**
+	 * Get the singleton instance of the class.
+	 *
+	 * @since 1.3.3
+	 *
+	 * @return object self::$instance The single instance of the class.
+	 */
+	public static function get_instance() {
 		
-		// Add the settings submenu item.
-		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
 		
-		// Register the available settings with the Settings API.
-		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		return self::$instance;
+	}
+	
+	/**
+	 * Prevent the class from being cloned.
+	 *
+	 * @since 1.3.3
+	 */
+	public function __clone() {
 		
-		// Enqueue the admin styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be cloned', Simmer()->domain ), Simmer()->version );
+	}
+	
+	/**
+	 * Prevent the class from being unserialized.
+	 *
+	 * @since 1.3.3
+	 */
+	public function __wakeup() {
 		
-		// Enqueue the admin scripts.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be unserialized', Simmer()->domain ), Simmer()->version );
 	}
 	
 	/**
@@ -675,5 +697,3 @@ final class Simmer_Admin_Settings {
 		}
 	}
 }
-
-new Simmer_Admin_Settings();
