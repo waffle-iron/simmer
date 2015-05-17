@@ -62,7 +62,8 @@ if ( $total_time ) {
 
 <p>
 	<label for="simmer_servings"><?php _e( 'Servings', Simmer()->domain ); ?>:</label><br />
-	<input type="text" name="simmer_servings" value="<?php echo esc_html( get_post_meta( $recipe->ID, '_recipe_servings', true ) ); ?>" placeholder="<?php _e( '3-4 people' ); ?>" />
+	<input class="simmer-time" type="number" name="simmer_servings" value="<?php echo esc_attr( $servings ); ?>" placeholder="4" min="1" />
+	<input type="text" name="simmer_servings_label" value="<?php echo esc_html( $servings_label ); ?>" placeholder="<?php _e( 'people', Simmer()->domain ); ?>" />
 </p>
 
 <p>
