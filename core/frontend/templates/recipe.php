@@ -48,11 +48,17 @@
 	
 	<ul class="simmer-recipe-extras">
 		
-		<?php if ( $servings = simmer_get_the_servings() ) : ?>
+		<?php $servings = simmer_get_the_servings(); ?>
+		<?php $servings_label = simmer_get_the_servings_label(); ?>
+		
+		<?php if ( $servings || $servings_label ) : ?>
 			
 			<li>
 				<strong><?php _e( 'Serves', Simmer()->domain ); ?>:</strong> 
-				<span itemprop="recipeYield"><?php echo esc_html( $servings ); ?></span>
+				<span itemprop="recipeYield">
+					<?php echo esc_html( $servings ); ?>
+					<?php echo esc_html( $servings_label ); ?>
+				</span>
 			</li>
 			
 		<?php endif; ?>

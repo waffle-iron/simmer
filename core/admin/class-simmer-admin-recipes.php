@@ -197,6 +197,16 @@ final class Simmer_Admin_Recipes {
 		 */
 		do_action( 'simmer_before_information_metabox', $recipe );
 		
+		// Get the servings & servings label.
+		$servings = get_post_meta( $recipe->ID, '_recipe_servings', true );
+		
+		// If the Servings value isn't a number (pre 1.3.3), switch it to the servings label to prevent data loss.
+		if ( is_numeric( absint( $servings ) ) ) {
+			$servings_label = get_post_meta( $recipe->ID, '_recipe_servings_label', true );
+		} else {
+			$servings_label = $servings;
+			$servings = '';
+		}
 		/**
 		 * Include the meta box HTML.
 		 */
@@ -374,10 +384,17 @@ final class Simmer_Admin_Recipes {
 		}
 		
 		// Maybe save the servings.
-		if ( ! empty( $_POST['simmer_servings'] ) ) {
-			update_post_meta( $id, '_recipe_servings', $_POST['simmer_servings'] );
+		if ( ! empty( absint( $_POST['simmer_servings'] ) ) ) {
+			update_post_meta( $id, '_recipe_servings', absint( $_POST['simmer_servings'] ) );
 		} else {
 			delete_post_meta( $id, '_recipe_servings' );
+		}
+		
+		// Maybe save the servings label.
+		if ( ! empty( $_POST['simmer_servings_label'] ) ) {
+			update_post_meta( $id, '_recipe_servings_label', $_POST['simmer_servings_label'] );
+		} else {
+			delete_post_meta( $id, '_recipe_servings_label' );
 		}
 		
 		// Maybe save the yield.
