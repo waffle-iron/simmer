@@ -7,11 +7,6 @@
  * @package Simmer/Admin/Functions
  */
 
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Print or return a <select> field of all avialable units of measure.
  *

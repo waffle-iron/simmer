@@ -7,11 +7,6 @@
  * @package Simmer/Admin/Recipes
  */
 
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
  * Set up the recipes admin.
  *
