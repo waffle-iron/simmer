@@ -7,6 +7,11 @@
  * @package Simmer/Admin/Hooks
  */
 
+// If this file is called directly, get outa' town.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**** General Dashboard ****/
 
 // Load the dashboard customizing class.
