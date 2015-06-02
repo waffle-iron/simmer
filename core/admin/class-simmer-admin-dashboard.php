@@ -1,187 +1,74 @@
 <?php
 /**
- * The main admin class
+ * Define the admin dashboard customizations
  *
- * Here we define the class that sets up
- * the admin and all its related functionality.
+ * @since 1.3.3
  *
- * @since 1.0.0
- *
- * @package Simmer\Admin
+ * @package Simmer/Admin
  */
  
-// If this file is called directly, bail.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
 /**
- * The main admin class.
+ * Customize the general WordPress admin dashboard.
+ *
+ * This class makes basic, general customizations to the WordPress
+ * admin. The methods in this class generally apply to all admin screens,
+ * regardless of the component being called.
+ *
+ * @since 1.3.3
  */
-final class Simmer_Admin {
+final class Simmer_Admin_Dashboard {
 
 	/** Singleton **/
 	
 	/**
-	 * The only instance of this class.
+	 * The singleton instance of the class.
 	 *
-	 * @since 1.0.0
-	 * @access protected
-	 * @var object The only instance of this class.
+	 * @since  1.3.3
+	 * @access private
+	 * @var    object $instance.
 	 */
-	protected static $_instance = null;
+	private static $instance = null;
 	
 	/**
-	 * Get the main instance.
+	 * Get the singleton instance of the class.
 	 *
-	 * Insure that only one instance of this class exists in memory at any one time.
+	 * @since 1.3.3
 	 *
-	 * @since 1.0.0
-	 *
-	 * @return The only instance of this class.
+	 * @return object self::$instance The single instance of the class.
 	 */
 	public static function get_instance() {
 		
-		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new self();
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
 		
-		return self::$_instance;
+		return self::$instance;
 	}
 	
 	/**
-	 * Prevent this class from being loaded more than once.
+	 * Prevent the class from being cloned.
 	 *
-	 * @since 1.0.0
-	 * @access private
-	 * 
-	 * @return void
-	 */
-	public function __construct() {
-		
-		// Load the necessary supporting files.
-		$this->require_files();
-		
-		// Add the essential action hooks.
-		$this->add_actions();
-		
-		// Add the essential filter hooks.
-		$this->add_filters();
-	}
-	
-	/**
-	 * Prevent this class from being cloned.
-	 *
-	 * @since 1.0.0
-	 * 
-	 * @return void
+	 * @since 1.3.3
 	 */
 	public function __clone() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be cloned', Simmer()->domain ), Simmer()->version );
 	}
 	
 	/**
-	 * Prevent this class from being unserialized.
+	 * Prevent the class from being unserialized.
 	 *
-	 * @since 1.0.0
-	 * 
-	 * @return void
+	 * @since 1.3.3
 	 */
 	public function __wakeup() {
 		
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be unserialized', Simmer()->domain ), Simmer()->version );
 	}
-	
-	/** Private Methods **/
-	
-	/**
-	 * Require the necessary files.
-	 *
-	 * @since 1.0.0
-	 * @access private
-	 *
-	 * @return void
-	 */
-	private function require_files() {
-		
-		/**
-		 * The Recipes admin.
-		 */
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-recipes.php' );
-		
-		/**
-		 * The Settings admin.
-		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-settings.php'  );
-		
-		/**
-		 * Supporting functions.
-		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'functions/units.php'       );
-		
-		/**
-		 * The Recipes admin.
-		 */
-		require( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-bulk-add.php' );
-		
-		$bulk_add = new Simmer_Admin_Bulk_Add();
-		
-		/**
-		 * The shortcode UI.
-		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'class-simmer-admin-shortcode-ui.php' );
-		
-		$shortcode_ui = new Simmer_Admin_Shortcode_UI();
-		
-		/**
-		 * Require the plugins list table row customizing class.
-		 */
-		require_once( plugin_dir_path( __FILE__ ) . 'settings/class-simmer-plugins-list-table-row.php' );
-	}
-	
-	/**
-	 * Call the necessary action hooks.
-	 *
-	 * @since 1.0.0
-	 * @access private
-	 *
-	 * @return void
-	 */
-	private function add_actions() {
-		
-		// Enqueue the custom Javascript files.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		
-		// Add the plugin list table row settings link.
-		add_action( 'admin_init', array( 'Simmer_Plugins_List_Table_Row', 'get_instance' ) );
-		
-		// Add a Simmer thanks link to the admin footer.
-		add_filter( 'admin_footer_text', array( $this, 'footer_text' ), 20 );
-	}
-	
-	/**
-	 * Call the necessary filter hooks.
-	 *
-	 * @since 1.0.0
-	 * @access private
-	 *
-	 * @return void
-	 */
-	private function add_filters() {
-		
-		// Add the published recipe count to the 'At a Glance' dashboard widget.
-		add_filter( 'dashboard_glance_items', array( $this, 'add_glance_recipe_count' ) );
-	}
-	
-	/** Public Methods **/
 	
 	/**
 	 * Enqueue the custom scripts & styles.
 	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
+	 * @since 1.3.3
 	 */
 	public function enqueue_scripts( $hook ) {
 		
@@ -222,9 +109,9 @@ final class Simmer_Admin {
 	}
 	
 	/**
-	 * Add the published recipe count to the 'At a Glance' dashboard widget.
+	 * Add the published recipe count to the "At a Glance" dashboard widget.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.3
 	 *
 	 * @param  array $elements The current at-a-glance items.
 	 * @return array $elements The new at-a-glance items.
@@ -257,14 +144,36 @@ final class Simmer_Admin {
 	}
 	
 	/**
+	 * Add a "Settings" link to the list of plugin row actions.
+	 * 
+	 * @since 1.3.3
+	 * 
+	 * @param  array $actions The default plugin row actions.
+	 * @return array $actions The new plugin row actions.
+	 */
+	public function add_settings_link( $actions ) {
+		
+		$new_action = sprintf(
+			'<a href="%s">%s</a>',
+			esc_url( get_admin_url( null, 'options-general.php?page=simmer-settings' ) ),
+			__( 'Settings', Simmer()->domain )
+		);
+		
+		// Add the new action to the front of the array.
+		array_unshift( $actions, $new_action );
+		
+		return $actions;
+	}
+	
+	/**
 	 * Add a Simmer thanks link to the admin footer.
 	 *
-	 * @since 1.3.0
+	 * @since 1.3.3
 	 *
 	 * @param  string $text The default admin footer text.
 	 * @return string $text The new admin footer text with the Simmer link appended.
 	 */
-	public function footer_text( $text ) {
+	public function add_footer_text( $text ) {
 		
 		$text = '<span id="footer-thankyou">';
 			

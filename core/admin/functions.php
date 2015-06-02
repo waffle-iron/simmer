@@ -1,21 +1,27 @@
 <?php
 /**
- * Supporting units admin functions
+ * Define the supporting admin functions
  *
- * @package Simmer\Admin_Functions
+ * @since 1.3.3
+ *
+ * @package Simmer/Admin/Functions
  */
-
-// If this file is called directly, get outa' town.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Print or return a <select> field of all avialable units of measure.
  *
  * @since 1.0.0
  *
- * @param array $args The custom arguments.
+ * @param array $args {
+ *     Optional. The custom arguments.
+ *     
+ *     @type string $name      The field element's name attribute. Default 'simmer-unit'.
+ *     @type string $select    The unit slug to be selected. Default none.
+ *     @type string $id        The field element's id attribute. Default none.
+ *     @type string $class     The field element's class attribute. Default 'simmer-units-dropdown'.
+ *     @type int    $tab_index The field tab index. Default '0'.
+ *     @type bool   $echo      Whether to echo or return the field element. Default 'true'.
+ * }
  * @return string $output The generated <select> field.
  */
 function simmer_units_select_field( $args = '', $count = 1 ) {
