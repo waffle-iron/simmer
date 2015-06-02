@@ -69,6 +69,17 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 
 == Changelog ==
 
+= 1.3.3 =
+* New: Ingredient heading support, just like instructions
+* New: 'orderby' param for ingredient queries
+* New: Optionally exclude headings in ingredient & instruction queries
+* Tweak: Separate serving number & label meta fields & values
+* Tweak: Reinstate the 'Quick Edit' post row action for recipes
+* Tweak: Improve file & folder structure
+* Tweak: Remove core plugin licensing
+* Tweak: Improve add-on license detection
+* Fix: Input autofocus for ingredients UI
+
 = 1.3.2 =
 * Tweak: Change default uninstall setting
 * Tweak: Delete custom db tables on uninstall
