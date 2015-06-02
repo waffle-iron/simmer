@@ -379,7 +379,9 @@ final class Simmer_Admin_Recipes {
 		}
 		
 		// Maybe save the servings.
-		if ( ! empty( absint( $_POST['simmer_servings'] ) ) ) {
+		$servings = absint( $_POST['simmer_servings'] );
+		
+		if ( ! empty( $servings ) ) {
 			update_post_meta( $id, '_recipe_servings', absint( $_POST['simmer_servings'] ) );
 		} else {
 			delete_post_meta( $id, '_recipe_servings' );
