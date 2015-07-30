@@ -41,6 +41,8 @@ Simmer is built with developers in mind. Utilize the many actions and filters de
 
 **Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/) and [simmerwp.com](https://simmerwp.com/blog).**
 
+Sign up for a [Simmer membership](https://simmerwp.com/membership/) to receive premium support and other benefits, and browse our [add-ons](https://simmerwp.com/extensions/), too.
+
 == Installation ==
 
 1. Activate the plugin through the 'Plugins' menu in WordPress
