@@ -38,6 +38,7 @@ Simmer is built with developers in mind. Utilize the many actions and filters de
 * Embed recipes anywhere in your posts or pages
 * Featured thumbnail for each recipe
 * Front-end recipe printing
+* Localization in multiple languages and locales including Spanish, [others soon](https://simmerwp.com/blog/new-languages/)
 
 **Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/) and [simmerwp.com](https://simmerwp.com/blog).**
 
