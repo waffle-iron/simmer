@@ -360,6 +360,37 @@ msgid ""
 "recipe content instantly with Simmer."
 msgstr ""
 
+#: core/admin/views/extend-page.php:130
+msgid "Membership"
+msgstr ""
+
+#: core/admin/views/extend-page.php:135
+msgid ""
+"When you sign up for a Simmer for Recipes account, you\'ll receive access "
+"to a variety of members-only benefits that are really helpful for "
+"food-related businesses using WordPress."
+msgstr ""
+
+#: core/admin/views/extend-page.php:133
+msgid "Sign Up"
+msgstr ""
+
+#: core/admin/views/extend-page.php:176
+msgid "Codex and APIs"
+msgstr ""
+
+#: core/admin/views/extend-page.php:181
+msgid ""
+"Those looking to extend and customize this plugin can utilize the "
+"ever-growing list of action and filter hooks, as well as customizable "
+template files to help tailor recipe display and functionality "
+"for any project."
+msgstr ""
+
+#: core/admin/views/extend-page.php:179
+msgid "View"
+msgstr ""
+
 #: core/admin/html/extend-page.php:131
 msgid "Get the Most out of Simmer"
 msgstr ""
