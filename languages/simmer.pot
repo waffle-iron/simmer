@@ -131,6 +131,202 @@ msgstr ""
 msgid "Ingredients"
 msgstr ""
 
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:248
+msgid "teaspoon"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:249
+msgid "teaspoons"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:250
+msgid "tsp."
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:253
+msgid "tablespoon"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:254
+msgid "tablespoons"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:255
+msgid "tbsp."
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:258
+msgid "fluid ounce"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:259
+msgid "fluid ounces"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:260
+msgid "fl oz"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:263
+msgid "cup"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:264
+msgid "cups"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:265
+msgid "c"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:268
+msgid "pint"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:269
+msgid "pints"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:270
+msgid "pt"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:273
+msgid "quart"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:274
+msgid "quarts"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:275
+msgid "qt"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:278
+msgid "gallon"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:279
+msgid "gallons"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:280
+msgid "gal"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:283
+msgid "milliliter"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:284
+msgid "millileters"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:285
+msgid "mL"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:288
+msgid "liter"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:289
+msgid "liters"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:290
+msgid "L"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:295
+msgid "poudd"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:296
+msgid "pounds"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:297
+msgid "lb"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:300
+msgid "ounce"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:301
+msgid "ounces"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:302
+msgid "oz"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:305
+msgid "milligram"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:306
+msgid "milligrams"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:307
+msgid "mg"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:310
+msgid "gram"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:311
+msgid "grams"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:312
+msgid "g"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:315
+msgid "killogram"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:316
+msgid "killograms"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:317
+msgid "kg"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:322
+msgid "pinch"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:323
+msgid "pinches"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:327
+msgid "dash"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:328
+msgid "dashes"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:332
+msgid "package"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:333
+msgid "packages"
+msgstr ""
+
+#: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:334
+msgid "pkg"
+msgstr ""
+
 #: core/admin/class-simmer-admin-recipes.php:87
 #: core/admin/class-simmer-admin-settings.php:139
 #: core/recipes/items/instructions/class-simmer-recipe-instructions.php:26
