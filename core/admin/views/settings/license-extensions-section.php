@@ -1,9 +1,9 @@
 <?php
 /**
  * The Extensions Licenses settings section.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @package Simmer/Admin/Settings/Licenses
  */
 ?>

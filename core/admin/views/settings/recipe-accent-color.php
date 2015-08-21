@@ -1,9 +1,9 @@
 <?php
 /**
  * The "recipe accent color" settings field.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @package Simmer\Settings
  */
 ?>
