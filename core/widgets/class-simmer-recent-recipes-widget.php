@@ -91,8 +91,7 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 
 		// Set the recipe query args.
 		$query_args = array(
-			'showposts'              => (int) $instance['number'],
-			'nopaging'               => true,
+			'posts_per_page'         => (int) $instance['number'],
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
