@@ -91,8 +91,7 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 
 		// Set the recipe query args.
 		$query_args = array(
-			'showposts'              => (int) $instance['number'],
-			'nopaging'               => true,
+			'posts_per_page'         => (int) $instance['number'],
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
@@ -155,8 +154,8 @@ class Simmer_Recent_Recipes_Widget extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['title']  = strip_tags( $new_instance['title'] );
-		$instance['number'] = (int) $new_instance['number'];
+		$instance['title']  = wp_strip_all_tags( $new_instance['title'] );
+		$instance['number'] = absint( $new_instance['number'] );
 
 		$instance['show_dates'] = ! empty( $new_instance['show_dates'] ) ? true : false;
 
