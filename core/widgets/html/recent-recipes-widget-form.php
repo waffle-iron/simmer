@@ -1,9 +1,9 @@
 <?php
 /**
  * Display the Recent Recipes widget admin markup
- * 
+ *
  * @since 1.1.0
- * 
+ *
  * @package Simmer\Widgets
  */
 ?>

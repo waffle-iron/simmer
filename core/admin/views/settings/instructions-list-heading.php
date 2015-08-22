@@ -1,9 +1,9 @@
 <?php
 /**
  * The Instructions List Heading setting field.
- * 
+ *
  * @since 1.0.0
- * 
+ *
  * @package Simmer\Settings
  */
 ?>
