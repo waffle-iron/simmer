@@ -175,6 +175,7 @@ final class Simmer {
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe-durations.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-recipe-shortcode.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'recipes/class-simmer-plugin-compatibility.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/functions.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'recipes/template-functions.php' );
 
