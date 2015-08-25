@@ -288,11 +288,11 @@ msgid "g"
 msgstr ""
 
 #: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:315
-msgid "killogram"
+msgid "kilogram"
 msgstr ""
 
 #: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:316
-msgid "killograms"
+msgid "kilograms"
 msgstr ""
 
 #: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:317
