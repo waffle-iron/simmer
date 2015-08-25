@@ -77,6 +77,15 @@ Yes, Simmer provides a number of customized options for each recipe to provide m
 Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetize your media business or blog through micro payments. [Find out more from Tinypass](http://tinypass.com/).
 
 == Changelog ==
+= 1.3.7 = 
+* Fix: Add lines for unit measurements to main .pot file
+* New: Add pt_BR localization
+* Fix: Trimmed whitespace
+* New: Add plugin compatibility class
+* Fix: Removed nopaging argument
+* Fix: Improved escaping and sanitization
+* Fix: Fix kilograms spelling in all .pot and .po files
+* New: Fill in new unit measurements strings for es_ES
 
 = 1.3.6 =
 * New: Add Spanish localization
