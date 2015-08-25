@@ -312,8 +312,8 @@ final class Simmer_Recipe_Ingredients {
 					'abbr'   => 'g',
 				),
 				'kg' => array(
-					'single' => 'killogram',
-					'plural' => 'killograms',
+					'single' => 'kilogram',
+					'plural' => 'kilograms',
 					'abbr'   => 'kg',
 				),
 			),
