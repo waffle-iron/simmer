@@ -1,6 +1,9 @@
 # Welcome to Simmer's Github Home
 Simmer is an actively developed WordPress plugin and this is where the action happens. We hope to maintain an open and friendly environment for anyone who's interested in helping make recipe publishing with WordPress more enjoyable.
 
+#Current Version
+We're currently on version 1.3.7 in the WordPress.org Plugin Directory: `https://wordpress.org/plugins/simmer/`. Submit a pull request any time here in our repo to contribute your code. Our Master branch is the latest stable version, and the development branch is where the fun is happening.  
+
 # Installation
  - Clone this repository into your WordPress installation's `plugins` folder from `https://github.com/bwdinc/simmer.git`
  - Or, download directly as a ZIP file from `https://github.com/bwdinc/simmer/archive/master.zip`
