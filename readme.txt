@@ -2,8 +2,8 @@
 Contributors: ChaseWiseman, lchelak, gobwd
 Tags: recipes, recipe, cooking, food, food blog, content marketing, food content marketing, drinks, drink recipes, tutorial maker, tutorials, recipe maker, baking, crafts, DIY, do it yourself
 Requires at least: 3.8
-Tested up to: 4.2.2
-Stable tag: 1.3.4
+Tested up to: 4.3
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,8 +38,11 @@ Simmer is built with developers in mind. Utilize the many actions and filters de
 * Embed recipes anywhere in your posts or pages
 * Featured thumbnail for each recipe
 * Front-end recipe printing
+* Localization in multiple languages and locales including Spanish, [others soon](https://simmerwp.com/blog/new-languages/)
 
 **Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/) and [simmerwp.com](https://simmerwp.com/blog).**
+
+Sign up for a [Simmer membership](https://simmerwp.com/membership/) to receive premium support and other benefits, and browse our [add-ons](https://simmerwp.com/extensions/), too.
 
 == Installation ==
 
@@ -74,6 +77,22 @@ Yes, Simmer provides a number of customized options for each recipe to provide m
 Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetize your media business or blog through micro payments. [Find out more from Tinypass](http://tinypass.com/).
 
 == Changelog ==
+= 1.3.7 = 
+* Fix: Add lines for unit measurements to main .pot file
+* New: Add pt_BR localization
+* Fix: Trimmed whitespace
+* New: Add plugin compatibility class
+* Fix: Removed nopaging argument
+* Fix: Improved escaping and sanitization
+* Fix: Fix kilograms spelling in all .pot and .po files
+* New: Fill in new unit measurements strings for es_ES
+
+= 1.3.6 =
+* New: Add Spanish localization
+
+= 1.3.5 = 
+* Fix: Plurals in ingredients
+* New: Add add-on cards and assets
 
 = 1.3.4 =
 * Fix: Ingredients converting to headings when using bulk-add
@@ -131,7 +150,7 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 * Add shortcode recipe template with link & excerpt
 * Adjust admin UI styling
 * Change "attribution" to "source" and add label
-* Remove <p> option from instructions list display
+* Remove < p > option from instructions list display
 * Fix instructions list display setting
 * Fix recipe excerpt display
 * Update inline docs

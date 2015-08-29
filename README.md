@@ -16,7 +16,7 @@ Simmer is being actively developed and anyone is welcome to contribute. Feel fre
 
 1. Open a new issue
 2. Submit a Pull Request with bug fixes or new features
-3. Translate Simmer to a different language
+3. Translate Simmer to a different language using our .pot and comparing other languages
 4. Give us feedback or ideas to make Simmer better
 
 ### Thanks, and keep cooking!
