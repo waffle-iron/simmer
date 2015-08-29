@@ -240,7 +240,7 @@ msgid "L"
 msgstr ""
 
 #: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:295
-msgid "poudd"
+msgid "pound"
 msgstr ""
 
 #: core/recipes/items/ingredients/class-simmer-recipe-ingredients.php:296
