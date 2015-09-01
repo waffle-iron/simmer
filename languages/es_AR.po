@@ -5,10 +5,10 @@ msgstr ""
 "Project-Id-Version: Simmer for Recipes 1.3.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/simmer\n"
 "POT-Creation-Date: 2015-08-15 10:39-0400\n"
-"PO-Revision-Date: 2015-08-29 20:11-0300\n"
+"PO-Revision-Date: 2015-08-29 20:13-0300\n"
 "Last-Translator: Mariano Caino <mariano@finderdesign.com.ar>\n"
 "Language-Team: Finder <mariano@finderdesign.com.ar>\n"
-"Language: es_ES\n"
+"Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,11 +25,11 @@ msgstr "La clase Simmer_Admin_Bulk_Add no puede ser decodificada"
 
 #: core/admin/class-simmer-admin-bulk-add.php:91
 msgid "No don't have permission to do this."
-msgstr "No tienes permiso para realizar esto."
+msgstr "No tenés permiso para hacer esto."
 
 #: core/admin/class-simmer-admin-bulk-add.php:101
 msgid "Please add some text."
-msgstr "Por favor agrega algún texto."
+msgstr "Por favor agregá algún texto."
 
 #: core/admin/class-simmer-admin-bulk-add.php:120
 msgid "Could not parse input."
@@ -46,17 +46,17 @@ msgstr "La clase Simmer_Admin_Dashboard no puede ser decodificada"
 #: core/admin/class-simmer-admin-dashboard.php:83
 #: core/admin/class-simmer-admin.php:196
 msgid "You must have at least one ingredient!"
-msgstr "¡Debes al menos tener un ingrediente!"
+msgstr "¡Debés al menos tener un ingrediente!"
 
 #: core/admin/class-simmer-admin-dashboard.php:84
 #: core/admin/class-simmer-admin.php:197
 msgid "You must have at least one instruction!"
-msgstr "¡Debes al menos tener una instrucción!"
+msgstr "¡Debés al menos tener una instrucción!"
 
 #: core/admin/class-simmer-admin-dashboard.php:85
 #: core/admin/class-simmer-admin.php:198
 msgid "Are you sure you want to remove this item?"
-msgstr "¿Estás seguro que quieres quitar este ítem?"
+msgstr "¿Estás seguro que querés quitar este ítem?"
 
 #: core/admin/class-simmer-admin-dashboard.php:93
 #: core/admin/class-simmer-admin.php:206
@@ -66,7 +66,7 @@ msgstr "Agregar ingredientes a granel"
 #: core/admin/class-simmer-admin-dashboard.php:94
 #: core/admin/class-simmer-admin.php:207
 msgid "Type or paste the list of ingredients below, one ingredient per line."
-msgstr "Escribe o pega la lista de ingredientes debajo, un ingrediente por línea."
+msgstr "Escribí o pegá la lista de ingredientes debajo, un ingrediente por línea."
 
 #: core/admin/class-simmer-admin-dashboard.php:95
 #: core/admin/class-simmer-admin.php:208
@@ -86,7 +86,7 @@ msgstr "Agregar instrucciones a granel"
 #: core/admin/class-simmer-admin-dashboard.php:100
 #: core/admin/class-simmer-admin.php:213
 msgid "Type or paste the list of instructions below, one instruction per line."
-msgstr "Escribe o pega la lista de instrucciones debajo, una instrucción por línea."
+msgstr "Escribí o pegá la lista de instrucciones debajo, una instrucción por línea."
 
 #: core/admin/class-simmer-admin-dashboard.php:101
 #: core/admin/class-simmer-admin.php:214
@@ -101,7 +101,7 @@ msgstr "Agregar instrucciones"
 #: core/admin/class-simmer-admin-dashboard.php:105
 #: core/admin/class-simmer-admin.php:218
 msgid "Something went wrong. Please try again."
-msgstr "Algo salió mal. Por favor vuelve a intentarlo."
+msgstr "Algo salió mal. Por favor volvé a intentarlo."
 
 #: core/admin/class-simmer-admin-dashboard.php:128
 #: core/admin/class-simmer-admin.php:241
@@ -536,8 +536,8 @@ msgid ""
 "Extend your business to whatever length you desire with Simmer. Purchase just the "
 "extensions you need, and shop around to fit your business' goals."
 msgstr ""
-"Amplía tu negocio hasta donde deseas con Simmer. Compra solo las extensiones que "
-"necesitas, y date una vuelta para lograr tus objetivos de negocio."
+"Ampliá tu negocio hasta donde quieras con Simmer. Comprá solo las extensiones que "
+"necesitás, y date una vuelta para lograr tus objetivos de negocio."
 
 #: core/admin/html/extend-page.php:42 core/admin/views/extend-page.php:38
 msgid "Recipe Connector"
@@ -580,13 +580,13 @@ msgid ""
 "variety of members-only benefits that are really helpful for food-related "
 "businesses using WordPress."
 msgstr ""
-"Cuando te registras a una cuenta Simmer para Recetas, tendrás acceso a una variedad "
+"Cuando te registrás a una cuenta Simmer para Recetas, tenés acceso a una variedad "
 "de beneficios exclusiva para miembros realmente útiles para negocios relacionados a "
 "la gastronomía utilizando WordPress."
 
 #: core/admin/views/extend-page.php:133
 msgid "Sign Up"
-msgstr "Regístrate"
+msgstr "Registrate"
 
 #: core/admin/views/extend-page.php:176
 msgid "Codex and APIs"
@@ -606,7 +606,7 @@ msgstr "Ver"
 
 #: core/admin/html/extend-page.php:131
 msgid "Get the Most out of Simmer"
-msgstr "Obtén lo máximo de Simmer"
+msgstr "Obtené lo máximo de Simmer"
 
 #: core/admin/html/meta-boxes/bulk-add.php:17
 #: core/admin/views/meta-boxes/bulk-add.php:17
@@ -621,7 +621,7 @@ msgstr "Cerrar"
 #: core/admin/html/meta-boxes/bulk-add.php:27
 #: core/admin/views/meta-boxes/bulk-add.php:27
 msgid "Type or copy/paste the list of items below, one item per line."
-msgstr "Escribe o copia/pega la lista de ítems que están debajo, un ítem por línea."
+msgstr "Escribí o copiá/pegá la lista de ítems que están debajo, un ítem por línea."
 
 #: core/admin/html/meta-boxes/bulk-add.php:35 core/admin/html/shortcode-modal.php:55
 #: core/admin/views/meta-boxes/bulk-add.php:35 core/admin/views/shortcode-modal.php:55
@@ -707,7 +707,7 @@ msgstr "+ Agregar a granel"
 #: core/admin/html/meta-boxes/ingredients.php:105
 #: core/admin/views/meta-boxes/ingredients.php:142
 msgid "Add an Ingredient"
-msgstr "Agregar un Ingrediente"
+msgstr "Agregar un ingrediente"
 
 #: core/admin/html/meta-boxes/instructions.php:32
 #: core/admin/html/meta-boxes/instructions.php:55
@@ -843,7 +843,7 @@ msgstr "Seleccionar o buscar por nombre de la receta."
 
 #: core/admin/html/shortcode-modal.php:39 core/admin/views/shortcode-modal.php:39
 msgid "Choose a recipe..."
-msgstr "Elige una receta…"
+msgstr "Elegí una receta…"
 
 #: core/admin/html/shortcode-modal.php:59 core/admin/views/shortcode-modal.php:59
 msgid "Insert into post"
@@ -860,8 +860,8 @@ msgid ""
 "you can purchase one from the Simmer's %sExtensions Library%s."
 msgstr ""
 "Algunas extensiones Simmer requieren su propia licencia activa con el fin de "
-"recibir actualizaciones y soporte. Si no tienes una licencia activa para cualquiera "
-"de las extensiones que están debajo, puedes comprar una desde la %sBiblioteca de "
+"recibir actualizaciones y soporte. Si no tenés una licencia activa para cualquiera "
+"de las extensiones que están debajo, podés comprar una desde la %sBiblioteca de "
 "Extensiones%s de Simmer."
 
 #: core/class-simmer.php:326
