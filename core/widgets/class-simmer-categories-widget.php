@@ -33,10 +33,10 @@ class Simmer_Categories_Widget extends WP_Widget {
 
 		parent::__construct(
 			$this->widget_slug,
-			__( 'Recipe Categories', Simmer()->domain ),
+			__( 'Recipe Categories', 'simmer' ),
 			array(
 				'classname'   => $this->widget_slug . '-widget',
-				'description' => __( 'A list of recipe categories', Simmer()->domain ),
+				'description' => __( 'A list of recipe categories', 'simmer' ),
 			)
 		);
 

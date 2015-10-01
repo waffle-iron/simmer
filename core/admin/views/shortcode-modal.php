@@ -14,15 +14,15 @@
 	<form id="simmer-shortcode-add-form" tabindex="-1">
 
 		<div class="simmer-shortcode-modal-header">
-			<span class="simmer-shortcode-modal-title"><?php echo _e( 'Insert Recipe', Simmer()->domain ); ?></span>
+			<span class="simmer-shortcode-modal-title"><?php echo _e( 'Insert Recipe', 'simmer' ); ?></span>
 			<button class="simmer-shortcode-modal-close">
-				<span class="screen-reader-text"><?php _e( 'Close', Simmer()->domain ); ?></span>
+				<span class="screen-reader-text"><?php _e( 'Close', 'simmer' ); ?></span>
 			</button>
 		</div>
 
 		<div class="simmer-shortcode-modal-content">
 
-			<p class="simmer-shortcode-help"><?php _e( 'Select or search for a recipe name.', Simmer()->domain ); ?></p>
+			<p class="simmer-shortcode-help"><?php _e( 'Select or search for a recipe name.', 'simmer' ); ?></p>
 
 			<?php $recipes = get_posts( array(
 				'post_type'              => simmer_get_object_type(),
@@ -36,7 +36,7 @@
 
 				<select id="simmer_shortcode_recipe" name="simmer_shortcode_recipe" style="width: 100%">
 
-					<option value="0"><?php _e( 'Choose a recipe...', Simmer()->domain ); ?></option>
+					<option value="0"><?php _e( 'Choose a recipe...', 'simmer' ); ?></option>
 
 					<?php foreach ( $recipes as $recipe ) : ?>
 
@@ -52,11 +52,11 @@
 
 		<div class="simmer-shortcode-modal-footer submitbox">
 			<div class="cancel">
-				<a class="submitdelete" href="#"><?php _e( 'Cancel', Simmer()->domain ); ?></a>
+				<a class="submitdelete" href="#"><?php _e( 'Cancel', 'simmer' ); ?></a>
 			</div>
 			<div class="simmer-submit-shortcode">
 				<span class="spinner"></span>
-				<button class="button button-primary" disabled="disabled"><?php _e( 'Insert into post', Simmer()->domain ); ?></button>
+				<button class="button button-primary" disabled="disabled"><?php _e( 'Insert into post', 'simmer' ); ?></button>
 			</div>
 		</div>
 

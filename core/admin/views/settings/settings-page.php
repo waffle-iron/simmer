@@ -18,7 +18,7 @@
 	 */
 	do_action( 'simmer_before_settings_page' ); ?>
 
-	<h2><?php esc_html_e( 'Simmer Settings', Simmer()->domain ) ?></h2>
+	<h2><?php esc_html_e( 'Simmer Settings', 'simmer' ) ?></h2>
 
 	<h2 class="simmer-nav-tab-wrapper nav-tab-wrapper">
 
@@ -38,7 +38,7 @@
 
 		<?php do_settings_sections( 'simmer_' . $current_tab ); ?>
 
-		<?php submit_button( __( 'Save Changes', Simmer()->domain ) ); ?>
+		<?php submit_button( __( 'Save Changes', 'simmer' ) ); ?>
 
 	</form>
 

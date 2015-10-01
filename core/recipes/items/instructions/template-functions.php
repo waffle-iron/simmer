@@ -97,7 +97,7 @@ function simmer_list_instructions( $args = array() ) {
 		'item_type'         => apply_filters( 'simmer_instructions_list_item_type', 'li' ),
 		'item_heading_type' => apply_filters( 'simmer_instructions_list_item_heading_type', 'h4' ),
 		'item_class'        => 'simmer-instruction',
-		'none_message'      => __( 'This recipe has no instructions', Simmer()->domain ),
+		'none_message'      => __( 'This recipe has no instructions', 'simmer' ),
 		'none_class'        => 'simmer-message',
 		'echo'              => true,
 	);
