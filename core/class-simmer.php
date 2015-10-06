@@ -135,7 +135,7 @@ final class Simmer {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', $this->domain ), $this->version );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'simmer' ), $this->version );
 	}
 
 	/**
@@ -145,7 +145,7 @@ final class Simmer {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', $this->domain ), $this->version );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'simmer' ), $this->version );
 	}
 
 	/** Private Methods **/
@@ -295,21 +295,21 @@ final class Simmer {
 	public function load_textdomain() {
 
 		$locale = get_locale();
-		$locale = apply_filters( 'plugin_locale',  $locale, $this->domain );
+		$locale = apply_filters( 'plugin_locale',  $locale, 'simmer' );
 
-		$mofile        = sprintf( $this->domain . '-%s.mo', $locale );
+		$mofile        = sprintf( 'simmer' . '-%s.mo', $locale );
 		$mofile_local  = plugin_dir_path( dirname( __FILE__ ) ) . 'languages/' . $mofile;
-		$mofile_global = WP_LANG_DIR . '/' . $this->domain . '/' . $mofile;
+		$mofile_global = WP_LANG_DIR . '/' . 'simmer' . '/' . $mofile;
 
 		if ( file_exists( $mofile_local ) ) {
-			return load_textdomain( $this->domain, $mofile_local );
+			return load_textdomain( 'simmer', $mofile_local );
 		}
 
 		if ( file_exists( $mofile_global ) ) {
-			return load_textdomain( $this->domain, $mofile_global );
+			return load_textdomain( 'simmer', $mofile_global );
 		}
 
-		load_plugin_textdomain( $this->domain );
+		load_plugin_textdomain( 'simmer' );
 
 		return false;
 	}
@@ -324,16 +324,16 @@ final class Simmer {
 		// The arguments that define the object type's labels and functionality.
 		$args = array(
 			'labels'  => array(
-				'name'               => __( 'Recipes',                   $this->domain ),
-				'singular_name'      => __( 'Recipe',                    $this->domain ),
-				'all_items'          => __( 'All Recipes',               $this->domain ),
-				'add_new_item'       => __( 'Add New Recipe',            $this->domain ),
-				'edit_item'          => __( 'Edit Recipe',               $this->domain ),
-				'new_item'           => __( 'New Recipe',                $this->domain ),
-				'view_item'          => __( 'View Recipe',               $this->domain ),
-				'search_items'       => __( 'Search Recipes',            $this->domain ),
-				'not_found'          => __( 'No recipes found',          $this->domain ),
-				'not_found_in_trash' => __( 'No recipes found in Trash', $this->domain ),
+				'name'               => __( 'Recipes',                   'simmer' ),
+				'singular_name'      => __( 'Recipe',                    'simmer' ),
+				'all_items'          => __( 'All Recipes',               'simmer' ),
+				'add_new_item'       => __( 'Add New Recipe',            'simmer' ),
+				'edit_item'          => __( 'Edit Recipe',               'simmer' ),
+				'new_item'           => __( 'New Recipe',                'simmer' ),
+				'view_item'          => __( 'View Recipe',               'simmer' ),
+				'search_items'       => __( 'Search Recipes',            'simmer' ),
+				'not_found'          => __( 'No recipes found',          'simmer' ),
+				'not_found_in_trash' => __( 'No recipes found in Trash', 'simmer' ),
 			),
 			'public'  => true,
 			'supports' => array(

@@ -18,9 +18,9 @@
 				<span class="hide-if-js">Order</span>
 				<div class="dashicons dashicons-sort hide-if-no-js"></div>
 			</th>
-			<th><?php _e( 'Amount', Simmer()->domain ); ?></th>
-			<th><?php _e( 'Unit', Simmer()->domain ); ?></th>
-			<th><?php _e( 'Description', Simmer()->domain ); ?></th>
+			<th><?php _e( 'Amount', 'simmer' ); ?></th>
+			<th><?php _e( 'Unit', 'simmer' ); ?></th>
+			<th><?php _e( 'Description', 'simmer' ); ?></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -33,7 +33,7 @@
 				<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 			</td>
 			<td class="simmer-desc" colspan="3">
-				<input type="text" name="simmer_ingredients[0][description]" value="" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer()->domain ); ?></span>
+				<input type="text" name="simmer_ingredients[0][description]" value="" /> <span class="simmer-heading-label"><?php _e( 'Heading', 'simmer' ); ?></span>
 				<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[0][heading]" value="true" />
 			</td>
 			<td class="simmer-remove">
@@ -57,7 +57,7 @@
 							<span class="simmer-sort-handle dashicons dashicons-menu hide-if-no-js"></span>
 						</td>
 						<td class="simmer-desc" colspan="3">
-							<input type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" /> <span class="simmer-heading-label"><?php _e( 'Heading', Simmer()->domain ); ?></span>
+							<input type="text" name="simmer_ingredients[<?php echo absint( $key ); ?>][description]" value="<?php echo esc_html( $ingredient->description ); ?>" /> <span class="simmer-heading-label"><?php _e( 'Heading', 'simmer' ); ?></span>
 							<input class="simmer-heading-input" type="hidden" name="simmer_ingredients[<?php echo absint( $key ); ?>][heading]" value="1" />
 						</td>
 						<td class="simmer-remove">
@@ -135,15 +135,15 @@
 		<tr class="simmer-actions">
 			<td colspan="5">
 
-				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient"><?php _e( '+ Add in Bulk', Simmer()->domain ); ?></a>
+				<a class="simmer-bulk-add-link hide-if-no-js" href="#" data-type="ingredient"><?php _e( '+ Add in Bulk', 'simmer' ); ?></a>
 
 				<a class="simmer-add-row button" data-type="ingredient" href="#">
 					<span class="dashicons dashicons-plus"></span>
-					<?php _e( 'Add an Ingredient', Simmer()->domain ); ?>
+					<?php _e( 'Add an Ingredient', 'simmer' ); ?>
 				</a>
 				<a class="simmer-add-row button" data-type="heading" href="#">
 					<span class="dashicons dashicons-plus"></span>
-					<?php _e( 'Add a Heading', Simmer()->domain ); ?>
+					<?php _e( 'Add a Heading', 'simmer' ); ?>
 				</a>
 
 				<?php /**

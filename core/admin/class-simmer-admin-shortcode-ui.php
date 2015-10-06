@@ -52,7 +52,7 @@ class Simmer_Admin_Shortcode_UI {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Shortcode_UI class can not be cloned', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Shortcode_UI class can not be cloned', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Simmer_Admin_Shortcode_UI {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Shortcode_UI class can not be unserialized', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Shortcode_UI class can not be unserialized', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -119,8 +119,8 @@ class Simmer_Admin_Shortcode_UI {
 
 		printf( '<a href="#" id="simmer-add-recipe" class="simmer-icon-fork button" data-editor="%s" title="%s">%s</a>',
 			esc_attr( $editor_id ),
-			esc_attr__( 'Add Recipe', Simmer()->domain ),
-			esc_html__( 'Add Recipe', Simmer()->domain )
+			esc_attr__( 'Add Recipe', 'simmer' ),
+			esc_html__( 'Add Recipe', 'simmer' )
 		);
 	}
 

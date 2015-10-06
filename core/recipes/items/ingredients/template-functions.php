@@ -97,7 +97,7 @@ function simmer_list_ingredients( $args = array() ) {
 		'item_type'    => apply_filters( 'simmer_ingredients_list_item_type', 'li' ),
 		'item_heading_type' => apply_filters( 'simmer_ingredients_list_item_heading_type', 'h4' ),
 		'item_class'   => 'simmer-ingredient',
-		'none_message' => __( 'This recipe has no ingredients', Simmer()->domain ),
+		'none_message' => __( 'This recipe has no ingredients', 'simmer' ),
 		'none_class'   => 'simmer-message',
 		'echo'         => true,
 	);

@@ -48,7 +48,7 @@ final class Simmer_Admin_Bulk_Add {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Bulk_Add class can not be cloned', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Bulk_Add class can not be cloned', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -58,7 +58,7 @@ final class Simmer_Admin_Bulk_Add {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Bulk_Add class can not be unserialized', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Bulk_Add class can not be unserialized', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -88,7 +88,7 @@ final class Simmer_Admin_Bulk_Add {
 
 			echo json_encode( array(
 				'error' => 'no-nonce',
-				'message'  => __( 'No don\'t have permission to do this.', Simmer()->domain ),
+				'message'  => __( 'No don\'t have permission to do this.', 'simmer' ),
 			) );
 
 			die();
@@ -98,7 +98,7 @@ final class Simmer_Admin_Bulk_Add {
 
 			echo json_encode( array(
 				'error' => 'no-input',
-				'message'  => __( 'Please add some text.', Simmer()->domain ),
+				'message'  => __( 'Please add some text.', 'simmer' ),
 			) );
 
 			die();
@@ -117,7 +117,7 @@ final class Simmer_Admin_Bulk_Add {
 
 			echo json_encode( array(
 				'error' => 'parse-error',
-				'message'  => __( 'Could not parse input.', Simmer()->domain ),
+				'message'  => __( 'Could not parse input.', 'simmer' ),
 			) );
 
 			die();
