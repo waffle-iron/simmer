@@ -179,7 +179,7 @@ final class Simmer_Frontend {
 	 */
 	public function open_schema_wrap( $query ) {
 
-		if ( true === $this->schema_wrap_open || ! is_a( $query, 'WP_Query' ) ) {
+		if ( true === $this->schema_wrap_open || ! $query instanceof WP_Query ) {
 			return;
 		}
 
@@ -200,7 +200,7 @@ final class Simmer_Frontend {
 	 */
 	public function close_schema_wrap( $query ) {
 
-		if ( false === $this->schema_wrap_open || ! is_a( $query, 'WP_Query' ) ) {
+		if ( false === $this->schema_wrap_open || ! $query instanceof WP_Query ) {
 			return;
 		}
 
