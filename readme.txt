@@ -78,7 +78,13 @@ Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetiz
 
 == Changelog ==
 = 1.3.8 = 
-* Fix: BuddyPress conflicts fixed
+* Fix: BuddyPress conflicts resolved
+* Fix: Make sure we actually have a WP_Query object 
+* Fix: Used instanceof instead of is_a
+* Fix: Hardcoded textdomain
+* New: Added grunt-wp-i18n support
+* Fix: Made measurements translatable
+* New: Regenerated pot file using grunt
 
 = 1.3.7 = 
 * Fix: Add lines for unit measurements to main .pot file
