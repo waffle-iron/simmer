@@ -6,3 +6,6 @@ Thumbs.db
 
 # ApiGen
 /codex/
+
+# npm
+node_modules
