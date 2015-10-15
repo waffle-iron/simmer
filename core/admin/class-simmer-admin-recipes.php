@@ -48,7 +48,7 @@ final class Simmer_Admin_Recipes {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be cloned', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be cloned', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -58,7 +58,7 @@ final class Simmer_Admin_Recipes {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be unserialized', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Recipes class can not be unserialized', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -74,7 +74,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Ingredients meta box.
 		add_meta_box(
 			'simmer_ingredients',
-			__( 'Ingredients', Simmer()->domain ),
+			__( 'Ingredients', 'simmer' ),
 			array( $this, 'meta_box_ingredients' ),
 			$object_type,
 			'normal',
@@ -84,7 +84,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Instructions meta box.
 		add_meta_box(
 			'simmer_instructions',
-			__( 'Instructions', Simmer()->domain ),
+			__( 'Instructions', 'simmer' ),
 			array( $this, 'meta_box_instructions' ),
 			$object_type,
 			'normal',
@@ -94,7 +94,7 @@ final class Simmer_Admin_Recipes {
 		// Add the Information meta box.
 		add_meta_box(
 			'simmer_information',
-			__( 'Information', Simmer()->domain ),
+			__( 'Information', 'simmer' ),
 			array( $this, 'meta_box_information' ),
 			$object_type,
 			'side'
@@ -441,31 +441,31 @@ final class Simmer_Admin_Recipes {
 
 		$messages[ simmer_get_object_type() ] = array(
 			1 => sprintf(
-				__( 'Recipe updated. <a href="%s">View recipe</a>', Simmer()->domain ),
+				__( 'Recipe updated. <a href="%s">View recipe</a>', 'simmer' ),
 				$recipe_url
 			),
-			4 => __( 'Recipe updated.', Simmer()->domain ),
+			4 => __( 'Recipe updated.', 'simmer' ),
 			5 => isset( $_GET['revision'] ) ? sprintf(
-				__( 'Recipe restored to revision from %s', Simmer()->domain ),
+				__( 'Recipe restored to revision from %s', 'simmer' ),
 				wp_post_revision_title( (int) $_GET['revision'], false )
 			) : false,
 			6 => sprintf(
-				__( 'Recipe created. <a href="%s">View recipe</a>', Simmer()->domain ),
+				__( 'Recipe created. <a href="%s">View recipe</a>', 'simmer' ),
 				$recipe_url
 			),
-			7 => __( 'Recipe saved.', Simmer()->domain ),
+			7 => __( 'Recipe saved.', 'simmer' ),
 			8 => sprintf(
-				__( 'Recipe submitted. <a target="_blank" href="%s">Preview recipe</a>', Simmer()->domain ),
+				__( 'Recipe submitted. <a target="_blank" href="%s">Preview recipe</a>', 'simmer' ),
 				esc_url( add_query_arg( 'preview', 'true', $recipe_url ) )
 			),
 			9 => sprintf(
-				__( 'Recipe scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview recipe</a>', Simmer()->domain ),
+				__( 'Recipe scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview recipe</a>', 'simmer' ),
 				date_i18n( __( 'M j, Y @ G:i' ),
 				strtotime( $post->post_date ) ),
 				$recipe_url
 			),
 			10 => sprintf(
-				__( 'Recipe draft updated. <a target="_blank" href="%s">Preview recipe</a>', Simmer()->domain ),
+				__( 'Recipe draft updated. <a target="_blank" href="%s">Preview recipe</a>', 'simmer' ),
 				esc_url( add_query_arg( 'preview', 'true', $recipe_url ) )
 			),
 		);
@@ -485,11 +485,11 @@ final class Simmer_Admin_Recipes {
 	public function bulk_updated_messages( $messages, $counts ) {
 
 		$messages[ simmer_get_object_type() ] = array(
-			'updated'   => _n( '%s recipe updated.', '%s recipes updated.', $counts['updated'], Simmer()->domain ),
-			'locked'    => _n( '%s recipe not updated, somebody is editing it.', '%s recipes not updated, somebody is editing them.', $counts['locked'], Simmer()->domain ),
-			'deleted'   => _n( '%s recipe permanently deleted.', '%s recipes permanently deleted.', $counts['deleted'], Simmer()->domain ),
-			'trashed'   => _n( '%s recipe moved to the Trash.', '%s recipes moved to the Trash.', $counts['trashed'], Simmer()->domain ),
-			'untrashed' => _n( '%s recipe restored from the Trash.', '%s recipes restored from the Trash.', $counts['untrashed'], Simmer()->domain ),
+			'updated'   => _n( '%s recipe updated.', '%s recipes updated.', $counts['updated'], 'simmer' ),
+			'locked'    => _n( '%s recipe not updated, somebody is editing it.', '%s recipes not updated, somebody is editing them.', $counts['locked'], 'simmer' ),
+			'deleted'   => _n( '%s recipe permanently deleted.', '%s recipes permanently deleted.', $counts['deleted'], 'simmer' ),
+			'trashed'   => _n( '%s recipe moved to the Trash.', '%s recipes moved to the Trash.', $counts['trashed'], 'simmer' ),
+			'untrashed' => _n( '%s recipe restored from the Trash.', '%s recipes restored from the Trash.', $counts['untrashed'], 'simmer' ),
 		);
 
 		return $messages;
