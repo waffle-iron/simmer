@@ -18,9 +18,9 @@
 	 */
 	do_action( 'simmer_before_extend_page' ); ?>
 
-	<h2><?php _e( 'Recipe Extensions', Simmer()->domain ); ?></h2>
+	<h2><?php _e( 'Recipe Extensions', 'simmer' ); ?></h2>
 
-	<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Sign up for a membership, or pick and choose add-ons.', Simmer()->domain ); ?></p>
+	<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Sign up for a membership, or pick and choose add-ons.', 'simmer' ); ?></p>
 
 	<div class="wp-list-table widefat simmer-extensions-list">
 
@@ -35,12 +35,12 @@
 					</a>
 
 					<h4 class="extension-name">
-						<a href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Recipe Connector', Simmer()->domain ); ?></a>
+						<a href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Recipe Connector', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Get', Simmer()->domain ); ?></a>
+					<a class="extension-get button button-primary" href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Get', 'simmer' ); ?></a>
 
-					<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', Simmer()->domain ); ?></p>
+					<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
@@ -81,12 +81,12 @@
 					</a>
 
 					<h4 class="extension-name">
-						<a href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Tinypass for Simmer', Simmer()->domain ); ?></a>
+						<a href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Tinypass for Simmer', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Get', Simmer()->domain ); ?></a>
+					<a class="extension-get button button-primary" href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Get', 'simmer' ); ?></a>
 
-					<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', Simmer()->domain ); ?></p>
+					<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
@@ -127,12 +127,12 @@
 					</a>
 
 					<h4 class="extension-name">
-						<a href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Membership', Simmer()->domain ); ?></a>
+						<a href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Membership', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Sign Up', Simmer()->domain ); ?></a>
+					<a class="extension-get button button-primary" href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Sign Up', 'simmer' ); ?></a>
 
-					<p class="extension-description"><?php _e( 'When you sign up for a Simmer for Recipes account, you\'ll receive access to a variety of members-only benefits that are really helpful for food-related businesses using WordPress.', Simmer()->domain ); ?></p>
+					<p class="extension-description"><?php _e( 'When you sign up for a Simmer for Recipes account, you\'ll receive access to a variety of members-only benefits that are really helpful for food-related businesses using WordPress.', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
@@ -173,12 +173,12 @@
 					</a>
 
 					<h4 class="extension-name">
-						<a href="http://develop.simmerwp.com/" target="_blank"><?php _e( 'Codex and APIs', Simmer()->domain ); ?></a>
+						<a href="http://develop.simmerwp.com/" target="_blank"><?php _e( 'Codex and APIs', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://develop.simmerwp.com/" target="_blank"><?php _e( 'View', Simmer()->domain ); ?></a>
+					<a class="extension-get button button-primary" href="http://develop.simmerwp.com/" target="_blank"><?php _e( 'View', 'simmer' ); ?></a>
 
-					<p class="extension-description"><?php _e( 'Those looking to extend and customize this plugin can utilize the ever-growing list of action and filter hooks, as well as customizable template files to help tailor recipe display and functionality for any project.', Simmer()->domain ); ?></p>
+					<p class="extension-description"><?php _e( 'Those looking to extend and customize this plugin can utilize the ever-growing list of action and filter hooks, as well as customizable template files to help tailor recipe display and functionality for any project.', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*

@@ -52,7 +52,7 @@ final class Simmer_Admin_Dashboard {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be cloned', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be cloned', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -62,7 +62,7 @@ final class Simmer_Admin_Dashboard {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be unserialized', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Dashboard class can not be unserialized', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -80,9 +80,9 @@ final class Simmer_Admin_Dashboard {
 			wp_enqueue_script( 'simmer-admin-scripts', plugin_dir_url( __FILE__ ) . 'assets/admin.js', array( 'jquery' ), Simmer()->version, true );
 
 			wp_localize_script( 'simmer-admin-scripts', 'simmer_vars', array(
-				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     Simmer()->domain ),
-				'remove_instruction_min' => __( 'You must have at least one instruction!',    Simmer()->domain ),
-				'remove_ays'             => __( 'Are you sure you want to remove this item?', Simmer()->domain ),
+				'remove_ingredient_min'  => __( 'You must have at least one ingredient!',     'simmer' ),
+				'remove_instruction_min' => __( 'You must have at least one instruction!',    'simmer' ),
+				'remove_ays'             => __( 'Are you sure you want to remove this item?', 'simmer' ),
 			) );
 
 			wp_enqueue_script( 'simmer-admin-bulk-script', plugin_dir_url( __FILE__ ) . 'assets/bulk-add.js', array( 'jquery' ), Simmer()->version, true );
@@ -90,19 +90,19 @@ final class Simmer_Admin_Dashboard {
 			wp_localize_script( 'simmer-admin-bulk-script', 'simmer_bulk_add_vars', array(
 
 				// Ingredients text.
-				'ingredients_title'       => __( 'Add Bulk Ingredients', Simmer()->domain ),
-				'ingredients_help'        => __( 'Type or paste the list of ingredients below, one ingredient per line.', Simmer()->domain ),
-				'ingredients_placeholder' => __( 'e.g. 1 cup flour, sifted', Simmer()->domain ),
-				'ingredients_button'      => __( 'Add Ingredients',      Simmer()->domain ),
+				'ingredients_title'       => __( 'Add Bulk Ingredients', 'simmer' ),
+				'ingredients_help'        => __( 'Type or paste the list of ingredients below, one ingredient per line.', 'simmer' ),
+				'ingredients_placeholder' => __( 'e.g. 1 cup flour, sifted', 'simmer' ),
+				'ingredients_button'      => __( 'Add Ingredients',      'simmer' ),
 
 				// Instructions text.
-				'instructions_title'       => __( 'Add Bulk Instructions', Simmer()->domain ),
-				'instructions_help'        => __( 'Type or paste the list of instructions below, one instruction per line.', Simmer()->domain ),
-				'instructions_placeholder' => __( 'e.g. Preheat your oven to 450 degrees.', Simmer()->domain ),
-				'instructions_button'      => __( 'Add Instructions',      Simmer()->domain ),
+				'instructions_title'       => __( 'Add Bulk Instructions', 'simmer' ),
+				'instructions_help'        => __( 'Type or paste the list of instructions below, one instruction per line.', 'simmer' ),
+				'instructions_placeholder' => __( 'e.g. Preheat your oven to 450 degrees.', 'simmer' ),
+				'instructions_button'      => __( 'Add Instructions',      'simmer' ),
 
 				// Misc. text.
-				'error_message'       => __( 'Something went wrong. Please try again.', Simmer()->domain ),
+				'error_message'       => __( 'Something went wrong. Please try again.', 'simmer' ),
 				'ajax_url'            => admin_url( 'admin-ajax.php' ),
 			) );
 		}
@@ -125,7 +125,7 @@ final class Simmer_Admin_Dashboard {
 
 		if ( $num_posts && $num_posts->publish ) {
 
-			$text = _n( '%s Recipe', '%s Recipes', $num_posts->publish, Simmer()->domain );
+			$text = _n( '%s Recipe', '%s Recipes', $num_posts->publish, 'simmer' );
 
 			$text = sprintf( $text, number_format_i18n( $num_posts->publish ) );
 
@@ -156,7 +156,7 @@ final class Simmer_Admin_Dashboard {
 		$new_action = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( get_admin_url( null, 'options-general.php?page=simmer-settings' ) ),
-			__( 'Settings', Simmer()->domain )
+			__( 'Settings', 'simmer' )
 		);
 
 		// Add the new action to the front of the array.
@@ -178,7 +178,7 @@ final class Simmer_Admin_Dashboard {
 		$text = '<span id="footer-thankyou">';
 
 			$text .= sprintf(
-				__( 'Thank you for creating with %sWordPress%s and cooking with %sSimmer%s.', Simmer()->domain ),
+				__( 'Thank you for creating with %sWordPress%s and cooking with %sSimmer%s.', 'simmer' ),
 				'<a href="http://wordpress.org/">',
 				'</a>',
 				'<a href="https://simmerwp.com/">',

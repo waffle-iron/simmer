@@ -321,7 +321,7 @@ function simmer_get_the_source( $recipe_id = null, $label = null, $anchor = true
 	// If no label is specifically set via this function, add the default.
 	if ( is_null( $label ) ) {
 
-		$label = __( 'Source: ', Simmer()->domain );
+		$label = __( 'Source: ', 'simmer' );
 
 		/**
 		 * Filter the source label text.

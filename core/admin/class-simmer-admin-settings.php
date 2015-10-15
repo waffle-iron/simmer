@@ -48,7 +48,7 @@ final class Simmer_Admin_Settings {
 	 */
 	public function __clone() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be cloned', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be cloned', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -58,7 +58,7 @@ final class Simmer_Admin_Settings {
 	 */
 	public function __wakeup() {
 
-		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be unserialized', Simmer()->domain ), Simmer()->version );
+		_doing_it_wrong( __FUNCTION__, __( 'The Simmer_Admin_Settings class can not be unserialized', 'simmer' ), Simmer()->version );
 	}
 
 	/**
@@ -70,16 +70,16 @@ final class Simmer_Admin_Settings {
 
 		add_submenu_page(
 			'edit.php?post_type=recipe',
-			__( 'Extend', Simmer()->domain ),
-			__( 'Extend', Simmer()->domain ),
+			__( 'Extend', 'simmer' ),
+			__( 'Extend', 'simmer' ),
 			'manage_options',
 			'simmer-extend',
 			array( $this, 'extend_page_callback' )
 		);
 
 		add_options_page(
-			__( 'Simmer Settings', Simmer()->domain ),
-			__( 'Simmer', Simmer()->domain ),
+			__( 'Simmer Settings', 'simmer' ),
+			__( 'Simmer', 'simmer' ),
 			'manage_options',
 			'simmer-settings',
 			array( $this, 'settings_page_callback' )
@@ -100,7 +100,7 @@ final class Simmer_Admin_Settings {
 		// Add the ingredients display settings section.
 		add_settings_section(
 			'simmer_display_ingredients',
-			__( 'Ingredients', Simmer()->domain ),
+			__( 'Ingredients', 'simmer' ),
 			'__return_false',
 			'simmer_display'
 		);
@@ -113,21 +113,21 @@ final class Simmer_Admin_Settings {
 		// Add the ingredients display settings fields.
 		add_settings_field(
 			'simmer_ingredients_list_heading',
-			__( 'List Heading', Simmer()->domain ),
+			__( 'List Heading', 'simmer' ),
 			array( $this, 'ingredients_list_heading_callback' ),
 			'simmer_display',
 			'simmer_display_ingredients'
 		);
 		add_settings_field(
 			'simmer_ingredients_list_type',
-			__( 'List Type', Simmer()->domain ),
+			__( 'List Type', 'simmer' ),
 			array( $this, 'ingredients_list_type_callback' ),
 			'simmer_display',
 			'simmer_display_ingredients'
 		);
 		add_settings_field(
 			'simmer_units_format',
-			__( 'Show Units As', Simmer()->domain ),
+			__( 'Show Units As', 'simmer' ),
 			array( $this, 'units_format_callback' ),
 			'simmer_display',
 			'simmer_display_ingredients'
@@ -136,7 +136,7 @@ final class Simmer_Admin_Settings {
 		// Add the instructions display settings section.
 		add_settings_section(
 			'simmer_display_instructions',
-			__( 'Instructions', Simmer()->domain ),
+			__( 'Instructions', 'simmer' ),
 			'__return_false',
 			'simmer_display'
 		);
@@ -148,14 +148,14 @@ final class Simmer_Admin_Settings {
 		// Add the instructions display settings fields.
 		add_settings_field(
 			'simmer_instructions_list_heading',
-			__( 'List Heading', Simmer()->domain ),
+			__( 'List Heading', 'simmer' ),
 			array( $this, 'instructions_list_heading_callback' ),
 			'simmer_display',
 			'simmer_display_instructions'
 		);
 		add_settings_field(
 			'simmer_instructions_list_type',
-			__( 'List Type', Simmer()->domain ),
+			__( 'List Type', 'simmer' ),
 			array( $this, 'instructions_list_type_callback' ),
 			'simmer_display',
 			'simmer_display_instructions'
@@ -164,7 +164,7 @@ final class Simmer_Admin_Settings {
 	 	// Add the styles display settings section.
 		add_settings_section(
 			'simmer_display_styles',
-			__( 'Styles', Simmer()->domain ),
+			__( 'Styles', 'simmer' ),
 			'__return_false',
 			'simmer_display'
 		);
@@ -177,21 +177,21 @@ final class Simmer_Admin_Settings {
 		// Add the general display settings fields.
 		add_settings_field(
 			'simmer_enqueue_styles',
-			__( 'Enable Styles', Simmer()->domain ),
+			__( 'Enable Styles', 'simmer' ),
 			array( $this, 'enqueue_styles_callback' ),
 			'simmer_display',
 			'simmer_display_styles'
 		);
 		add_settings_field(
 			'simmer_recipe_accent_color',
-			__( 'Accent Color', Simmer()->domain ),
+			__( 'Accent Color', 'simmer' ),
 			array( $this, 'recipe_accent_color_callback' ),
 			'simmer_display',
 			'simmer_display_styles'
 		);
 		add_settings_field(
 			'simmer_recipe_text_color',
-			__( 'Text Color', Simmer()->domain ),
+			__( 'Text Color', 'simmer' ),
 			array( $this, 'recipe_text_color_callback' ),
 			'simmer_display',
 			'simmer_display_styles'
@@ -210,7 +210,7 @@ final class Simmer_Admin_Settings {
 					// Add the extensions license settings section.
 					add_settings_section(
 						'simmer_license_extensions',
-						__( 'Extension Licenses', Simmer()->domain ),
+						__( 'Extension Licenses', 'simmer' ),
 						array( $this, 'license_extensions_section_callback' ),
 						'simmer_license'
 					);
@@ -227,7 +227,7 @@ final class Simmer_Admin_Settings {
 	 	// Add the "Recipes" section to the WordPress permalink options page.
 		add_settings_section(
 			'simmer_permalinks',
-			__( 'Permalinks', Simmer()->domain ),
+			__( 'Permalinks', 'simmer' ),
 			'__return_false',
 			'simmer_advanced'
 		);
@@ -240,21 +240,21 @@ final class Simmer_Admin_Settings {
 	 	// Define the fields.
 	 	add_settings_field(
 	 		'simmer_archive_base',
-	 		__( 'Archive base', Simmer()->domain ),
+	 		__( 'Archive base', 'simmer' ),
 	 		array( $this, 'archive_base_callback' ),
 	 		'simmer_advanced',
 	 		'simmer_permalinks'
 	 	);
 		add_settings_field(
 			'simmer_recipe_base',
-			__( 'Single recipe base', Simmer()->domain ),
+			__( 'Single recipe base', 'simmer' ),
 			array( $this, 'recipe_base_callback' ),
 			'simmer_advanced',
 			'simmer_permalinks'
 		);
 		add_settings_field(
 			'simmer_category_base',
-			__( 'Category base', Simmer()->domain ),
+			__( 'Category base', 'simmer' ),
 			array( $this, 'category_base_callback' ),
 			'simmer_advanced',
 			'simmer_permalinks'
@@ -263,7 +263,7 @@ final class Simmer_Admin_Settings {
 		// Add the uninstall settings section.
 		add_settings_section(
 			'simmer_advanced_uninstall',
-			__( 'Uninstall Settings', Simmer()->domain ),
+			__( 'Uninstall Settings', 'simmer' ),
 			'__return_false',
 			'simmer_advanced'
 		);
@@ -273,7 +273,7 @@ final class Simmer_Admin_Settings {
 		// Add the on uninstall settings field.
 		add_settings_field(
 			'simmer_on_uninstall',
-			__( 'On Uninstall', Simmer()->domain ),
+			__( 'On Uninstall', 'simmer' ),
 			array( $this, 'on_uninstall_callback' ),
 			'simmer_advanced',
 			'simmer_advanced_uninstall'
@@ -337,7 +337,7 @@ final class Simmer_Admin_Settings {
 
 		// Define the settings tabs.
 		$tabs = array(
-			'display'  => __( 'Display',  Simmer()->domain ),
+			'display'  => __( 'Display',  'simmer' ),
 		);
 
 		/**
@@ -350,7 +350,7 @@ final class Simmer_Admin_Settings {
 		$tabs = apply_filters( 'simmer_settings_tabs', $tabs );
 
 		// Append the "Advanced" tab to the end.
-		$tabs['advanced'] = __( 'Advanced',  Simmer()->domain );
+		$tabs['advanced'] = __( 'Advanced',  'simmer' );
 
 		// If any licensed extensions are registered, display the "Licenses" tab.
 		if ( ! empty( $simmer_extensions ) ) {
@@ -358,7 +358,7 @@ final class Simmer_Admin_Settings {
 			foreach ( $simmer_extensions as $simmer_extension ) {
 
 				if ( isset( $simmer_extension['license'] ) && true === $simmer_extension['license'] ) {
-					$tabs['license'] = __( 'Licenses',  Simmer()->domain );
+					$tabs['license'] = __( 'Licenses',  'simmer' );
 					break;
 				}
 			}

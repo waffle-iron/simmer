@@ -23,7 +23,7 @@ final class Simmer_Recipe_Instructions {
 	 */
 	public function get_list_heading() {
 
-		$heading = get_option( 'simmer_instructions_list_heading', __( 'Instructions', Simmer()->domain ) );
+		$heading = get_option( 'simmer_instructions_list_heading', __( 'Instructions', 'simmer' ) );
 
 		/**
 		 * Filter the instructions list heading text.
