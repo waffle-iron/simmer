@@ -4,7 +4,7 @@ Simmer is an actively developed WordPress plugin and this is where the action ha
 # Current Version
 We're currently on version 1.3.8 in the WordPress.org Plugin Directory: [https://wordpress.org/plugins/simmer/](https://wordpress.org/plugins/simmer/). 
 
-Submit a pull request any time here in our development repo (currently on version 1.3.9) to contribute your code. Both 1.3.8 and 1.3.9 are compatible with WordPress 4.4. 
+Submit a pull request any time in our development repo (currently on version 1.3.9) to contribute your code. Both 1.3.8 and 1.3.9 are compatible with WordPress 4.4. 
 
 Our Master branch is the latest stable version, and the development branch is where the fun is happening.  
 
