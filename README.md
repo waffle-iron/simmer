@@ -1,4 +1,4 @@
-# Welcome 🍴
+# Welcome
 Simmer is an actively developed WordPress plugin and this is where the action happens. We hope to maintain an open and friendly environment for anyone who's interested in helping make recipe publishing with WordPress more enjoyable. New to committing or using versioning for software development? Read the [WordPress core handbook](https://make.wordpress.org/core/handbook/best-practices/commit-messages/) for a great section on how to write your commit messages. 
 
 #Current Version
