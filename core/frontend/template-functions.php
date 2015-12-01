@@ -35,3 +35,46 @@ function simmer_recipe_has_featured_image( $recipe_id = null ) {
 
 	return $has_featured_image;
 }
+
+/**
+ * Return the title for a recipe.
+ *
+ * @since  1.3.9
+ *
+ * @param  int $recipe_id The ID of the recipe to output the title for.
+ * @return string The recipe's title with a wrapping permalink.
+ */
+function simmer_get_recipe_title( $recipe_id = null ) {
+	if ( null === $recipe_id ) {
+		$recipe_id = get_the_ID();
+	}
+
+	$title = sprintf( '<a href="%s">%s</a>',
+		esc_url( get_permalink( $recipe_id ) ),
+		get_the_title( $recipe_id )
+	);
+
+	/**
+	 * Filter the recipe title's markup.
+	 *
+	 * @since 1.3.9
+	 *
+	 * @param int $recipe_id The ID of the recipe to output the title for.
+	 */
+	return apply_filters( 'simmer_recipe_title', $title, $recipe_id );
+}
+
+/**
+ * Output the title for a recipe.
+ *
+ * @since  1.3.9
+ *
+ * @param  int $recipe_id The ID of the recipe to output the title for.
+ * @return void
+ */
+function simmer_recipe_title( $recipe_id = null ) {
+	if ( null === $recipe_id ) {
+		$recipe_id = get_the_ID();
+	}
+	echo simmer_get_recipe_title( $recipe_id );
+}
