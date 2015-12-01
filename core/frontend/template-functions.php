@@ -2,9 +2,11 @@
 /**
  * Define the front-end template functions
  *
- * @since 1.2.0
- *
- * @package Simmer/Frontend
+ * @package    Simmer
+ * @subpackage Simmer/Frontend
+ * @author     Team Simmer
+ * @copyright  Copyright (c) 2015, Team Simmer
+ * @since      1.2.0
  */
 
 /**
@@ -12,7 +14,7 @@
  *
  * @since 1.2.0
  *
- * @param  int  $recipe_id          Optional. The ID of the recipe to check. Defaults to the currently looped recipe.
+ * @param  int $recipe_id Optional. The ID of the recipe to check. Defaults to the currently looped recipe.
  * @return bool $has_featured_image Whether the recipe's featured image has been set.
  */
 function simmer_recipe_has_featured_image( $recipe_id = null ) {
