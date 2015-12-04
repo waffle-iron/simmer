@@ -52,6 +52,17 @@ final class Simmer_Installer {
 	}
 
 	/**
+	 * Run plugin deactivation procedures.
+	 *
+	 * @since  1.3.9
+	 * @access public
+	 * @return void
+	 */
+	public static function deactivate() {
+		flush_rewrite_rules();
+	}
+
+	/**
 	 * Uninstall Simmer. Sad face.
 	 *
 	 * @since 1.3.0
