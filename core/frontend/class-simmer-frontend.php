@@ -281,7 +281,7 @@ final class Simmer_Frontend {
 	protected function can_append_recipe() {
 		global $wp_current_filter;
 
-		$filter = (array) $wp_current_filter;
+		$filters = (array) $wp_current_filter;
 
 		if ( ! is_singular( $this->cpt ) ) {
 			return false;
@@ -291,23 +291,25 @@ final class Simmer_Frontend {
 			return false;
 		}
 
-		if ( in_array( 'get_the_excerpt', $filter, true ) ) {
+		if ( in_array( 'get_the_excerpt', $filters, true ) ) {
 			return false;
 		}
 
-		$has_been_output = false;
+		$already_appended = false;
 
-		foreach ( $wp_current_filter as $filter ) {
+		foreach ( $filters as $filter ) {
 			if ( 'the_content' !== $filter ) {
 				continue;
 			}
 
-			if ( ! $has_been_output ) {
-				$has_been_output = true;
+			if ( $already_appended ) {
+				return false;
+			} else {
+				$already_appended = true;
 			}
 		}
 
-		return $has_been_output;
+		return $already_appended;
 	}
 
 	/**
