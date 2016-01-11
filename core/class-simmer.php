@@ -263,6 +263,7 @@ final class Simmer {
 
 		// Perform on plugin activation.
 		register_activation_hook( SIMMER_PLUGIN_FILE, 'Simmer_Installer::install' );
+		register_deactivation_hook( SIMMER_PLUGIN_FILE, 'Simmer_Installer::deactivate' );
 
 		// Add the custom table names to the database object for later use.
 		add_action( 'plugins_loaded', array( 'Simmer_Recipe_Item_Meta', 'add_meta_table_names' ), 0 );

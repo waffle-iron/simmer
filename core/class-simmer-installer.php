@@ -40,12 +40,26 @@ final class Simmer_Installer {
 		delete_option( 'simmer_version' );
 		add_option( 'simmer_version', Simmer()->version, '', 'no' );
 
+		self::register_types();
+		flush_rewrite_rules();
+
 		/**
 		 * Fires after Simmer has been installed.
 		 *
 		 * @since 0.1.0
 		 */
 		do_action( 'simmer_installed' );
+	}
+
+	/**
+	 * Run plugin deactivation procedures.
+	 *
+	 * @since  1.3.9
+	 * @access public
+	 * @return void
+	 */
+	public static function deactivate() {
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -192,5 +206,17 @@ final class Simmer_Installer {
 
 			dbDelta( $query );
 		}
+	}
+
+	/**
+	 * Register the recipe CPT and category taxonomy.
+	 *
+	 * @since  1.3.9
+	 * @access protected
+	 * @return void
+	 */
+	protected static function register_types() {
+		Simmer()->register_object_type();
+		Simmer()->register_category_taxonomy();
 	}
 }
