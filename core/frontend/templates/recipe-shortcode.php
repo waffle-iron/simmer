@@ -11,7 +11,7 @@
 <div <?php post_class( 'simmer-embedded-recipe' ); ?> itemscope itemtype="http://schema.org/Recipe">
 
 	<h1 class="simmer-recipe-title" itemprop="name">
-		<a href="<?php the_permalink(); ?>"><?php echo esc_html( get_the_title() ); ?></a>
+		<?php simmer_recipe_title(); ?>
 	</h1>
 
 	<div class="simmer-recipe-meta">

@@ -52,6 +52,16 @@ final class Simmer_Frontend {
 	private $schema_wrap_open = false;
 
 	/**
+	 * Slug for the Simmer custom post type object.
+	 *
+	 * @since  1.3.9
+	 * @access private
+	 *
+	 * @var string simmer_get_object_type()
+	 */
+	private $cpt = null;
+
+	/**
 	 * Get the front-end running.
 	 *
 	 * @since 1.3.0
@@ -81,6 +91,9 @@ final class Simmer_Frontend {
 
 		// Add the necessary filters.
 		$this->add_filters();
+
+		// Store the simmer object type for reuse.
+		$this->cpt = simmer_get_object_type();
 	}
 
 	/**
@@ -183,7 +196,7 @@ final class Simmer_Frontend {
 			return;
 		}
 
-		if ( $query->is_singular( simmer_get_object_type() ) && $query->is_main_query() ) {
+		if ( $query->is_singular( $this->cpt ) && $query->is_main_query() ) {
 
 			$this->schema_wrap_open = true;
 
@@ -204,7 +217,7 @@ final class Simmer_Frontend {
 			return;
 		}
 
-		if ( $query->is_singular( simmer_get_object_type() ) && $query->is_main_query() ) {
+		if ( $query->is_singular( $this->cpt ) && $query->is_main_query() ) {
 
 			$this->schema_wrap_open = false;
 
@@ -225,7 +238,7 @@ final class Simmer_Frontend {
 
 		$wrapped_title = $title;
 
-		if ( $id == get_the_ID() && is_singular( simmer_get_object_type() ) && is_main_query() ) {
+		if ( $id == get_the_ID() && is_singular( $this->cpt ) && is_main_query() ) {
 
 			$wrapped_title = '<span itemprop="name">';
 				$wrapped_title .= $title;
@@ -246,12 +259,57 @@ final class Simmer_Frontend {
 	 */
 	public function add_featured_image_schema( $attributes, $image ) {
 
-		if ( $image->ID == get_post_thumbnail_id( get_the_ID() ) && is_singular( simmer_get_object_type() ) && is_main_query() ) {
+		if ( $image->ID == get_post_thumbnail_id( get_the_ID() ) && is_singular( $this->cpt ) && is_main_query() ) {
 
 			$attributes['itemprop'] = 'image';
 		}
 
 		return $attributes;
+	}
+
+	/**
+	 * Determine whether it's safe to append a recipe to the content.
+	 *
+	 * Checks to make sure we're on a single view of Simmer's recipe post type,
+	 * we're not currently displaying an excerpt, and the recipe markup hasn't
+	 * already been output.
+	 *
+	 * @since 1.3.9
+	 *
+	 * @return bool True if it's safe to append recipe markup, false otherwise.
+	 */
+	protected function can_append_recipe() {
+		global $wp_current_filter;
+
+		$filters = (array) $wp_current_filter;
+
+		if ( ! is_singular( $this->cpt ) ) {
+			return false;
+		}
+
+		if ( get_post_type() !== $this->cpt ) {
+			return false;
+		}
+
+		if ( in_array( 'get_the_excerpt', $filters, true ) ) {
+			return false;
+		}
+
+		$already_appended = false;
+
+		foreach ( $filters as $filter ) {
+			if ( 'the_content' !== $filter ) {
+				continue;
+			}
+
+			if ( $already_appended ) {
+				return false;
+			} else {
+				$already_appended = true;
+			}
+		}
+
+		return $already_appended;
 	}
 
 	/**
@@ -262,8 +320,7 @@ final class Simmer_Frontend {
 	 * @param string $content The TinyMCE content.
 	 */
 	public function append_recipe( $content ) {
-
-		if ( ! is_singular( simmer_get_object_type() ) ) {
+		if ( ! $this->can_append_recipe() ) {
 			return $content;
 		}
 
