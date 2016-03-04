@@ -30,26 +30,6 @@
 
 				<div class="simmer-extension-card-top">
 
-					<a href="https://wordpress.org/plugins/simmer-private/" class="extension-icon" target="_blank">
-						<img src="<?php echo esc_url( dirname( plugin_dir_url( __FILE__ ) ) . '/assets/extensions/recipe-connector.png' ); ?>" width="128" height="128" />
-					</a>
-
-					<h4 class="extension-name">
-						<a href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Simmer Private', 'simmer' ); ?></a>
-					</h4>
-
-					<a class="extension-get button button-primary" href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Free Download', 'simmer' ); ?></a>
-
-					<p class="extension-description"><?php _e( 'Once Simmer Private is enabled on your blog, all Simmer recipe archives and slug options are disabled. This means the only way to display a Simmer recipe is to embed it directly into a post, page, or another custom post type. If you\'re used to using recipe plugins like Ziplist, Easy Recipe, ReciPress, Recipe Card and others this will make Simmer behave in a way that\'s similar to what you\'re used to.', 'simmer' ); ?></p>
-
-				</div><!-- .simmer-extension-card-top --> 
-				
-			</div><!-- .simmer-extension-card --> 
-			
-			<?php /* <div class="simmer-extension-card">
-
-				<div class="simmer-extension-card-top">
-
 					<a href="http://simmerwp.com/product/recipe-connector/" class="extension-icon" target="_blank">
 						<img src="<?php echo esc_url( dirname( plugin_dir_url( __FILE__ ) ) . '/assets/extensions/recipe-connector.png' ); ?>" width="128" height="128" />
 					</a>
@@ -62,10 +42,9 @@
 
 					<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', 'simmer' ); ?></p>
 
-				</div><!-- .simmer-extension-card-top --> 
+				</div><!-- .simmer-extension-card-top -->
 				<?php /*
 				<div class="simmer-extension-card-bottom">
-
 					<div class="extension-rating">
 						<div class="star-rating" title="4.0 rating based on 1,503 ratings">
 							<span class="screen-reader-text">4.0 rating based on 1,503 ratings</span>
@@ -77,7 +56,6 @@
 						</div><!-- .start-rating -->
 						<span class="num-ratings">(1,503)</span>
 					</div><!-- .extension-rating -->
-
 					<div class="extension-meta">
 						<div class="extension-updated">
 							<strong>Last Updated:</strong>
@@ -87,11 +65,10 @@
 							<strong>Compatible</strong> with your version of Simmer
 						</div>
 					</div><!-- .extension-meta -->
-
 				</div><!-- .simmer-extension-card-bottom -->
-				
-			</div><!-- .simmer-extension-card --> */ ?>
- 
+				*/ ?>
+			</div><!-- .simmer-extension-card -->
+
 			<div class="simmer-extension-card">
 
 				<div class="simmer-extension-card-top">
@@ -109,32 +86,8 @@
 					<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
-			
-			</div><!-- .simmer-extension-card -->
- 
-			<? /* <div class="simmer-extension-card">
-
-				<div class="simmer-extension-card-top">
-
-					<a href="https://wordpress.org/plugins/simmer-private/" class="extension-icon" target="_blank">
-						<img src="<?php echo esc_url( dirname( plugin_dir_url( __FILE__ ) ) . '/assets/extensions/recipe-connector.png' ); ?>" width="128" height="128" />
-					</a>
-
-					<h4 class="extension-name">
-						<a href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Simmer Private', 'simmer' ); ?></a>
-					</h4>
-
-					<a class="extension-get button button-primary" href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Free Download', 'simmer' ); ?></a>
-
-					<p class="extension-description"><?php _e( 'Once Simmer Private is enabled on your blog, all Simmer recipe archives and slug options are disabled. This means the only way to display a Simmer recipe is to embed it directly into a post, page, or another custom post type. If you\'re used to using recipe plugins like Ziplist, Easy Recipe, ReciPress, Recipe Card and others this will make Simmer behave in a way that\'s similar to what you\'re used to.', 'simmer' ); ?></p>
-
-				</div><!-- .simmer-extension-card-top -->
-				
-			</div><!-- .simmer-extension-card --> */ ?>
-			
 				<?php /*
 				<div class="simmer-extension-card-bottom">
-
 					<div class="extension-rating">
 						<div class="star-rating" title="4.5 rating based on 427 ratings">
 							<span class="screen-reader-text">4.5 rating based on 427 ratings</span>
@@ -146,7 +99,6 @@
 						</div><!-- .start-rating -->
 						<span class="num-ratings">(427)</span>
 					</div><!-- .extension-rating -->
-
 					<div class="extension-meta">
 						<div class="extension-updated">
 							<strong>Last Updated:</strong>
@@ -156,7 +108,6 @@
 							<strong>Compatible</strong> with your version of Simmer
 						</div>
 					</div><!-- .extension-meta -->
-
 				</div><!-- .simmer-extension-card-bottom -->
 				*/ ?>
 			</div><!-- .simmer-extension-card -->
@@ -180,7 +131,6 @@
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
 				<div class="simmer-extension-card-bottom">
-
 					<div class="extension-rating">
 						<div class="star-rating" title="4.5 rating based on 427 ratings">
 							<span class="screen-reader-text">4.5 rating based on 427 ratings</span>
@@ -192,7 +142,6 @@
 						</div><!-- .start-rating -->
 						<span class="num-ratings">(427)</span>
 					</div><!-- .extension-rating -->
-
 					<div class="extension-meta">
 						<div class="extension-updated">
 							<strong>Last Updated:</strong>
@@ -202,7 +151,6 @@
 							<strong>Compatible</strong> with your version of Simmer
 						</div>
 					</div><!-- .extension-meta -->
-
 				</div><!-- .simmer-extension-card-bottom -->
 				*/ ?>
 			</div><!-- .simmer-extension-card -->
@@ -226,7 +174,6 @@
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
 				<div class="simmer-extension-card-bottom">
-
 					<div class="extension-rating">
 						<div class="star-rating" title="4.5 rating based on 427 ratings">
 							<span class="screen-reader-text">4.5 rating based on 427 ratings</span>
@@ -238,7 +185,6 @@
 						</div><!-- .start-rating -->
 						<span class="num-ratings">(427)</span>
 					</div><!-- .extension-rating -->
-
 					<div class="extension-meta">
 						<div class="extension-updated">
 							<strong>Last Updated:</strong>
@@ -248,7 +194,6 @@
 							<strong>Compatible</strong> with your version of Simmer
 						</div>
 					</div><!-- .extension-meta -->
-
 				</div><!-- .simmer-extension-card-bottom -->
 				*/ ?>
 			</div><!-- .simmer-extension-card -->
