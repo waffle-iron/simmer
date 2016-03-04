@@ -81,7 +81,7 @@
 						<a href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Tinypass for Simmer', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Get', 'simmer' ); ?></a>
+					<a class="extension-get button button-primary" href="http://simmerwp.com/product/tinypass-for-simmer/" target="_blank"><?php _e( 'Buy', 'simmer' ); ?></a>
 
 					<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', 'simmer' ); ?></p>
 
@@ -124,7 +124,7 @@
 						<a href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Membership', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Sign Up', 'simmer' ); ?></a>
+					<a class="extension-get button button-primary" href="http://simmerwp.com/membership/" target="_blank"><?php _e( 'Buy', 'simmer' ); ?></a>
 
 					<p class="extension-description"><?php _e( 'When you sign up for a Simmer for Recipes account, you\'ll receive access to a variety of members-only benefits that are really helpful for food-related businesses using WordPress.', 'simmer' ); ?></p>
 
