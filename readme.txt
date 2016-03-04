@@ -77,6 +77,12 @@ Yes, Simmer provides a number of customized options for each recipe to provide m
 Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetize your media business or blog through micro payments. [Find out more from Tinypass](http://tinypass.com/).
 
 == Changelog ==
+= 1.3.11 = 
+* New: Licensing updated/changed to GPLv3
+* New: Simmer Private add-on card included in Extend admin section
+* New: Add documentation notice to top of Extend section
+* Fix: Small text changes for the plugin's admin views
+
 = 1.3.9 = 
 * Fix: some WPCS nags
 * Fix: version number up to date
