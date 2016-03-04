@@ -30,17 +30,17 @@
 
 				<div class="simmer-extension-card-top">
 
-					<a href="http://simmerwp.com/product/recipe-connector/" class="extension-icon" target="_blank">
+					<a href="https://wordpress.org/plugins/simmer-private/" class="extension-icon" target="_blank">
 						<img src="<?php echo esc_url( dirname( plugin_dir_url( __FILE__ ) ) . '/assets/extensions/recipe-connector.png' ); ?>" width="128" height="128" />
 					</a>
 
 					<h4 class="extension-name">
-						<a href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Recipe Connector', 'simmer' ); ?></a>
+						<a href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Simmer Private', 'simmer' ); ?></a>
 					</h4>
 
-					<a class="extension-get button button-primary" href="http://simmerwp.com/product/recipe-connector/" target="_blank"><?php _e( 'Get', 'simmer' ); ?></a>
+					<a class="extension-get button button-primary" href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Free Download', 'simmer' ); ?></a>
 
-					<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', 'simmer' ); ?></p>
+					<p class="extension-description"><?php _e( 'Short sentence.', 'simmer' ); ?></p>
 
 				</div><!-- .simmer-extension-card-top -->
 				<?php /*
