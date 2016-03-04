@@ -26,7 +26,7 @@
 
 		<div class="simmer-extensions">
 
-			<div class="simmer-extension-card">
+			<?php /* <div class="simmer-extension-card">
 
 				<div class="simmer-extension-card-top">
 
@@ -42,7 +42,7 @@
 
 					<p class="extension-description"><?php _e( 'Attach individual recipes to a single blog post to keep your recipe database clear and concise', 'simmer' ); ?></p>
 
-				</div><!-- .simmer-extension-card-top -->
+				</div><!-- .simmer-extension-card-top --> 
 				<?php /*
 				<div class="simmer-extension-card-bottom">
 
@@ -69,9 +69,9 @@
 					</div><!-- .extension-meta -->
 
 				</div><!-- .simmer-extension-card-bottom -->
-				*/ ?>
-			</div><!-- .simmer-extension-card -->
-
+				
+			</div><!-- .simmer-extension-card --> */ ?>
+ 
 			<div class="simmer-extension-card">
 
 				<div class="simmer-extension-card-top">
