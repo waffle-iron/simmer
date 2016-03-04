@@ -16,7 +16,7 @@ Our Master branch is the latest stable version, and the development branch is wh
 This area is meant for actively developing Simmer and should _not_ be used for support. If you are having trouble using Simmer, please consult our [official documentation](http://docs.simmerwp.com) or visit the [support forums](https://wordpress.org/support/plugin/simmer).
 
 # Bugs
-If you find a bug or engineering question, feel free to open a new issue [here](https://github.com/bwdinc/simmer/issues).
+If you find a bug or have an engineering question, feel free to open a new issue [here](https://github.com/bwdinc/simmer/issues).
 
 # Contributions
 Simmer is being actively developed and anyone is welcome to contribute. Feel free to:
