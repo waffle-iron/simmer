@@ -88,7 +88,9 @@
 
 					<p class="extension-description"><?php _e( 'Tinypass for Simmer is an extension that allows WordPress websites to connect the power of micro e-commerce to monetize your food, drink, or recipe content instantly with Simmer.', 'simmer' ); ?></p>
 
-				</div>
+				</div><!-- .simmer-extension-card-top -->
+			
+			</div><!-- .simmer-extension-card -->
  
 			<div class="simmer-extension-card">
 
