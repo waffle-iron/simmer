@@ -26,6 +26,26 @@
 
 		<div class="simmer-extensions">
 
+			<div class="simmer-extension-card">
+
+				<div class="simmer-extension-card-top">
+
+					<a href="https://wordpress.org/plugins/simmer-private/" class="extension-icon" target="_blank">
+						<img src="<?php echo esc_url( dirname( plugin_dir_url( __FILE__ ) ) . '/assets/extensions/recipe-connector.png' ); ?>" width="128" height="128" />
+					</a>
+
+					<h4 class="extension-name">
+						<a href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Simmer Private', 'simmer' ); ?></a>
+					</h4>
+
+					<a class="extension-get button button-primary" href="https://wordpress.org/plugins/simmer-private/" target="_blank"><?php _e( 'Free Download', 'simmer' ); ?></a>
+
+					<p class="extension-description"><?php _e( 'Once Simmer Private is enabled on your blog, all Simmer recipe archives and slug options are disabled. This means the only way to display a Simmer recipe is to embed it directly into a post, page, or another custom post type. If you\'re used to using recipe plugins like Ziplist, Easy Recipe, ReciPress, Recipe Card and others this will make Simmer behave in a way that\'s similar to what you\'re used to.', 'simmer' ); ?></p>
+
+				</div><!-- .simmer-extension-card-top --> 
+				
+			</div><!-- .simmer-extension-card --> 
+			
 			<?php /* <div class="simmer-extension-card">
 
 				<div class="simmer-extension-card-top">
@@ -92,7 +112,7 @@
 			
 			</div><!-- .simmer-extension-card -->
  
-			<div class="simmer-extension-card">
+			<? /* <div class="simmer-extension-card">
 
 				<div class="simmer-extension-card-top">
 
@@ -110,7 +130,7 @@
 
 				</div><!-- .simmer-extension-card-top -->
 				
-			</div><!-- .simmer-extension-card -->
+			</div><!-- .simmer-extension-card --> */ ?>
 			
 				<?php /*
 				<div class="simmer-extension-card-bottom">
