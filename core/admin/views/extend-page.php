@@ -20,7 +20,7 @@
 
 	<h2><?php _e( 'Recipe Extensions', 'simmer' ); ?></h2>
 
-	<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Sign up for a membership, or pick and choose add-ons. Questions? Browse Simmer\'s documentation and how-tos for directions on how to use recipes in WordPress.', 'simmer' ); ?></p>
+	<p><?php _e( 'Extend your business to whatever length you desire with Simmer. Sign up for a membership, or pick and choose add-ons. Questions? Browse Simmer\'s <a href="#">documentation</a> and how-tos for directions on how to use recipes in WordPress.', 'simmer' ); ?></p>
 
 	<div class="wp-list-table widefat simmer-extensions-list">
 
