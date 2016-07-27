@@ -15,7 +15,7 @@ Our Master branch is the latest stable version, and the development branch is wh
  - Or, download directly as a ZIP file from `https://github.com/bwdinc/simmer/archive/master.zip`
 
 # Support
-This area is meant for actively developing Simmer and should _not_ be used for support. If you are having trouble using Simmer, please consult our [official documentation](http://docs.simmerwp.com) or visit the [support forums](https://wordpress.org/support/plugin/simmer).
+This area is meant for actively developing Simmer and should _not_ be used for support. If you are having trouble using Simmer, please consult our [official documentation](http://docs.simmerwp.com) or email [hi@simmerwp.com](mailto:hi@simmerwp.com). 
 
 # Bugs
 If you find a bug or have an engineering question, feel free to open a new issue [here](https://github.com/bwdinc/simmer/issues).
