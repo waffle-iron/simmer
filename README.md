@@ -21,7 +21,7 @@ Simmer is actively developed here on Github as an opensource WordPress plugin an
 
 1. Open a new issue
 2. Submit a pull request/"PR" with bug fixes or new features
-3. Translate Simmer to a different language using our .pot and comparing other languages
+3. Translate Simmer to a different language using using [Translate WordPress.org](https://translate.wordpress.org/projects/wp-plugins/simmer)
 4. Give us feedback or ideas to make Simmer better
 
 ### Community
