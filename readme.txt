@@ -11,7 +11,7 @@ Recipes by Simmer is an intuitive recipe publishing tool for WordPress.
 
 == Description ==
 
-Sharing with others how to prepare a favorite meal is a simple human act of love. Simmer adds beautiful recipe publishing to any WordPress installation with minimal hassle. Simmer continually develops key areas of recipe UX so our plugin always stays lightweight and easy to use within the WordPress dashboard. To Simmer in a [live demo](http://demo.simmerwp.com).
+Sharing with others how to prepare a favorite meal is a simple human act of love. Simmer adds beautiful recipe publishing to any WordPress installation with minimal hassle. Simmer continually develops key areas of recipe UX so our plugin always stays lightweight and easy to use within the WordPress dashboard. Try Simmer in a [live demo](http://demo.simmerwp.com).
 
 **Intuitive UI**
 
