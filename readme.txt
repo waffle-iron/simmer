@@ -1,4 +1,4 @@
-=== Simmer for Recipes ===
+=== Recipes by Simmer ===
 Contributors: ChaseWiseman, lchelak, gobwd
 Tags: recipes, recipe, cooking, food, food blog, content marketing, food content marketing, drinks, drink recipes, tutorial maker, tutorials, recipe maker, baking, crafts, DIY, do it yourself
 Requires at least: 3.8
@@ -7,23 +7,23 @@ Stable tag: 1.3.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simmer is a recipe publishing tool for WordPress.
+Recipes by Simmer is an intuitive recipe publishing tool for WordPress.
 
 == Description ==
 
-We all love the simple, human act of sharing how to prepare a favorite meal. Simmer enables WordPress users to quickly and easily publish their recipes with minimal hassle. With a focus on the key areas necessary for a great recipe & food data publishing experience, Simmer stays lightweight and easy to use. Check out Simmer for Recipes in a [live demo](http://demo.simmerwp.com).
+Sharing with others how to prepare a favorite meal is a simple human act of love. Simmer adds beautiful recipe publishing to any WordPress installation with minimal hassle. Simmer continually develops key areas of recipe UX so our plugin always stays lightweight and easy to use within the WordPress dashboard. To Simmer in a [live demo](http://demo.simmerwp.com).
 
-**Elegant UI**
+**Intuitive UI**
 
 Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a user-friendly drag and drop interface.
 
 **Food Data Discovery**
 
-Simmer automatically bakes semantic structure and [schema.org](http://schema.org) microdata in to the core of every recipe you publish. This allows Google to standardize and serve your recipes across a variety of devices and platforms. In addition, our easy to understand recipe index structure allows you to create endless libraries and collections of specific recipes.
+Simmer automatically bakes semantic structure and [schema.org](http://schema.org) microdata into the core of every recipe you publish. This allows Google to standardize and serve your recipes across a variety of devices and platforms. In addition, our easy to understand recipe index structure allows you to create endless libraries and collections of specific recipes.
 
-**Easily Extendable**
+**Extendable**
 
-Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or, check out the official [Add-Ons Library](https://simmerwp.com/extensions/) to find an extension (including content e-commerce) that meets your needs. Check back often as new extensions are always being developed!
+Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or check out the official [Add-Ons Library](https://simmerwp.com/extensions/) to find an add-on that meets your project's needs. Because Simmer is an actively developed open source plugin on [Github](http://github.com/simmerwp/simmer/), any developer can build and sell an add-on or other 3rd party product for Simmer, and you can view our collaboration on such products at [simmerwp.com/blog](https://simmerwp.com/blog/topics/3rd-party/). Check back often for newly released products.
 
 **Additional Features**
 
@@ -60,21 +60,25 @@ Sign up for a [Simmer membership](https://simmerwp.com/membership/) to receive p
 
 == Frequently Asked Questions ==
 
-= Is there a way to add an ingredient without adding a numerical value or measurement to it? (For instance, if an ingredient is to be added "to taste" or is optional.) =
+= Is there a way to add an ingredient without a numerical measurement? (For example: if an ingredient is optional or added "to taste) =
 
-Yes! Simply leave any measurement fields that you don't need blank, and they won't be included in your recipe at all. Then, write in "to taste" or any other instructions in the recipe name line itself or in your instructions.
+Yes. Simply leave any measurement fields that you do not need blank, and they won't be included in your recipe at all. Then, write in "to taste" or any other instructions in the recipe name line itself or in your instructions.
 
-= Can I change the wording used in the "add an ingredient" section? ie: a splash, a drop in the Misc. category? =
+= What settings can I control for recipes? = 
 
-Yes. This labelling can be changed very easily through your [Simmer settings](https://simmer.zendesk.com/hc/en-us/articles/203867035-Configuring-Simmer-Settings).
+When activated, a new "Simmer" section is added to Settings in the WordPress dashboard. To see a list of configurable options, consult our free support [docs.simmerwp.com](https://simmer.zendesk.com/hc/en-us/articles/203867035-Configuring-Simmer-Settings).
+
+= Can I add a customized measurement in the drop down for ingredients? = 
+
+Whenever a recipe creator would like to use a unique measurement type not listed in Simmer's drop down UI, we suggest that they simply enter the measurement as part of the description instead. For example: 2 [dropdown empty] 15 oz cans diced tomatoes, 3 [dropdown empty] sprigs of thyme.
 
 = Can I add things like cook time and prep time to my recipes? =
 
-Yes, Simmer provides a number of customized options for each recipe to provide metadata, including an attribution link back to an original recipe author if you'd like to include one.
+Yes, Simmer provides a number of customized options for each recipe to provide metadata, including an attribution link back to an original recipe author if you'd like to include one. If you choose not to include this data, it won't be labelled or included on your indvidual recipe's front end page. 
 
-= Can I use Simmer for e-commerce? =
+= If I do not include data like cook times or serving size to my recipe, will those labels still appear in my recipe? = 
 
-Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetize your media business or blog through micro payments. [Find out more from Tinypass](http://tinypass.com/).
+No. Recipes created with Simmer do not display any labels for fields that are left empty. For example: if no serving size is included, this field will not be displayed or labelled on your recipe on the front end. 
 
 == Changelog ==
 = 1.3.11 = 
