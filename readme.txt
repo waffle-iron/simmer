@@ -3,7 +3,7 @@ Contributors: ChaseWiseman, lchelak, gobwd
 Tags: recipes, recipe, cooking, baking, food, food blog, content marketing, drinks, drink recipes, cocktails, tutorial maker, tutorials, easy recipes, crafts, DIY, do it yourself
 Requires at least: 3.8
 Tested up to: 4.6
-Stable tag: 1.3.11
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,23 +60,30 @@ Sign up for a [Simmer membership](https://simmerwp.com/membership/) to receive p
 
 == Frequently Asked Questions ==
 
-= Is there a way to add an ingredient without adding a numerical value or measurement to it? (For instance, if an ingredient is to be added "to taste" or is optional.) =
+= Is there a way to add an ingredient without a numerical measurement? (For example: if an ingredient is optional or added "to taste) =
 
-Yes! Simply leave any measurement fields that you don't need blank, and they won't be included in your recipe at all. Then, write in "to taste" or any other instructions in the recipe name line itself or in your instructions.
+Yes. Simply leave any measurement fields that you do not need blank, and they won't be included in your recipe at all. Then, write in "to taste" or any other instructions in the recipe name line itself or in your instructions.
 
-= Can I change the wording used in the "add an ingredient" section? ie: a splash, a drop in the Misc. category? =
+= What settings can I control for recipes? = 
 
-Yes. This labelling can be changed very easily through your [Simmer settings](https://simmer.zendesk.com/hc/en-us/articles/203867035-Configuring-Simmer-Settings).
+When activated, a new "Simmer" section is added to Settings in the WordPress dashboard. To see a list of configurable options, consult our free support [docs.simmerwp.com](https://simmer.zendesk.com/hc/en-us/articles/203867035-Configuring-Simmer-Settings).
+
+= Can I add a customized measurement in the drop down for ingredients? = 
+
+Whenever a recipe creator would like to use a unique measurement type not listed in Simmer's drop down UI, we suggest that they simply enter the measurement as part of the description instead. For example: 2 [dropdown empty] 15 oz cans diced tomatoes, 3 [dropdown empty] sprigs of thyme.
 
 = Can I add things like cook time and prep time to my recipes? =
 
-Yes, Simmer provides a number of customized options for each recipe to provide metadata, including an attribution link back to an original recipe author if you'd like to include one.
+Yes, Simmer provides a number of customized options for each recipe to provide metadata, including an attribution link back to an original recipe author if you'd like to include one. If you choose not to include this data, it won't be labelled or included on your indvidual recipe's front end page. 
 
-= Can I use Simmer for e-commerce? =
+= If I do not include data like cook times or serving size to my recipe, will those labels still appear in my recipe? = 
 
-Yes, with the Tinypass for Simmer extension (coming soon) you can easily monetize your media business or blog through micro payments. [Find out more from Tinypass](http://tinypass.com/).
+No. Recipes created with Simmer do not display any labels for fields that are left empty. For example: if no serving size is included, this field will not be displayed or labelled on your recipe on the front end. 
 
 == Changelog ==
+= 1.4.0 = 
+
+
 = 1.3.11 = 
 * New: Licensing updated/changed to GPLv3
 * New: Simmer Private add-on card included in Extend admin section
