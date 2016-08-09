@@ -1,6 +1,6 @@
-=== Simmer for Recipes ===
+=== Recipes by Simmer ===
 Contributors: ChaseWiseman, lchelak, gobwd
-Tags: recipes, recipe, cooking, food, food blog, content marketing, food content marketing, drinks, drink recipes, tutorial maker, tutorials, recipe maker, baking, crafts, DIY, do it yourself
+Tags: recipes, recipe, cooking, baking, food, food blog, content marketing, drinks, drink recipes, cocktails, tutorial maker, tutorials, easy recipes, crafts, DIY, do it yourself
 Requires at least: 3.8
 Tested up to: 4.6
 Stable tag: 1.3.11
@@ -11,9 +11,9 @@ Simmer is a recipe publishing tool for WordPress.
 
 == Description ==
 
-We all love the simple, human act of sharing how to prepare a favorite meal. Simmer enables WordPress users to quickly and easily publish their recipes with minimal hassle. With a focus on the key areas necessary for a great recipe & food data publishing experience, Simmer stays lightweight and easy to use. Check out Simmer for Recipes in a [live demo](http://demo.simmerwp.com).
+Sharing with others how to prepare a favorite meal is a simple human act of love. Simmer adds beautiful recipe publishing to any WordPress installation with minimal hassle. Simmer continually develops key areas of recipe UX so our plugin always stays lightweight and easy to use within the WordPress dashboard. To Simmer in a [live demo](http://demo.simmerwp.com).
 
-**Elegant UI**
+**Intuitive UI**
 
 Add ingredients, step-by-step instructions, sub-headings, structured cook times, and a lot more all within a user-friendly drag and drop interface.
 
@@ -21,9 +21,9 @@ Add ingredients, step-by-step instructions, sub-headings, structured cook times,
 
 Simmer automatically bakes semantic structure and [schema.org](http://schema.org) microdata in to the core of every recipe you publish. This allows Google to standardize and serve your recipes across a variety of devices and platforms. In addition, our easy to understand recipe index structure allows you to create endless libraries and collections of specific recipes.
 
-**Easily Extendable**
+**Extendable**
 
-Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or, check out the official [Add-Ons Library](https://simmerwp.com/extensions/) to find an extension (including content e-commerce) that meets your needs. Check back often as new extensions are always being developed!
+Simmer is built with developers in mind. Utilize the many actions and filters detailed in the [Developer API](http://develop.simmerwp.com) to customize Simmer to fit any project. Or check out the official [Add-Ons Library](https://simmerwp.com/extensions/) to find an add-on that meets your project's needs. Because Simmer is an actively developed open source plugin on [Github](http://github.com/simmerwp/simmer/), any developer can build and sell an add-on or other 3rd party product for Simmer, and you can view our collaboration on such products at [simmerwp.com/blog](https://simmerwp.com/blog/topics/3rd-party/). Check back often for newly released products.
 
 **Additional Features**
 
@@ -40,7 +40,7 @@ Simmer is built with developers in mind. Utilize the many actions and filters de
 * Front-end recipe printing
 * Localization in multiple languages and locales including Spanish, [others soon](https://simmerwp.com/blog/new-languages/)
 
-**Follow Simmer's development on [Github](http://github.com/bwdinc/simmer/) and [simmerwp.com](https://simmerwp.com/blog).**
+**Follow Simmer's development on [Github](http://github.com/simmerwp/simmer/) and [simmerwp.com](https://simmerwp.com/blog).**
 
 Sign up for a [Simmer membership](https://simmerwp.com/membership/) to receive premium support and other benefits, and browse our [add-ons](https://simmerwp.com/extensions/), too.
 
